@@ -1,0 +1,10 @@
+#contact {
+    padding: 6rem 2rem;
+    min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+    #contact {
+        padding: 4rem 1rem;
+    }
+}

@@ -1,0 +1,15 @@
+#cars {
+    padding: 6rem 2rem;
+    min-height: 100vh;
+    background-image: url('https://via.placeholder.com/1920x1080?text=Car+Background');
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+@media (max-width: 768px) {
+    #cars {
+        padding: 4rem 1rem;
+        background-attachment: scroll;
+    }
+}

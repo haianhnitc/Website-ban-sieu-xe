@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite HyperCars - Đăng nhập/Đăng ký</title>
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="customCursor"></div>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5v-2L12 20 2 15v2zM2 12l10 5 10-5v-2L12 15 2 10v2z"/>
+            </svg>
+            Elite HyperCars
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="home.html">Trang chủ</a>
+
+            <a href="about.html">Giới thiệu</a>
+            <a href="cars.html">Bộ sưu tập xe</a>
+            <a href="news.html">Tin tức</a>
+            <a href="contact.html">Liên hệ</a>
+            <a href="faq.html">FAQ</a>
+            <a href="login.html">Đăng nhập/Đăng ký</a>
+            <a href="cart.html">Giỏ hàng</a>
+            <a href="careers.html">Tuyển dụng</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </nav>
+
+    <!-- Login Content -->
+    <div id="login">
+        <h1 class="fade-in">Đăng nhập / Đăng ký</h1>
+        <div class="car-collection">
+            <div class="car-card fade-in">
+                <h2>Đăng nhập</h2>
+                <div class="contact-form">
+                    <input type="email" placeholder="Email">
+                    <input type="password" placeholder="Mật khẩu">
+                    <button class="btn">Đăng nhập</button>
+                </div>
+            </div>
+            <div class="car-card fade-in">
+                <h2>Đăng ký</h2>
+                <div class="contact-form">
+                    <input type="text" placeholder="Tên">
+                    <input type="email" placeholder="Email">
+                    <input type="password" placeholder="Mật khẩu">
+                    <button class="btn">Đăng ký</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Elite HyperCars. All rights reserved.</p>
+    </footer>
+
+    <script src="js/shared.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>

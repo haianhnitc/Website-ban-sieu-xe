@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite HyperCars - Bộ sưu tập xe</title>
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/cars.css">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="customCursor"></div>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5v-2L12 20 2 15v2zM2 12l10 5 10-5v-2L12 15 2 10v2z"/>
+            </svg>
+            Elite HyperCars
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="home.html">Trang chủ</a>
+
+            <a href="about.html">Giới thiệu</a>
+            <a href="cars.html">Bộ sưu tập xe</a>
+            <a href="news.html">Tin tức</a>
+            <a href="contact.html">Liên hệ</a>
+            <a href="faq.html">FAQ</a>
+            <a href="login.html">Đăng nhập/Đăng ký</a>
+            <a href="cart.html">Giỏ hàng</a>
+            <a href="careers.html">Tuyển dụng</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </nav>
+
+    <!-- Cars Content -->
+    <div id="cars" class="car-collection">
+        <h1 class="fade-in">Bộ sưu tập xe</h1>
+        <div class="car-collection">
+            <div class="car-card fade-in">
+                <img src="https://via.placeholder.com/400x200?text=Pagani+Huayra" alt="Pagani Huayra">
+                <h2>Pagani Huayra</h2>
+                <p>$3,400,000</p>
+                <p>Tốc độ tối đa: 238 mph</p>
+                <a href="car-details-1.html" class="btn">Xem chi tiết</a>
+            </div>
+            <div class="car-card fade-in">
+                <img src="https://via.placeholder.com/400x200?text=Ferrari+Pininfarina" alt="Ferrari Pininfarina">
+                <h2>Ferrari Pininfarina</h2>
+                <p>$2,500,000</p>
+                <p>Tốc độ tối đa: 217 mph</p>
+                <a href="car-details-2.html" class="btn">Xem chi tiết</a>
+            </div>
+            <div class="car-card fade-in">
+                <img src="https://via.placeholder.com/400x200?text=Aston+Martin+Valkyrie" alt="Aston Martin Valkyrie">
+                <h2>Aston Martin Valkyrie</h2>
+                <p>$3,200,000</p>
+                <p>Tốc độ tối đa: 220 mph</p>
+                <a href="car-details-3.html" class="btn">Xem chi tiết</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Elite HyperCars. All rights reserved.</p>
+    </footer>
+
+    <script src="js/shared.js"></script>
+    <script src="js/cars.js"></script>
+</body>
+</html>

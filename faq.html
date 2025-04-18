@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite HyperCars - FAQ</title>
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/faq.css">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="customCursor"></div>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5v-2L12 20 2 15v2zM2 12l10 5 10-5v-2L12 15 2 10v2z"/>
+            </svg>
+            Elite HyperCars
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="home.html">Trang chủ</a>
+
+            <a href="about.html">Giới thiệu</a>
+            <a href="cars.html">Bộ sưu tập xe</a>
+            <a href="news.html">Tin tức</a>
+            <a href="contact.html">Liên hệ</a>
+            <a href="faq.html">FAQ</a>
+            <a href="login.html">Đăng nhập/Đăng ký</a>
+            <a href="cart.html">Giỏ hàng</a>
+            <a href="careers.html">Tuyển dụng</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </nav>
+
+    <!-- FAQ Content -->
+    <div id="faq">
+        <h1 class="fade-in">FAQ</h1>
+        <div class="faq-item fade-in">
+            <h2 onclick="toggleFAQ(1)">Làm thế nào để đặt mua một chiếc xe?</h2>
+            <p>Quý khách có thể thêm xe vào giỏ hàng và liên hệ với chúng tôi để được hỗ trợ chi tiết.</p>
+        </div>
+        <div class="faq-item fade-in">
+            <h2 onclick="toggleFAQ(2)">Chính sách bảo hành của showroom là gì?</h2>
+            <p>Chúng tôi cung cấp bảo hành 3 năm hoặc 100,000 km, tùy theo điều kiện nào đến trước.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Elite HyperCars. All rights reserved.</p>
+    </footer>
+
+    <script src="js/shared.js"></script>
+    <script src="js/faq.js"></script>
+</body>
+</html>

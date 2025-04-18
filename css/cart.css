@@ -1,0 +1,10 @@
+#cart {
+    padding: 6rem 2rem;
+    min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+    #cart {
+        padding: 4rem 1rem;
+    }
+}

@@ -1,0 +1,10 @@
+#news {
+    padding: 6rem 2rem;
+    min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+    #news {
+        padding: 4rem 1rem;
+    }
+}
