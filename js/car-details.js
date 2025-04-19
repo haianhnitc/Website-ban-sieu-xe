@@ -1,0 +1,672 @@
+document.addEventListener('DOMContentLoaded', function() {
+    // Lấy ID xe từ URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const carId = parseInt(urlParams.get('id'));
+    
+    // Dữ liệu chi tiết của các xe
+    const carsData = {
+        1: {
+            name: "Lamborghini Aventador SVJ",
+            price: "$517,770",
+            maxSpeed: "350 km/h",
+            power: "770 HP",
+            acceleration: "2.8s",
+            colors: "Đỏ, Đen, Vàng, Trắng",
+            description: "Lamborghini Aventador SVJ là một siêu xe đỉnh cao với động cơ V12 6.5L mạnh mẽ. Thiết kế khí động học tiên tiến với công nghệ ALA 2.0 (Aerodinamica Lamborghini Attiva) giúp tối ưu hiệu suất và khả năng bám đường. Chỉ sản xuất giới hạn 900 chiếc trên toàn thế giới, đây là một trong những mẫu Lamborghini mạnh mẽ và độc đáo nhất từng được chế tạo.",
+            features: [
+                "Động cơ V12 6.5L công suất 770 HP",
+                "Hệ thống khí động học ALA 2.0",
+                "Hệ thống treo đa chế độ với công nghệ từ tính",
+                "Hệ thống phanh carbon-ceramic",
+                "Hộp số ISR 7 cấp",
+                "Khung gầm monocoque carbon fiber",
+                "Hệ thống thông tin giải trí kết nối Apple CarPlay"
+            ],
+            images: {
+                main: "images/cars-collection/anh_1.jpg",
+                thumbnails: [
+                    "images/cars-collection/anh_1.jpg",
+                    "images/cars-collection/anh_1_detail_1.jpg",
+                    "images/cars-collection/anh_1_detail_2.jpg",
+                    "images/cars-collection/anh_1_detail_3.jpg"
+                ]
+            }
+        },
+        2: {
+            name: "Ferrari SF90 Stradale",
+            price: "$625,000",
+            maxSpeed: "340 km/h",
+            power: "986 HP",
+            acceleration: "2.5s",
+            colors: "Đỏ, Vàng, Xanh, Trắng, Đen",
+            description: "Ferrari SF90 Stradale là siêu xe hybrid plug-in đầu tiên của Ferrari, kết hợp động cơ V8 tăng áp kép 4.0L với ba mô-tơ điện. Công suất kết hợp lên đến 986 mã lực, giúp chiếc xe đạt hiệu suất đáng kinh ngạc. Thiết kế khí động học tiên tiến với hơn 390kg lực ép xuống đường ở tốc độ 250km/h. Đây là một bước đột phá về công nghệ và hiệu suất của Ferrari.",
+            features: [
+                "Hệ thống hybrid với công suất 986 HP",
+                "Hệ dẫn động 4 bánh điện tử",
+                "Khả năng vận hành thuần điện quãng đường 25km",
+                "Màn hình HUD hiển thị thông tin trên kính lái",
+                "Hệ thống kiểm soát trượt Side Slip Control 6.0",
+                "Phanh carbon-ceramic",
+                "Gương hậu kỹ thuật số"
+            ],
+            images: {
+                main: "images/cars-collection/anh_2.jpg",
+                thumbnails: [
+                    "images/cars-collection/anh_2.jpg",
+                    "images/cars-collection/anh_2_detail_1.jpg",
+                    "images/cars-collection/anh_2_detail_2.jpg",
+                    "images/cars-collection/anh_2_detail_3.jpg"
+                ]
+            }
+        },
+        3: {
+            name: "Bugatti Chiron Super Sport",
+            price: "$3,825,000",
+            maxSpeed: "440 km/h",
+            power: "1,578 HP",
+            acceleration: "2.4s",
+            colors: "Đen, Xanh, Bạc, Trắng, Cam",
+            description: "Bugatti Chiron Super Sport là một kiệt tác kỹ thuật với động cơ W16 8.0L quad-turbo sản sinh công suất khủng khiếp 1,578 mã lực. Chiếc siêu xe này được thiết kế để trở thành một trong những mẫu xe sản xuất nhanh nhất thế giới với tốc độ tối đa lên đến 440 km/h. Thân xe kéo dài hơn để tối ưu hóa khí động học, giúp xe có thể đạt được những tốc độ chưa từng có cho một chiếc xe thương mại.",
+            features: [
+                "Động cơ W16 8.0L quad-turbo công suất 1,578 HP",
+                "Thân xe kéo dài cho khí động học tối ưu",
+                "Hệ thống làm mát tiên tiến với 10 bộ tản nhiệt",
+                "Khung gầm carbon fiber siêu nhẹ",
+                "Hệ thống treo thích ứng với công nghệ Bugatti",
+                "Hộp số ly hợp kép 7 cấp",
+                "Hệ thống phanh carbon-ceramic kích thước lớn"
+            ],
+            images: {
+                main: "images/cars-collection/anh_3.jpg",
+                thumbnails: [
+                    "images/cars-collection/anh_3.jpg",
+                    "images/cars-collection/anh_3_detail_1.jpg",
+                    "images/cars-collection/anh_3_detail_2.jpg",
+                    "images/cars-collection/anh_3_detail_3.jpg"
+                ]
+            }
+        },
+        4: {
+            name: "McLaren Senna",
+            price: "$1,050,000",
+            maxSpeed: "335 km/h",
+            power: "789 HP",
+            acceleration: "2.8s",
+            colors: "Cam, Xanh, Đen, Trắng, Xám",
+            description: "McLaren Senna là siêu xe đường đua hợp pháp được tối ưu hóa cho hiệu suất đường đua, được đặt theo tên của huyền thoại đua xe F1 Ayrton Senna. Với trọng lượng chỉ 1,198 kg và công suất 789 mã lực, Senna sở hữu tỷ lệ công suất/trọng lượng ấn tượng. Thiết kế khí động học cực đoan với cánh gió chủ động khổng lồ có thể tạo ra lực ép xuống đường lên đến 800 kg, giúp xe bám đường hoàn hảo ở tốc độ cao.",
+            features: [
+                "Động cơ twin-turbo V8 4.0L công suất 789 HP",
+                "Trọng lượng siêu nhẹ 1,198 kg",
+                "Khung gầm Monocage III carbon fiber",
+                "Hệ thống khí động học chủ động RaceActive",
+                "Cửa sổ kính được gắn trên các cửa dihedral",
+                "Hệ thống phanh carbon-ceramic thế hệ mới",
+                "Ghế carbon siêu nhẹ và ghép vào cấu trúc thân xe"
+            ],
+            images: {
+                main: "images/cars-collection/anh_4.jpg",
+                thumbnails: [
+                    "images/cars-collection/anh_4.jpg",
+                    "images/cars-collection/anh_4_detail_1.jpg",
+                    "images/cars-collection/anh_4_detail_2.jpg",
+                    "images/cars-collection/anh_4_detail_3.jpg"
+                ]
+            }
+        },
+        5: {
+            name: "Pagani Huayra BC",
+            price: "$3,650,000",
+            maxSpeed: "380 km/h",
+            power: "791 HP",
+            acceleration: "2.7s",
+            colors: "Bạc, Xám, Xanh, Đỏ, Đen",
+            description: "Pagani Huayra BC là phiên bản hiệu suất cao của Huayra, được đặt theo tên của Benny Caiola - khách hàng đầu tiên của Pagani. Chiếc siêu xe này đại diện cho sự kết hợp hoàn hảo giữa nghệ thuật và khoa học. Với động cơ AMG V12 twin-turbo 6.0L và trọng lượng chỉ 1,218 kg, BC có tỷ lệ công suất/trọng lượng cực kỳ ấn tượng. Mỗi chi tiết đều được chế tạo thủ công với sự chú ý đến từng chi tiết nhỏ nhất, đúng với triết lý của Horacio Pagani.",
+            features: [
+                "Động cơ AMG V12 twin-turbo 6.0L công suất 791 HP",
+                "Hộp số ly hợp 7 cấp nhẹ hơn 40% so với tiêu chuẩn",
+                "Khung gầm Carbo-Titanium HP52",
+                "Hệ thống treo chủ động với công nghệ Brembo",
+                "Phanh carbon-ceramic với hợp kim Brembo mới",
+                "Lốp Pirelli P Zero Corsa được phát triển riêng",
+                "Hệ thống xả titanium nhẹ với lớp phủ ceramic"
+            ],
+            images: {
+                main: "images/cars-collection/anh_5.jpg",
+                thumbnails: [
+                    "images/cars-collection/anh_5.jpg",
+                    "images/cars-collection/anh_5_detail_1.jpg",
+                    "images/cars-collection/anh_5_detail_2.jpg",
+                    "images/cars-collection/anh_5_detail_3.jpg"
+                ]
+            }
+        },
+        6: {
+            name: "Koenigsegg Jesko",
+            price: "$2,800,000",
+            maxSpeed: "480+ km/h",
+            power: "1,600 HP",
+            acceleration: "2.5s",
+            colors: "Trắng, Đỏ, Xanh, Đen, Bạc",
+            description: "Koenigsegg Jesko, đặt theo tên của cha của Christian von Koenigsegg, là siêu xe thế hệ tiếp theo được thiết kế để phá vỡ kỷ lục tốc độ. Với động cơ V8 twin-turbo 5.0L có khả năng sản sinh lên đến 1,600 mã lực (khi sử dụng nhiên liệu E85), Jesko có tiềm năng đạt tốc độ trên 480 km/h. Hộp số Light Speed Transmission (LST) 9 cấp cách mạng của xe cho phép chuyển số tức thời với bất kỳ cấp số nào, không có độ trễ.",
+            features: [
+                "Động cơ V8 twin-turbo 5.0L công suất 1,600 HP (với E85)",
+                "Hộp số Light Speed Transmission (LST) 9 cấp cách mạng",
+                "Hệ thống khí động học chủ động tạo ra hơn 1,000kg lực ép",
+                "Hệ thống treo thích ứng với công nghệ Triplex mới",
+                "Khung gầm carbon monocoque siêu cứng",
+                "Phanh carbon-ceramic Michelin",
+                "Cửa dihedral synchro-helix không cần trục"
+            ],
+            images: {
+                main: "images/cars-collection/anh_6.jpg",
+                thumbnails: [
+                    "images/cars-collection/anh_6.jpg",
+                    "images/cars-collection/anh_6_detail_1.jpg",
+                    "images/cars-collection/anh_6_detail_2.jpg",
+                    "images/cars-collection/anh_6_detail_3.jpg"
+                ]
+            }
+        },
+        7: {
+            name: "Aston Martin Valkyrie",
+            price: "$3,200,000",
+            maxSpeed: "354 km/h",
+            power: "1,140 HP",
+            acceleration: "2.5s",
+            colors: "Đen, Xanh, Bạc, Xám, Đỏ",
+            description: "Aston Martin Valkyrie là sản phẩm hợp tác giữa Aston Martin và đội đua F1 Red Bull Racing. Được thiết kế bởi Adrian Newey - kỹ sư thiết kế F1 huyền thoại, Valkyrie là chiếc siêu xe hypercar mang DNA đua xe F1 thuần túy. Với động cơ Cosworth V12 6.5L hút khí tự nhiên kết hợp hệ thống hybrid, Valkyrie sản sinh 1,140 mã lực trong khi chỉ nặng khoảng 1,030 kg, mang lại tỷ lệ công suất/trọng lượng 1:1.",
+            features: [
+                "Động cơ Cosworth V12 6.5L hybrid công suất 1,140 HP",
+                "Trọng lượng siêu nhẹ 1,030 kg",
+                "Thiết kế khí động học Venturi cực đoan bên dưới gầm xe",
+                "Khung gầm carbon fiber được chế tạo hoàn toàn thủ công",
+                "Ghế ngồi được tích hợp trực tiếp vào khung gầm",
+                "Vô lăng tháo rời tích hợp màn hình hiển thị",
+                "Hệ thống treo push-rod được lấy cảm hứng từ F1"
+            ],
+            images: {
+                main: "images/cars-collection/anh_7.jpg",
+                thumbnails: [
+                    "images/cars-collection/anh_7.jpg",
+                    "images/cars-collection/anh_7_detail_1.jpg",
+                    "images/cars-collection/anh_7_detail_2.jpg",
+                    "images/cars-collection/anh_7_detail_3.jpg"
+                ]
+            }
+        },
+        8: {
+            name: "Rimac Nevera",
+            price: "$2,400,000",
+            maxSpeed: "412 km/h",
+            power: "1,914 HP",
+            acceleration: "1.85s",
+            colors: "Xanh, Trắng, Xám, Đen, Bạc",
+            description: "Rimac Nevera là siêu xe điện đã phá vỡ mọi kỷ lục về hiệu suất. Với bốn động cơ điện độc lập cung cấp tổng công suất 1,914 mã lực, Nevera có thể đạt 0-100 km/h trong chỉ 1,85 giây - nhanh nhất trong số các xe thương mại. Pin dung lượng 120kWh cung cấp phạm vi hoạt động lên đến 550km. Với thân vỏ và khung gầm carbon fiber, Nevera không chỉ là một siêu xe hiệu suất mà còn là một bước đột phá về mặt kỹ thuật trong lĩnh vực xe điện.",
+            features: [
+                "Bốn động cơ điện độc lập với tổng công suất 1,914 HP",
+                "Pin 120kWh cho phạm vi hoạt động 550km",
+                "Tăng tốc 0-100 km/h trong 1,85 giây",
+                "Hệ thống quản lý moment xoắn Rimac All-Wheel Torque Vectoring 2",
+                "Khung gầm monocoque carbon fiber siêu nhẹ",
+                "Hệ thống phanh điện tử với khả năng tái tạo năng lượng",
+                "150 cảm biến theo dõi và điều chỉnh hiệu suất xe"
+            ],
+            images: {
+                main: "images/cars-collection/anh_8.jpg",
+                thumbnails: [
+                    "images/cars-collection/anh_8.jpg",
+                    "images/cars-collection/anh_8_detail_1.jpg",
+                    "images/cars-collection/anh_8_detail_2.jpg",
+                    "images/cars-collection/anh_8_detail_3.jpg"
+                ]
+            }
+        },
+        9: {
+            name: "Porsche 918 Spyder",
+            price: "$845,000",
+            maxSpeed: "345 km/h",
+            power: "887 HP",
+            acceleration: "2.6s",
+            colors: "Bạc, Đen, Trắng, Đỏ, Xanh",
+            description: "Porsche 918 Spyder là siêu xe hybrid plug-in đầu tiên của Porsche, kết hợp động cơ V8 4.6L hút khí tự nhiên với hai mô-tơ điện. Tổng công suất 887 mã lực cho phép xe đạt tốc độ tối đa 345 km/h và tăng tốc từ 0-100 km/h trong 2,6 giây. Hệ thống dẫn động bốn bánh với mô-tơ điện ở trục trước và hệ thống đánh lái bánh sau giúp xe xử lý cực kỳ chính xác. 918 Spyder đã thiết lập kỷ lục tại đường đua Nürburgring với thời gian 6:57, chứng minh hiệu suất vượt trội của mình.",
+            features: [
+                "Động cơ hybrid V8 4.6L kết hợp hai mô-tơ điện (887 HP)",
+                "Hệ thống dẫn động bốn bánh với mô-tơ điện ở trục trước",
+                "Chế độ lái điện thuần túy với phạm vi 19km",
+                "Hệ thống khí động học chủ động",
+                "Hệ thống đánh lái bánh sau",
+                "Khung gầm monocoque carbon fiber",
+                "Hệ thống ống xả Weissach đặt ở phía trên"
+            ],
+            images: {
+                main: "images/cars-collection/anh_9.jpg",
+                thumbnails: [
+                    "images/cars-collection/anh_9.jpg",
+                    "images/cars-collection/anh_9_detail_1.jpg",
+                    "images/cars-collection/anh_9_detail_2.jpg",
+                    "images/cars-collection/anh_9_detail_3.jpg"
+                ]
+            }
+        },
+        10: {
+            name: "Gordon Murray Automotive T.50",
+            price: "$3,100,000",
+            maxSpeed: "375 km/h",
+            power: "654 HP",
+            acceleration: "2.8s",
+            colors: "Bạc, Đen, Xanh, Đỏ, Trắng",
+            description: "Gordon Murray Automotive T.50 được thiết kế bởi Gordon Murray - cha đẻ của McLaren F1 huyền thoại. T.50 được xem là siêu xe lấy người lái làm trung tâm thuần túy nhất từng được sản xuất, với động cơ V12 4.0L hút khí tự nhiên do Cosworth phát triển có khả năng quay đến 12,100 rpm và trọng lượng chỉ 986kg. Đặc trưng nổi bật của T.50 là quạt hút khí 400mm ở đuôi xe, lấy cảm hứng từ xe đua Brabham BT46B 'Fan Car', giúp tăng đáng kể lực ép xuống đường.",
+            features: [
+                "Động cơ V12 4.0L Cosworth hút khí tự nhiên (654 HP)",
+                "Quạt hút khí đường kính 400mm ở đuôi xe",
+                "Trọng lượng siêu nhẹ 986kg",
+                "Bố trí ghế ngồi 3 chỗ với người lái ở chính giữa",
+                "Hộp số sàn 6 cấp nhẹ, chính xác",
+                "Khung gầm carbon fiber siêu nhẹ",
+                "Hệ thống treo làm từ vật liệu siêu nhẹ"
+            ],
+            images: {
+                main: "images/cars-collection/anh_10.jpg",
+                thumbnails: [
+                    "images/cars-collection/anh_10.jpg",
+                    "images/cars-collection/anh_10_detail_1.jpg",
+                    "images/cars-collection/anh_10_detail_2.jpg",
+                    "images/cars-collection/anh_10_detail_3.jpg"
+                ]
+            }
+        },
+        11: {
+            name: "Hennessey Venom F5",
+            price: "$1,800,000",
+            maxSpeed: "500+ km/h",
+            power: "1,817 HP",
+            acceleration: "2.3s",
+            colors: "Vàng, Bạc, Trắng, Đen, Xanh",
+            description: "Hennessey Venom F5 được thiết kế với sứ mệnh trở thành siêu xe sản xuất nhanh nhất thế giới, với mục tiêu phá vỡ rào cản 500 km/h. Với động cơ Fury V8 twin-turbo 6.6L sản sinh 1,817 mã lực và trọng lượng chỉ 1,360kg, Venom F5 có tỷ lệ công suất/trọng lượng cực kỳ ấn tượng. Mọi khía cạnh của xe đều được thiết kế để tối đa hóa tốc độ và giảm lực cản, từ khung gầm carbon fiber đến thiết kế khí động học được tinh chỉnh qua nhiều giai đoạn thử nghiệm.",
+            features: [
+                "Động cơ Fury V8 twin-turbo 6.6L công suất 1,817 HP",
+                "Trọng lượng siêu nhẹ 1,360kg",
+                "Hộp số bán tự động 7 cấp CIMA",
+                "Thiết kế khí động học tối ưu với hệ số cản chỉ 0.39",
+                "Khung gầm carbon fiber độc quyền",
+                "Hệ thống treo đua xe được tinh chỉnh cho đường phố",
+                "Hệ thống phanh Brembo carbon-ceramic"
+            ],
+            images: {
+                main: "images/cars-collection/anh_11.jpg",
+                thumbnails: [
+                    "images/cars-collection/anh_11.jpg",
+                    "images/cars-collection/anh_11_detail_1.jpg",
+                    "images/cars-collection/anh_11_detail_2.jpg",
+                    "images/cars-collection/anh_11_detail_3.jpg"
+                ]
+            }
+        },
+        12: {
+            name: "Pininfarina Battista",
+            price: "$2,200,000",
+            maxSpeed: "350 km/h",
+            power: "1,900 HP",
+            acceleration: "1.9s",
+            colors: "Xanh, Bạc, Đen, Đỏ, Trắng",
+            description: "Pininfarina Battista là siêu xe điện thuần túy đến từ thương hiệu thiết kế xe hơi lừng danh của Ý. Với bốn động cơ điện sản sinh tổng công suất 1,900 mã lực, Battista có khả năng tăng tốc từ 0-100 km/h trong chỉ 1.9 giây và đạt tốc độ tối đa 350 km/h. Pin 120kWh cho phép xe di chuyển quãng đường lên đến 500km. Battista là sự kết hợp hoàn hảo giữa hiệu suất siêu xe với thiết kế tinh tế, sang trọng đặc trưng của Pininfarina.",
+            features: [
+                "Bốn động cơ điện với tổng công suất 1,900 HP",
+                "Pin 120kWh cho phạm vi hoạt động 500km",
+                "Khung gầm carbon fiber thiết kế độc quyền",
+                "Hệ thống treo chủ động với điều chỉnh chiều cao",
+                "Năm chế độ lái: Calma, Pura, Energica, Furiosa và Carattere",
+                "Hệ thống phanh carbon-ceramic với đĩa phanh kích thước 390mm",
+                "Công nghệ âm thanh AI âm thanh tạo cảm giác như xe động cơ đốt trong"
+            ],
+            images: {
+                main: "images/cars-collection/anh_12.jpg",
+                thumbnails: [
+                    "images/cars-collection/anh_12.jpg",
+                    "images/cars-collection/anh_12_detail_1.jpg",
+                    "images/cars-collection/anh_12_detail_2.jpg",
+                    "images/cars-collection/anh_12_detail_3.jpg"
+                ]
+            }
+        },
+        13: {
+            name: "Mercedes-AMG One",
+            price: "$2,700,000",
+            maxSpeed: "350 km/h",
+            power: "1,063 HP",
+            acceleration: "2.9s",
+            colors: "Bạc, Đen, Xanh, Trắng, Đỏ",
+            description: "Mercedes-AMG One là siêu xe đường phố đầu tiên được trang bị động cơ F1 thực thụ. Sử dụng động cơ V6 hybrid 1.6L tăng áp kép kết hợp với bốn mô-tơ điện, giống với đội đua F1 Mercedes-AMG Petronas, AMG One sản sinh 1,063 mã lực. Công nghệ KERS (Hệ thống phục hồi năng lượng động học) từ F1 được ứng dụng để tối đa hóa hiệu suất. Với khả năng quay tới 11,000 rpm, AMG One mang trải nghiệm xe đua F1 thuần túy lên đường phố.",
+            features: [
+                "Động cơ V6 hybrid 1.6L tăng áp kép công nghệ F1 (1,063 HP)",
+                "Bốn mô-tơ điện với công nghệ KERS từ F1",
+                "Hệ thống khí động học chủ động với DRS (Hệ thống giảm lực cản)",
+                "Khung gầm monocoque carbon fiber",
+                "Hệ thống treo push-rod đa liên kết",
+                "Hộp số tự động 8 cấp với chức năng sang số thủ công",
+                "Chế độ EV với phạm vi hoạt động 25km"
+            ],
+            images: {
+                main: "images/cars-collection/anh_13.jpg",
+                thumbnails: [
+                    "images/cars-collection/anh_13.jpg",
+                    "images/cars-collection/anh_13_detail_1.jpg",
+                    "images/cars-collection/anh_13_detail_2.jpg",
+                    "images/cars-collection/anh_13_detail_3.jpg"
+                ]
+            }
+        },
+        14: {
+            name: "SSC Tuatara",
+            price: "$1,900,000",
+            maxSpeed: "460 km/h",
+            power: "1,750 HP",
+            acceleration: "2.5s",
+            colors: "Trắng, Đen, Bạc, Đỏ, Xanh",
+            description: "SSC Tuatara là siêu xe Mỹ được thiết kế để đạt được tốc độ cực cao. Với động cơ V8 twin-turbo 5.9L được phát triển riêng sản sinh 1,750 mã lực khi sử dụng nhiên liệu E85, Tuatara có thể đạt tốc độ vượt quá 460 km/h. Hệ số cản không khí chỉ 0.279 là một trong những giá trị thấp nhất trong số các siêu xe sản xuất, cho phép xe đạt được những tốc độ phi thường. Thiết kế khí động học của Tuatara được hoàn thiện qua hơn 1,000 giờ thử nghiệm trong đường hầm gió.",
+            features: [
+                "Động cơ V8 twin-turbo 5.9L công suất 1,750 HP (với E85)",
+                "Trọng lượng 1,247kg với thân vỏ carbon fiber",
+                "Hệ số cản không khí 0.279",
+                "Hệ thống treo chủ động điều chỉnh chiều cao",
+                "Hộp số tự động ly hợp 7 cấp CIMA",
+                "Hệ thống kiểm soát phát thải động cơ độc quyền",
+                "Hệ thống điều khiển Launch Control cho khả năng tăng tốc tối ưu"
+            ],
+            images: {
+                main: "images/cars-collection/anh_14.jpg",
+                thumbnails: [
+                    "images/cars-collection/anh_14.jpg",
+                    "images/cars-collection/anh_14_detail_1.jpg",
+                    "images/cars-collection/anh_14_detail_2.jpg",
+                    "images/cars-collection/anh_14_detail_3.jpg"
+                ]
+            }
+        },
+        15: {
+            name: "Lotus Evija",
+            price: "$2,100,000",
+            maxSpeed: "320 km/h",
+            power: "2,000 HP",
+            acceleration: "< 3s",
+            colors: "Vàng, Đen, Xanh, Trắng, Bạc",
+            description: "Lotus Evija là siêu xe điện đầu tiên của Lotus, nổi tiếng với thiết kế khí động học độc đáo và công suất khổng lồ. Với bốn động cơ điện sản sinh tổng công suất 2,000 mã lực, Evija là một trong những siêu xe mạnh nhất thế giới. Thiết kế của xe bao gồm các kênh Venturi lớn xuyên qua thân xe, tạo ra lực ép khí động học mà không cần đến cánh gió cố định. Pin 70kWh cho phép xe đi được quãng đường khoảng 400km và có thể sạc từ 0-80% chỉ trong 12 phút với bộ sạc 800kW.",
+            features: [
+                "Bốn động cơ điện với tổng công suất 2,000 HP",
+                "Pin 70kWh sạc siêu nhanh (0-80% trong 12 phút)",
+                "Đèn LED động OLED với hiệu ứng sequential",
+                "Kênh Venturi khí động học độc đáo",
+                "Khung gầm carbon fiber monocoque chỉ nặng 129kg",
+                "Hệ thống treo push-rod chủ động",
+                "Hệ thống torque vectoring điều khiển điện tử"
+            ],
+            images: {
+                main: "images/cars-collection/anh_15.jpg",
+                thumbnails: [
+                    "images/cars-collection/anh_15.jpg",
+                    "images/cars-collection/anh_15_detail_1.jpg",
+                    "images/cars-collection/anh_15_detail_2.jpg",
+                    "images/cars-collection/anh_15_detail_3.jpg"
+                ]
+            }
+        },
+        16: {
+            name: "Maserati MC20",
+            price: "$215,000",
+            maxSpeed: "325 km/h",
+            power: "621 HP",
+            acceleration: "2.9s",
+            colors: "Xanh, Trắng, Đen, Đỏ, Vàng",
+            description: "Maserati MC20 đánh dấu sự trở lại của Maserati vào thị trường siêu xe với động cơ V6 twin-turbo 3.0L Nettuno độc quyền. Được phát triển hoàn toàn bởi Maserati, động cơ này sử dụng công nghệ buồng đốt kép lấy cảm hứng từ F1. Với thiết kế tối giản nhưng tinh tế, MC20 có trọng lượng chỉ 1,475kg nhờ sử dụng khung gầm carbon fiber và vật liệu composite. Tên 'MC20' là viết tắt của 'Maserati Corse 2020', nhấn mạnh di sản đua xe của thương hiệu và khả năng chuyển đổi trong tương lai sang phiên bản đua.",
+            features: [
+                "Động cơ V6 twin-turbo 3.0L Nettuno công suất 621 HP",
+                "Công nghệ buồng đốt kép lấy cảm hứng từ F1",
+                "Hộp số ly hợp kép 8 cấp",
+                "Cửa cánh bướm với thiết kế khí động học",
+                "Khung gầm monocoque carbon fiber và aluminium",
+                "Hệ thống kiểm soát xe điện tử với 5 chế độ lái",
+                "Khả năng chuyển đổi giữa phiên bản coupe và spyder"
+            ],
+            images: {
+                main: "images/cars-collection/anh_16.jpg",
+                thumbnails: [
+                    "images/cars-collection/anh_16.jpg",
+                    "images/cars-collection/anh_16_detail_1.jpg",
+                    "images/cars-collection/anh_16_detail_2.jpg",
+                    "images/cars-collection/anh_16_detail_3.jpg"
+                ]
+            }
+        },
+        17: {
+            name: "Czinger 21C",
+            price: "$1,700,000",
+            maxSpeed: "405 km/h",
+            power: "1,250 HP",
+            acceleration: "1.9s",
+            colors: "Xám, Đen, Bạc, Đỏ, Xanh",
+            description: "Czinger 21C là siêu xe hybrid được sản xuất bằng công nghệ in 3D tiên tiến tại Mỹ. Sử dụng động cơ V8 twin-turbo 2.88L phẳng kết hợp với hai mô-tơ điện, 21C sản sinh 1,250 mã lực và có thể tăng tốc từ 0-100 km/h trong 1.9 giây. Điểm đặc biệt của 21C là bố trí ghế ngồi 1+1 (người lái ở giữa, hành khách phía sau), lấy cảm hứng từ máy bay phản lực. Khung gầm và các thành phần cấu trúc được in 3D và lắp ráp bởi robot AI, tạo ra độ chính xác và trọng lượng tối ưu chưa từng có.",
+            features: [
+                "Động cơ V8 twin-turbo 2.88L hybrid công suất 1,250 HP",
+                "Công nghệ sản xuất in 3D tiên tiến",
+                "Bố trí ghế ngồi 1+1 độc đáo",
+                "Trọng lượng siêu nhẹ 1,250kg",
+                "Hệ thống treo độc lập điều khiển điện tử",
+                "Hệ thống khí động học chủ động với lực ép 615kg ở 322 km/h",
+                "Hộp số 7 cấp tự động ly hợp tuần tự"
+            ],
+            images: {
+                main: "images/cars-collection/anh_17.jpg",
+                thumbnails: [
+                    "images/cars-collection/anh_17.jpg",
+                    "images/cars-collection/anh_17_detail_1.jpg",
+                    "images/cars-collection/anh_17_detail_2.jpg",
+                    "images/cars-collection/anh_17_detail_3.jpg"
+                ]
+            }
+        },
+        18: {
+            name: "Ferrari LaFerrari",
+            price: "$1,400,000",
+            maxSpeed: "350 km/h",
+            power: "963 HP",
+            acceleration: "2.4s",
+            colors: "Đỏ, Đen, Vàng, Trắng, Xanh",
+            description: "Ferrari LaFerrari là siêu xe hybrid plug-in đầu tiên của Ferrari, cũng là thành viên trong bộ ba 'Holy Trinity' của siêu xe hybrid cùng với McLaren P1 và Porsche 918 Spyder. Kết hợp động cơ V12 6.3L hút khí tự nhiên với hệ thống HY-KERS lấy cảm hứng từ F1, LaFerrari sản sinh tổng công suất 963 mã lực. Thân xe và khung gầm được làm hoàn toàn từ carbon fiber với bốn loại carbon khác nhau, giúp tối ưu hóa trọng lượng và độ cứng. Chỉ có 499 chiếc LaFerrari Coupe được sản xuất, khiến nó trở thành một trong những siêu xe độc quyền nhất.",
+            features: [
+                "Động cơ V12 6.3L hybrid công suất 963 HP",
+                "Hệ thống HY-KERS lấy cảm hứng từ F1",
+                "Khung gầm và thân xe carbon fiber",
+                "Hệ thống kiểm soát động học xe chủ động",
+                "Hộp số ly hợp kép 7 cấp",
+                "Cửa mở kiểu butterfly độc đáo",
+                "Hệ thống phanh carbon-ceramic Brembo"
+            ],
+            images: {
+                main: "images/cars-collection/anh_18.jpg",
+                thumbnails: [
+                    "images/cars-collection/anh_18.jpg",
+                    "images/cars-collection/anh_18_detail_1.jpg",
+                    "images/cars-collection/anh_18_detail_2.jpg",
+                    "images/cars-collection/anh_18_detail_3.jpg"
+                ]
+            }
+        }
+    };
+    
+    // Hiển thị thông tin chi tiết xe
+    function displayCarDetails(carId) {
+        const car = carsData[carId];
+        
+        // Cập nhật thông tin xe
+        document.getElementById('car-name').textContent = car.name;
+        document.getElementById('car-name-breadcrumb').textContent = car.name;
+        document.getElementById('car-price').textContent = car.price;
+        document.getElementById('car-max-speed').textContent = car.maxSpeed;
+        document.getElementById('car-power').textContent = car.power;
+        document.getElementById('car-acceleration').textContent = car.acceleration;
+        document.getElementById('car-colors').textContent = car.colors;
+        document.getElementById('car-description').textContent = car.description;
+        
+        // Cập nhật danh sách tính năng
+        const featuresList = document.getElementById('car-features');
+        featuresList.innerHTML = '';
+        car.features.forEach(feature => {
+            const li = document.createElement('li');
+            li.textContent = feature;
+            featuresList.appendChild(li);
+        });
+        
+        // Cập nhật hình ảnh
+        if (car.images) {
+            document.getElementById('car-main-image').src = car.images.main;
+            
+            // Cập nhật thumbnails nếu có
+            if (car.images.thumbnails) {
+                for (let i = 0; i < Math.min(car.images.thumbnails.length, 4); i++) {
+                    const thumbnail = document.getElementById(`thumbnail-${i+1}`);
+                    if (thumbnail) {
+                        thumbnail.src = car.images.thumbnails[i];
+                        thumbnail.parentElement.dataset.image = car.images.thumbnails[i];
+                    }
+                }
+            }
+        }
+
+         // Thiết lập sự kiện cho nút Thêm vào giỏ hàng
+         const addToCartButton = document.getElementById('add-to-cart-button');
+         if (addToCartButton) {
+             addToCartButton.addEventListener('click', function() {
+                 addToCart(car, carId);
+             });
+         }
+
+         // Thiết lập sự kiện cho nút Đặt hàng ngay
+        const checkoutButton = document.getElementById('checkout-button');
+        if (checkoutButton) {
+            checkoutButton.addEventListener('click', function() {
+                showCheckoutModal();
+            });
+        }
+    }
+
+    // Hàm thêm xe vào giỏ hàng
+function addToCart(car, carId) {
+    // Lấy giỏ hàng từ localStorage hoặc tạo mới nếu chưa có
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // Chuyển đổi giá từ chuỗi sang số (loại bỏ "$" và dấu phẩy)
+    const priceValue = parseFloat(car.price.replace(/[$,]/g, ''));
+    
+    // Kiểm tra xem xe đã có trong giỏ hàng chưa
+    const existingItem = cart.find(item => item.id === carId);
+    
+    if (existingItem) {
+        // Nếu đã có, tăng số lượng
+        existingItem.quantity += 1;
+    } else {
+        // Nếu chưa có, thêm mới
+        cart.push({
+            id: carId,
+            name: car.name,
+            price: priceValue, // Lưu dưới dạng số
+            priceDisplay: car.price, // Lưu định dạng hiển thị
+            image: car.images.main,
+            quantity: 1
+        });
+    }
+    
+    // Lưu giỏ hàng vào localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    // Cập nhật số lượng hiển thị trên badge
+    updateCartBadge();
+    
+    // Hiển thị thông báo thành công
+    showToast('Đã thêm vào giỏ hàng!');
+}
+
+     // Cập nhật số lượng sản phẩm hiển thị trên badge
+     function updateCartBadge() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+        
+        const cartBadge = document.getElementById('cart-badge');
+        if (cartBadge) {
+            cartBadge.textContent = totalItems;
+            
+            // Hiển thị/ẩn badge
+            if (totalItems > 0) {
+                cartBadge.style.display = 'inline-block';
+            } else {
+                cartBadge.style.display = 'none';
+            }
+        }
+    }
+
+     // Hiển thị thông báo toast
+     function showToast(message) {
+        const toast = document.getElementById('toast');
+        const toastMessage = document.querySelector('.toast-message');
+        
+        if (toast && toastMessage) {
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            
+            // Ẩn toast sau 3 giây
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+    }
+
+    // Hiển thị modal thanh toán
+    function showCheckoutModal() {
+        const modal = document.getElementById('checkout-modal');
+        const closeBtn = document.querySelector('.close-modal');
+        const confirmBtn = document.querySelector('#checkout-modal .btn.primary');
+        
+        if (modal) {
+            modal.style.display = 'block';
+            
+            // Xử lý sự kiện đóng modal
+            closeBtn.onclick = function() {
+                modal.style.display = 'none';
+            }
+            
+            // Xử lý sự kiện nút xác nhận
+            confirmBtn.onclick = function() {
+                modal.style.display = 'none';
+                showToast('Đơn hàng đã được gửi thành công!');
+            }
+            
+            // Đóng modal khi click bên ngoài
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
+        }
+    }
+    
+    
+    // Xử lý sự kiện click vào thumbnail để đổi ảnh chính
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    thumbnails.forEach(thumbnail => {
+        thumbnail.addEventListener('click', function() {
+            // Cập nhật trạng thái active
+            thumbnails.forEach(item => item.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Cập nhật ảnh chính
+            const mainImage = document.getElementById('car-main-image');
+            mainImage.src = this.dataset.image;
+        });
+    });
+    
+    // Thiết lập sự kiện cho các nút sau khi hiển thị chi tiết xe
+    displayCarDetails(carId);
+
+     // Cập nhật số lượng sản phẩm hiển thị khi trang được tải
+     updateCartBadge();
+     
+});
