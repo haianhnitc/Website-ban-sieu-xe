@@ -16,7 +16,7 @@ function toggleMenu() {
     navLinks.classList.toggle('active');
 }
 
-// Scroll Animation Observer
+// // Scroll Animation Observer
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -24,6 +24,32 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 }, { threshold: 0.1 });
+
+// Hàm cập nhật số lượng sản phẩm hiển thị trên badge
+function updateCartBadge() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalItems = cart.reduce((total, item) => total + (item.quantity || 1), 0);
+    
+    const cartBadge = document.getElementById('cart-badge');
+    if (cartBadge) {
+        cartBadge.textContent = totalItems;
+        
+        // Hiển thị/ẩn badge
+        if (totalItems > 0) {
+            cartBadge.style.display = 'inline-block';
+        } else {
+            cartBadge.style.display = 'none';
+        }
+    }
+}
+
+// Lắng nghe sự kiện storage để đồng bộ giỏ hàng giữa các tab
+window.addEventListener('storage', function(e) {
+    if (e.key === 'cart') {
+        updateCartBadge();
+    }
+});
+
 
 function observeElements() {
     document.querySelectorAll('.fade-in').forEach(element => {
@@ -50,4 +76,6 @@ document.querySelectorAll('a, button').forEach(element => {
 // Initialize on Page Load
 document.addEventListener('DOMContentLoaded', () => {
     observeElements();
+
+    updateCartBadge();
 }); 
