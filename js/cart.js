@@ -73,8 +73,20 @@ document.addEventListener('DOMContentLoaded', function() {
         // Ở đây có thể thêm logic gửi đơn hàng đến server
         // Sau khi hoàn tất thanh toán, xóa giỏ hàng
         clearCart();
+        resetTotals();
     }
-    
+
+    // hàm để reset các giá trị tổng tiền
+    function resetTotals() {
+        const cartTotal = document.getElementById('cart-total');
+        const cartTax = document.getElementById('cart-tax');
+        const cartGrandTotal = document.getElementById('cart-grand-total');
+        
+        if (cartTotal) cartTotal.textContent = '$0';
+        if (cartTax) cartTax.textContent = '$0';
+        if (cartGrandTotal) cartGrandTotal.textContent = '$0';
+    }
+        
     // Cập nhật hiển thị giỏ hàng
     function updateCart() {
         const cartItems = document.getElementById('cart-items');
@@ -87,10 +99,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const items = cartItems.querySelectorAll('.cart-item');
         items.forEach(item => item.remove());
         
-        // Hiển thị/ẩn thông báo giỏ hàng trống
+        // Hiển thị thông báo giỏ hàng trống
         if (cart.length === 0) {
             if (emptyCartMessage) emptyCartMessage.style.display = 'block';
-            if (cartSummary) cartSummary.style.display = 'none';
+            if (cartSummary) cartSummary.style.display = 'block';
         } else {
             if (emptyCartMessage) emptyCartMessage.style.display = 'none';
             if (cartSummary) cartSummary.style.display = 'block';
@@ -198,6 +210,7 @@ document.addEventListener('DOMContentLoaded', function() {
         saveCart();
         updateCart();
         updateCartBadge();
+        resetTotals();
     }
     
     // Lưu giỏ hàng vào localStorage

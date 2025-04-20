@@ -26,9 +26,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 main: "images/cars-collection/anh_1.jpg",
                 thumbnails: [
                     "images/cars-collection/anh_1.jpg",
-                    "images/cars-collection/anh_1_detail_1.jpg",
-                    "images/cars-collection/anh_1_detail_2.jpg",
-                    "images/cars-collection/anh_1_detail_3.jpg"
+                    "images/car-details/details1.jpg",
+                    "images/car-details/details2.jpg",
+                    "images/car-details/details3.jpg"
                 ]
             }
         },
@@ -53,9 +53,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 main: "images/cars-collection/anh_2.jpg",
                 thumbnails: [
                     "images/cars-collection/anh_2.jpg",
-                    "images/cars-collection/anh_2_detail_1.jpg",
-                    "images/cars-collection/anh_2_detail_2.jpg",
-                    "images/cars-collection/anh_2_detail_3.jpg"
+                    "images/car-details/details4.jpg",
+                    "images/car-details/details5.jpg",
+                    "images/car-details/details6.jpg"
                 ]
             }
         },
@@ -80,36 +80,36 @@ document.addEventListener('DOMContentLoaded', function() {
                 main: "images/cars-collection/anh_3.jpg",
                 thumbnails: [
                     "images/cars-collection/anh_3.jpg",
-                    "images/cars-collection/anh_3_detail_1.jpg",
-                    "images/cars-collection/anh_3_detail_2.jpg",
-                    "images/cars-collection/anh_3_detail_3.jpg"
+                    "images/car-details/details7.jpg",
+                    "images/car-details/details8.jpg",
+                    "images/car-details/details9.jpg"
                 ]
             }
         },
         4: {
-            name: "McLaren Senna",
-            price: "$1,050,000",
-            maxSpeed: "335 km/h",
-            power: "789 HP",
-            acceleration: "2.8s",
-            colors: "Cam, Xanh, Đen, Trắng, Xám",
-            description: "McLaren Senna là siêu xe đường đua hợp pháp được tối ưu hóa cho hiệu suất đường đua, được đặt theo tên của huyền thoại đua xe F1 Ayrton Senna. Với trọng lượng chỉ 1,198 kg và công suất 789 mã lực, Senna sở hữu tỷ lệ công suất/trọng lượng ấn tượng. Thiết kế khí động học cực đoan với cánh gió chủ động khổng lồ có thể tạo ra lực ép xuống đường lên đến 800 kg, giúp xe bám đường hoàn hảo ở tốc độ cao.",
+            name: "Rolls-Royce Ghost",
+            price: "$311,900",
+            maxSpeed: "250 km/h",
+            power: "563 HP",
+            acceleration: "4.6s",
+            colors: "Đen, Trắng, Bạc, Xám, Xanh Midnight",
+            description: "Rolls-Royce Ghost là biểu tượng của sự tinh tế và sang trọng hiện đại, kết hợp giữa hiệu suất mạnh mẽ và sự yên tĩnh đỉnh cao. Với thiết kế tối giản đầy đẳng cấp, Ghost mang lại trải nghiệm lái êm ái như 'thảm bay' nhờ hệ thống treo Planar Suspension tiên tiến và động cơ V12 mạnh mẽ. Không gian nội thất được chế tác thủ công tỉ mỉ với những vật liệu cao cấp nhất, mang lại cảm giác hoàng gia trên từng hành trình.",
             features: [
-                "Động cơ twin-turbo V8 4.0L công suất 789 HP",
-                "Trọng lượng siêu nhẹ 1,198 kg",
-                "Khung gầm Monocage III carbon fiber",
-                "Hệ thống khí động học chủ động RaceActive",
-                "Cửa sổ kính được gắn trên các cửa dihedral",
-                "Hệ thống phanh carbon-ceramic thế hệ mới",
-                "Ghế carbon siêu nhẹ và ghép vào cấu trúc thân xe"
+                "Động cơ V12 tăng áp kép 6.75L công suất 563 HP",
+                "Hệ thống treo Planar Suspension siêu mượt",
+                "Khung gầm Architecture of Luxury bằng nhôm độc quyền",
+                "Cửa sau mở ngược (suicide doors) đặc trưng",
+                "Hệ thống cách âm đỉnh cao với hơn 100kg vật liệu tiêu âm",
+                "Trần xe Starlight với 1.344 đèn LED mô phỏng bầu trời sao",
+                "Nội thất bọc da thủ công và gỗ quý cao cấp"
             ],
             images: {
                 main: "images/cars-collection/anh_4.jpg",
                 thumbnails: [
                     "images/cars-collection/anh_4.jpg",
-                    "images/cars-collection/anh_4_detail_1.jpg",
-                    "images/cars-collection/anh_4_detail_2.jpg",
-                    "images/cars-collection/anh_4_detail_3.jpg"
+                    "images/car-details/details10.jpg",
+                    "images/car-details/details11.jpg",
+                    "images/car-details/details12.jpg"
                 ]
             }
         },
@@ -134,9 +134,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 main: "images/cars-collection/anh_5.jpg",
                 thumbnails: [
                     "images/cars-collection/anh_5.jpg",
-                    "images/cars-collection/anh_5_detail_1.jpg",
-                    "images/cars-collection/anh_5_detail_2.jpg",
-                    "images/cars-collection/anh_5_detail_3.jpg"
+                    "images/car-details/details13.jpg",
+                    "images/car-details/details14.jpg",
+                    "images/car-details/details15.jpg"
                 ]
             }
         },
@@ -161,9 +161,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 main: "images/cars-collection/anh_6.jpg",
                 thumbnails: [
                     "images/cars-collection/anh_6.jpg",
-                    "images/cars-collection/anh_6_detail_1.jpg",
-                    "images/cars-collection/anh_6_detail_2.jpg",
-                    "images/cars-collection/anh_6_detail_3.jpg"
+                    "images/car-details/details16.jpg",
+                    "images/car-details/details17.jpg",
+                    "images/car-details/details18.jpg"
                 ]
             }
         },
@@ -188,9 +188,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 main: "images/cars-collection/anh_7.jpg",
                 thumbnails: [
                     "images/cars-collection/anh_7.jpg",
-                    "images/cars-collection/anh_7_detail_1.jpg",
-                    "images/cars-collection/anh_7_detail_2.jpg",
-                    "images/cars-collection/anh_7_detail_3.jpg"
+                    "images/car-details/details19.jpg",
+                    "images/car-details/details20.jpg",
+                    "images/car-details/details21.jpg"
                 ]
             }
         },
@@ -215,9 +215,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 main: "images/cars-collection/anh_8.jpg",
                 thumbnails: [
                     "images/cars-collection/anh_8.jpg",
-                    "images/cars-collection/anh_8_detail_1.jpg",
-                    "images/cars-collection/anh_8_detail_2.jpg",
-                    "images/cars-collection/anh_8_detail_3.jpg"
+                    "images/car-details/details22.jpg",
+                    "images/car-details/details23.jpg",
+                    "images/car-details/details24.jpg"
                 ]
             }
         },
@@ -238,13 +238,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Khung gầm monocoque carbon fiber",
                 "Hệ thống ống xả Weissach đặt ở phía trên"
             ],
+
             images: {
                 main: "images/cars-collection/anh_9.jpg",
                 thumbnails: [
                     "images/cars-collection/anh_9.jpg",
-                    "images/cars-collection/anh_9_detail_1.jpg",
-                    "images/cars-collection/anh_9_detail_2.jpg",
-                    "images/cars-collection/anh_9_detail_3.jpg"
+                    "images/car-details/details25.jpg",
+                    "images/car-details/details26.jpg",
+                    "images/car-details/details27.jpg"
                 ]
             }
         },
@@ -269,9 +270,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 main: "images/cars-collection/anh_10.jpg",
                 thumbnails: [
                     "images/cars-collection/anh_10.jpg",
-                    "images/cars-collection/anh_10_detail_1.jpg",
-                    "images/cars-collection/anh_10_detail_2.jpg",
-                    "images/cars-collection/anh_10_detail_3.jpg"
+                    "images/car-details/details28.jpg",
+                    "images/car-details/details29.jpg",
+                    "images/car-details/details30.jpg"
                 ]
             }
         },
@@ -296,9 +297,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 main: "images/cars-collection/anh_11.jpg",
                 thumbnails: [
                     "images/cars-collection/anh_11.jpg",
-                    "images/cars-collection/anh_11_detail_1.jpg",
-                    "images/cars-collection/anh_11_detail_2.jpg",
-                    "images/cars-collection/anh_11_detail_3.jpg"
+                    "images/car-details/details31.jpg",
+                    "images/car-details/details32.jpg",
+                    "images/car-details/details33.jpg"
                 ]
             }
         },
@@ -323,9 +324,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 main: "images/cars-collection/anh_12.jpg",
                 thumbnails: [
                     "images/cars-collection/anh_12.jpg",
-                    "images/cars-collection/anh_12_detail_1.jpg",
-                    "images/cars-collection/anh_12_detail_2.jpg",
-                    "images/cars-collection/anh_12_detail_3.jpg"
+                    "images/car-details/details34.jpg",
+                    "images/car-details/details35.jpg",
+                    "images/car-details/details36.jpg"
                 ]
             }
         },
@@ -350,9 +351,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 main: "images/cars-collection/anh_13.jpg",
                 thumbnails: [
                     "images/cars-collection/anh_13.jpg",
-                    "images/cars-collection/anh_13_detail_1.jpg",
-                    "images/cars-collection/anh_13_detail_2.jpg",
-                    "images/cars-collection/anh_13_detail_3.jpg"
+                    "images/car-details/details37.jpg",
+                    "images/car-details/details38.jpg",
+                    "images/car-details/details39.jpg"
                 ]
             }
         },
@@ -377,9 +378,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 main: "images/cars-collection/anh_14.jpg",
                 thumbnails: [
                     "images/cars-collection/anh_14.jpg",
-                    "images/cars-collection/anh_14_detail_1.jpg",
-                    "images/cars-collection/anh_14_detail_2.jpg",
-                    "images/cars-collection/anh_14_detail_3.jpg"
+                    "images/car-details/details40.jpg",
+                    "images/car-details/details41.jpg",
+                    "images/car-details/details42.jpg"
                 ]
             }
         },
@@ -404,9 +405,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 main: "images/cars-collection/anh_15.jpg",
                 thumbnails: [
                     "images/cars-collection/anh_15.jpg",
-                    "images/cars-collection/anh_15_detail_1.jpg",
-                    "images/cars-collection/anh_15_detail_2.jpg",
-                    "images/cars-collection/anh_15_detail_3.jpg"
+                    "images/car-details/details43.jpg",
+                    "images/car-details/details44.jpg",
+                    "images/car-details/details45.jpg"
                 ]
             }
         },
@@ -431,9 +432,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 main: "images/cars-collection/anh_16.jpg",
                 thumbnails: [
                     "images/cars-collection/anh_16.jpg",
-                    "images/cars-collection/anh_16_detail_1.jpg",
-                    "images/cars-collection/anh_16_detail_2.jpg",
-                    "images/cars-collection/anh_16_detail_3.jpg"
+                    "images/car-details/details46.jpg",
+                    "images/car-details/details47.jpg",
+                    "images/car-details/details48.jpg"
                 ]
             }
         },
@@ -458,9 +459,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 main: "images/cars-collection/anh_17.jpg",
                 thumbnails: [
                     "images/cars-collection/anh_17.jpg",
-                    "images/cars-collection/anh_17_detail_1.jpg",
-                    "images/cars-collection/anh_17_detail_2.jpg",
-                    "images/cars-collection/anh_17_detail_3.jpg"
+                    "images/car-details/details49.jpg",
+                    "images/car-details/details50.jpg",
+                    "images/car-details/details51.jpg"
                 ]
             }
         },
@@ -485,9 +486,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 main: "images/cars-collection/anh_18.jpg",
                 thumbnails: [
                     "images/cars-collection/anh_18.jpg",
-                    "images/cars-collection/anh_18_detail_1.jpg",
-                    "images/cars-collection/anh_18_detail_2.jpg",
-                    "images/cars-collection/anh_18_detail_3.jpg"
+                    "images/car-details/details52.jpg",
+                    "images/car-details/details53.jpg",
+                    "images/car-details/details54.jpg"
                 ]
             }
         }
