@@ -1,3 +1,4 @@
+/* Đặt lại các thuộc tính mặc định */
 * {
     margin: 0;
     padding: 0;
@@ -5,6 +6,7 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+/* Thiết lập giao diện cơ bản cho toàn trang */
 body {
     background: #0a0a0a;
     color: #f5f5f5;
@@ -14,7 +16,7 @@ body {
     padding-top: 80px;
 }
 
-/* Custom Cursor */
+/* Con trỏ tùy chỉnh */
 .custom-cursor {
     position: fixed;
     width: 20px;
@@ -31,7 +33,7 @@ body {
     background: rgba(255, 215, 0, 0.8);
 }
 
-/* Navigation Bar */
+/* Thanh điều hướng */
 nav {
     position: fixed;
     top: 0;
@@ -45,6 +47,7 @@ nav {
     backdrop-filter: blur(10px);
 }
 
+/* Logo */
 .logo {
     font-size: 1.8rem;
     font-weight: 700;
@@ -60,6 +63,7 @@ nav {
     vertical-align: middle;
 }
 
+/* Liên kết điều hướng */
 .nav-links {
     display: flex;
     gap: 2rem;
@@ -92,7 +96,7 @@ nav {
     width: 100%;
 }
 
-/* Hamburger Menu */
+/* Menu hamburger */
 .hamburger {
     display: none;
     font-size: 1.5rem;
@@ -100,7 +104,7 @@ nav {
     cursor: pointer;
 }
 
-/* Animation for Elements */
+/* Hiệu ứng xuất hiện */
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
@@ -112,6 +116,7 @@ nav {
     transform: translateY(0);
 }
 
+/* Tiêu đề cấp 1 */
 h1 {
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
@@ -120,17 +125,27 @@ h1 {
     text-transform: uppercase;
 }
 
+/* Tiêu đề cấp 2 */
 h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
     color: #f5f5f5;
 }
 
+/* Đoạn văn */
 p {
     margin-bottom: 1rem;
 }
 
-/* Button Styles */
+/* Tiêu đề phụ */
+.subtitle {
+    font-size: 1.2rem;
+    color: #cccccc;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* Nút bấm */
 .btn {
     display: inline-block;
     padding: 0.6rem 1.5rem;
@@ -146,7 +161,7 @@ p {
     transform: scale(1.05);
 }
 
-/* Car Collection */
+/* Bộ sưu tập xe */
 .car-collection {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -154,6 +169,7 @@ p {
     margin-top: 2rem;
 }
 
+/* Thẻ xe */
 .car-card {
     background: rgba(255, 255, 255, 0.05);
     padding: 1.5rem;
@@ -179,7 +195,7 @@ p {
     transform: scale(1.05);
 }
 
-/* Car Details */
+/* Chi tiết xe */
 .car-details {
     display: flex;
     flex-wrap: wrap;
@@ -193,7 +209,7 @@ p {
     border-radius: 15px;
 }
 
-/* Contact Form */
+/* Biểu mẫu liên hệ */
 .contact-form {
     max-width: 500px;
     margin: 0 auto;
@@ -216,25 +232,93 @@ p {
     height: 150px;
 }
 
-/* FAQ */
+/* Bố cục FAQ */
+.faq-layout {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 2rem;
+    padding: 0 2rem;
+}
+
+/* Danh sách FAQ */
+.faq-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Mục FAQ */
 .faq-item {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 1rem;
-    border-radius: 10px;
-    margin-bottom: 1rem;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 255, 255, 0.05));
+    padding: 1.5rem;
+    border-radius: 15px;
     cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
 }
 
-.faq-item p {
-    display: none;
-    padding-top: 0.5rem;
+.faq-item:hover {
+    transform: translateX(10px);
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 255, 255, 0.1));
 }
 
-.faq-item.active p {
-    display: block;
+/* Icon cho FAQ */
+.faq-icon {
+    margin-right: 0.8rem;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
 }
 
-/* Footer */
+.faq-item:hover .faq-icon {
+    transform: scale(1.2);
+}
+
+/* Chi tiết FAQ */
+.faq-details {
+    flex: 2;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    min-height: 300px;
+}
+
+.faq-details h2 {
+    font-size: 1.8rem;
+    color: #ffd700;
+    margin-bottom: 1rem;
+}
+
+.faq-details p {
+    color: #e0e0e0;
+}
+
+/* Call-to-action cho FAQ */
+.faq-cta {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+/* Style cho video background */
+.faq-background {
+    position: relative;
+    z-index: 1;
+}
+
+.faq-background-video {
+    position: fixed; /* Cố định video trên màn hình */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Đảm bảo video cao bằng khung hình ban đầu */
+    object-fit: cover; /* Video vừa khung hình, không bị méo */
+    opacity: 0.65;
+    filter: blur(5px);
+    z-index: -1;
+}
+
+/* Chân trang */
 footer {
     background: rgba(0, 0, 0, 0.9);
     padding: 1rem;
@@ -245,7 +329,7 @@ footer {
     width: 100%;
 }
 
-/* Responsive Design */
+/* Thiết kế đáp ứng */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -275,20 +359,25 @@ footer {
         font-size: 2.5rem;
     }
 
-    h2 {
-        font-size: 1.5rem;
+    .subtitle {
+        font-size: 1rem;
     }
 
-    .car-details {
+    .faq-layout {
         flex-direction: column;
+        padding: 0 1rem;
     }
 
-    .car-details img {
-        width: 100%;
+    .faq-item {
+        padding: 1rem;
     }
 
-    .contact-form {
-        max-width: 100%;
+    .faq-icon {
+        font-size: 1.2rem;
+    }
+
+    .faq-details {
+        padding: 1.5rem;
     }
 }
 
@@ -297,15 +386,42 @@ footer {
         font-size: 2rem;
     }
 
-    h2 {
-        font-size: 1.2rem;
-    }
-
-    .car-card {
-        padding: 1rem;
+    .subtitle {
+        font-size: 0.9rem;
     }
 
     .btn {
         padding: 0.5rem 1rem;
+    }
+
+    .faq-item {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .faq-icon {
+        font-size: 1rem;
+        margin-right: 0.5rem;
+    }
+
+    .faq-details {
+        padding: 1rem;
+    }
+
+    .faq-details h2 {
+        font-size: 1.5rem;
+    }
+
+    .faq-details p {
+        font-size: 0.9rem;
+    }
+
+    .faq-cta {
+        margin-top: 2rem;
+    }
+
+    .faq-background-layer {
+        background-size: contain;
+        background-position: center center;
     }
 }
