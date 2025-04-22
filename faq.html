@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="css/faq.css">
 </head>
 <body>
-    <!-- Custom Cursor -->
+    <!-- Con trỏ tùy chỉnh -->
     <div class="custom-cursor" id="customCursor"></div>
 
-    <!-- Navigation Bar -->
+    <!-- Thanh điều hướng -->
     <nav>
         <div class="logo">
             <svg viewBox="0 0 24 24">
@@ -33,20 +33,61 @@
         <div class="hamburger" onclick="toggleMenu()">☰</div>
     </nav>
 
-    <!-- FAQ Content -->
-    <div id="faq">
-        <h1 class="fade-in">FAQ</h1>
-        <div class="faq-item fade-in">
-            <h2 onclick="toggleFAQ(1)">Làm thế nào để đặt mua một chiếc xe?</h2>
-            <p>Quý khách có thể thêm xe vào giỏ hàng và liên hệ với chúng tôi để được hỗ trợ chi tiết.</p>
+    <!-- Nội dung FAQ -->
+    <div id="faq" class="faq-background">
+        <video class="faq-background-video" autoplay muted loop>
+            <source src="/videos/car-intro.mp4" type="video/mp4">
+        </video>
+        <div class="faq-header fade-in">
+            <h1 class="typewriter">Câu Hỏi Thường Gặp</h1>
+            <p class="subtitle">Khám phá mọi thông tin bạn cần về siêu xe của chúng tôi</p>
         </div>
-        <div class="faq-item fade-in">
-            <h2 onclick="toggleFAQ(2)">Chính sách bảo hành của showroom là gì?</h2>
-            <p>Chúng tôi cung cấp bảo hành 3 năm hoặc 100,000 km, tùy theo điều kiện nào đến trước.</p>
+        <div class="faq-layout">
+            <div class="faq-list">
+                <div class="faq-item" onclick="showFAQ(0)">
+                    <span class="faq-icon">🚗</span>
+                    Làm thế nào để đặt mua một chiếc siêu xe tại Elite HyperCars?
+                </div>
+                <div class="faq-item" onclick="showFAQ(1)">
+                    <span class="faq-icon">🛠️</span>
+                    Chính sách bảo hành của showroom như thế nào?
+                </div>
+                <div class="faq-item" onclick="showFAQ(2)">
+                    <span class="faq-icon">💰</span>
+                    Tôi có thể thanh toán bằng những cách nào?
+                </div>
+                <div class="faq-item" onclick="showFAQ(3)">
+                    <span class="faq-icon">🚚</span>
+                    Thời gian giao xe là bao lâu? Có giao quốc tế không?
+                </div>
+                <div class="faq-item" onclick="showFAQ(4)">
+                    <span class="faq-icon">🔧</span>
+                    Dịch vụ bảo dưỡng được thực hiện ở đâu?
+                </div>
+                <div class="faq-item" onclick="showFAQ(5)">
+                    <span class="faq-icon">🎨</span>
+                    Tôi có thể tùy chỉnh siêu xe theo sở thích không?
+                </div>
+                <div class="faq-item" onclick="showFAQ(6)">
+                    <span class="faq-icon">🏎️</span>
+                    Elite HyperCars có tổ chức sự kiện trải nghiệm lái thử không?
+                </div>
+                <div class="faq-item" onclick="showFAQ(7)">
+                    <span class="faq-icon">📜</span>
+                    Làm thế nào để kiểm tra tính xác thực của siêu xe?
+                </div>
+            </div>
+            <div class="faq-details" id="faqDetails">
+                <h2 id="faqTitle">Chọn một câu hỏi để xem chi tiết</h2>
+                <p id="faqContent">Nội dung chi tiết sẽ hiển thị tại đây.</p>
+            </div>
+        </div>
+        <div class="faq-cta fade-in">
+            <p>Không tìm thấy câu trả lời bạn cần? <a href="contact.html" class="btn">Liên hệ ngay</a></p>
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Chân trang -->
     <footer>
         <p>© 2025 Elite HyperCars. All rights reserved.</p>
     </footer>

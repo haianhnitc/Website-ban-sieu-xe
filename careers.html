@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="css/careers.css">
 </head>
 <body>
-    <!-- Custom Cursor -->
+    <!-- Con trỏ tùy chỉnh -->
     <div class="custom-cursor" id="customCursor"></div>
 
-    <!-- Navigation Bar -->
+    <!-- Thanh điều hướng -->
     <nav>
         <div class="logo">
             <svg viewBox="0 0 24 24">
@@ -33,33 +33,114 @@
         <div class="hamburger" onclick="toggleMenu()">☰</div>
     </nav>
 
-    <!-- Careers Content -->
+    <!-- Nội dung Tuyển dụng -->
     <div id="careers">
-        <h1 class="fade-in">Tuyển dụng</h1>
+        <!-- Banner Parallax -->
+        <div class="career-banner fade-in">
+            <div class="banner-text">
+                <h1>Tham gia Elite HyperCars</h1>
+                <p>Kiến tạo tương lai của siêu xe cùng đội ngũ tài năng!</p>
+            </div>
+        </div>
+
+        <!-- Lợi ích làm việc -->
+        <div class="benefits fade-in">
+            <h2>Tại sao chọn Elite HyperCars?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <span class="benefit-icon">🚗</span>
+                    <h3>Môi trường năng động</h3>
+                    <p>Làm việc với các siêu xe tiên tiến và đội ngũ đam mê.</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">💰</span>
+                    <h3>Phúc lợi hấp dẫn</h3>
+                    <p>Lương thưởng cạnh tranh và cơ hội phát triển.</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">🌍</span>
+                    <h3>Tầm nhìn toàn cầu</h3>
+                    <p>Góp phần tạo nên thương hiệu siêu xe hàng đầu thế giới.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Danh sách công việc -->
         <div class="car-collection">
             <div class="car-card fade-in">
-                <h2>Nhân viên kinh doanh</h2>
-                <p>Tham gia đội ngũ bán hàng của chúng tôi để giới thiệu các siêu xe hàng đầu.</p>
-                <p>Kinh nghiệm: 3+ năm</p>
-                <button class="btn" onclick="showApplyForm('Nhân viên kinh doanh')">Ứng tuyển</button>
+                <div class="card-front">
+                    <img src="/images/sales-team.jpg" alt="Nhân viên kinh doanh" class="job-image">
+                    <h2>Nhân viên kinh doanh</h2>
+                    <p>Giới thiệu các siêu xe hàng đầu đến khách hàng.</p>
+                    <div class="card-buttons">
+                        <button class="btn" onclick="showApplyForm('Nhân viên kinh doanh')">Ứng tuyển</button>
+                        <button class="btn btn-detail" onclick="flipCard(this)">Chi tiết</button>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3>Chi tiết công việc</h3>
+                    <p><strong>Trách nhiệm:</strong> Tư vấn khách hàng, xây dựng mối quan hệ, đạt chỉ tiêu doanh số.</p>
+                    <p><strong>Yêu cầu:</strong> Kinh nghiệm 3+ năm, kỹ năng giao tiếp xuất sắc.</p>
+                    <button class="btn btn-back" onclick="flipCard(this)">Quay lại</button>
+                </div>
             </div>
             <div class="car-card fade-in">
-                <h2>Kỹ thuật viên ô tô</h2>
-                <p>Làm việc với công nghệ siêu xe tiên tiến nhất.</p>
-                <p>Kinh nghiệm: 5+ năm</p>
-                <button class="btn" onclick="showApplyForm('Kỹ thuật viên ô tô')">Ứng tuyển</button>
+                <div class="card-front">
+                    <img src="/images/technician_tools.jpg" alt="Kỹ thuật viên ô tô" class="job-image">
+                    <h2>Kỹ thuật viên ô tô</h2>
+                    <p>Làm việc với công nghệ siêu xe tiên tiến nhất.</p>
+                    <div class="card-buttons">
+                        <button class="btn" onclick="showApplyForm('Kỹ thuật viên ô tô')">Ứng tuyển</button>
+                        <button class="btn btn-detail" onclick="flipCard(this)">Chi tiết</button>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3>Chi tiết công việc</h3>
+                    <p><strong>Trách nhiệm:</strong> Bảo trì, sửa chữa, nâng cấp siêu xe.</p>
+                    <p><strong>Yêu cầu:</strong> Kinh nghiệm 5+ năm, am hiểu công nghệ ô tô.</p>
+                    <button class="btn btn-back" onclick="flipCard(this)">Quay lại</button>
+                </div>
+            </div>
+            <div class="car-card fade-in">
+                <div class="card-front">
+                    <img src="/images/car-design.png" alt="Nhà thiết kế ô tô" class="job-image">
+                    <h2>Nhà thiết kế ô tô</h2>
+                    <p>Kiến tạo những mẫu siêu xe dẫn đầu xu hướng.</p>
+                    <div class="card-buttons">
+                        <button class="btn" onclick="showApplyForm('Nhà thiết kế ô tô')">Ứng tuyển</button>
+                        <button class="btn btn-detail" onclick="flipCard(this)">Chi tiết</button>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3>Chi tiết công việc</h3>
+                    <p><strong>Trách nhiệm:</strong> Thiết kế ngoại thất, nội thất siêu xe, phối hợp với đội kỹ thuật.</p>
+                    <p><strong>Yêu cầu:</strong> Kinh nghiệm 4+ năm, thành thạo phần mềm thiết kế 3D.</p>
+                    <button class="btn btn-back" onclick="flipCard(this)">Quay lại</button>
+                </div>
             </div>
         </div>
-        <div id="apply-form" class="contact-form fade-in" style="display: none;">
-            <h2>Ứng tuyển vị trí <span id="job-title"></span></h2>
-            <input type="text" placeholder="Tên">
-            <input type="email" placeholder="Email">
-            <input type="file">
-            <button class="btn">Gửi hồ sơ</button>
+
+        <!-- Modal Biểu mẫu ứng tuyển -->
+        <div id="apply-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeApplyForm()">×</span>
+                <h2>Ứng tuyển vị trí <span id="job-title"></span></h2>
+                <form id="apply-form" class="contact-form">
+                    <input type="text" placeholder="Họ và tên" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="tel" placeholder="Số điện thoại" required>
+                    <textarea placeholder="Giới thiệu ngắn về bản thân" required></textarea>
+                    <input type="file" accept=".pdf,.doc,.docx" required>
+                    <button type="submit" class="btn">Gửi hồ sơ</button>
+                </form>
+            </div>
         </div>
+
+        <!-- Toast Notification -->
+        <div id="toast" class="toast"></div>
     </div>
 
-    <!-- Footer -->
+    <!-- Chân trang -->
     <footer>
         <p>© 2025 Elite HyperCars. All rights reserved.</p>
     </footer>

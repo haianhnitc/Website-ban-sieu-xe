@@ -10,7 +10,6 @@
 <body>
     <!-- Custom Cursor -->
     <div class="custom-cursor" id="customCursor"></div>
-
     <!-- Navigation Bar -->
     <nav>
         <div class="logo">
@@ -33,33 +32,121 @@
         <div class="hamburger" onclick="toggleMenu()">☰</div>
     </nav>
 
-    <!-- Login Content -->
-    <div id="login">
-        <h1 class="fade-in">Đăng nhập / Đăng ký</h1>
-        <div class="car-collection">
-            <div class="car-card fade-in">
-                <h2>Đăng nhập</h2>
-                <div class="contact-form">
-                    <input type="email" placeholder="Email">
-                    <input type="password" placeholder="Mật khẩu">
-                    <button class="btn">Đăng nhập</button>
+    <!-- Video Background -->
+    <video autoplay muted loop class="login-background-video">
+        <source src="/videos/car-light-stock.mp4" type="video/mp4">
+    </video>
+    <!-- Login/Signup Content -->
+    <div class="login-wrapper">
+        <div class="container">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <!-- Login Box -->
+                    <div class="flip-box-front login-box">
+                        <h2>Đăng nhập</h2>
+                        <form action="#" onsubmit="return showLoginSuccess(event)">
+                            <div class="input-box">
+                                <input value="" required type="email" id="login-email" />
+                                <label>Email</label>
+                            </div>
+                            <div class="input-box">
+                                <input value="" required type="password" id="login-password" />
+                                <label>Mật khẩu</label>
+                            </div>
+                            <div class="forgot-pass">
+                                <a href="#">Quên mật khẩu?</a>
+                            </div>
+                            <button class="btn" type="submit">Đăng nhập</button>
+                            <div class="signup-link">
+                                <a href="#" onclick="flipToSignup()">Đăng ký</a>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Signup Box -->
+                    <div class="flip-box-back login-box">
+                        <h2>Đăng ký</h2>
+                        <form action="#" onsubmit="return showSignupSuccess(event)">
+                            <div class="input-box">
+                                <input value="" required type="text" id="signup-name" />
+                                <label>Họ và tên</label>
+                            </div>
+                            <div class="input-box">
+                                <input value="" required type="email" id="signup-email" />
+                                <label>Email</label>
+                            </div>
+                            <div class="input-box">
+                                <input value="" required type="password" id="signup-password" />
+                                <label>Mật khẩu</label>
+                            </div>
+                            <div class="input-box">
+                                <input value="" required type="password" id="signup-confirm-password" />
+                                <label>Xác nhận mật khẩu</label>
+                            </div>
+                            <button class="btn" type="submit">Đăng ký</button>
+                            <div class="signup-link">
+                                <a href="#" onclick="flipToLogin()">Đã có tài khoản? Đăng nhập</a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div class="car-card fade-in">
-                <h2>Đăng ký</h2>
-                <div class="contact-form">
-                    <input type="text" placeholder="Tên">
-                    <input type="email" placeholder="Email">
-                    <input type="password" placeholder="Mật khẩu">
-                    <button class="btn">Đăng ký</button>
-                </div>
-            </div>
+            <span style="--i:0;"></span>
+            <span style="--i:1;"></span>
+            <span style="--i:2;"></span>
+            <span style="--i:3;"></span>
+            <span style="--i:4;"></span>
+            <span style="--i:5;"></span>
+            <span style="--i:6;"></span>
+            <span style="--i:7;"></span>
+            <span style="--i:8;"></span>
+            <span style="--i:9;"></span>
+            <span style="--i:10;"></span>
+            <span style="--i:11;"></span>
+            <span style="--i:12;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:14;"></span>
+            <span style="--i:15;"></span>
+            <span style="--i:16;"></span>
+            <span style="--i:17;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:19;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:21;"></span>
+            <span style="--i:22;"></span>
+            <span style="--i:23;"></span>
+            <span style="--i:24;"></span>
+            <span style="--i:25;"></span>
+            <span style="--i:26;"></span>
+            <span style="--i:27;"></span>
+            <span style="--i:28;"></span>
+            <span style="--i:29;"></span>
+            <span style="--i:30;"></span>
+            <span style="--i:31;"></span>
+            <span style="--i:32;"></span>
+            <span style="--i:33;"></span>
+            <span style="--i:34;"></span>
+            <span style="--i:35;"></span>
+            <span style="--i:36;"></span>
+            <span style="--i:37;"></span>
+            <span style="--i:38;"></span>
+            <span style="--i:39;"></span>
+            <span style="--i:40;"></span>
+            <span style="--i:41;"></span>
+            <span style="--i:42;"></span>
+            <span style="--i:43;"></span>
+            <span style="--i:44;"></span>
+            <span style="--i:45;"></span>
+            <span style="--i:46;"></span>
+            <span style="--i:47;"></span>
+            <span style="--i:48;"></span>
+            <span style="--i:49;"></span>
         </div>
+        <div class="notification" id="notification" style="display: none;"></div>
     </div>
-
+    
     <!-- Footer -->
     <footer>
-        <p>© 2025 Elite HyperCars. All rights reserved.</p>
+        <p>© 2025 Elite HyperCars. Mọi quyền được bảo lưu.</p>
     </footer>
 
     <script src="js/shared.js"></script>

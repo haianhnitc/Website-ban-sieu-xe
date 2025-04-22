@@ -1,8 +1,16 @@
+/* Thiết lập khoảng cách và chiều cao tối thiểu cho phần FAQ */
 #faq {
-    padding: 6rem 2rem;
-    min-height: 100vh;
+    padding: 6rem 1rem;
+    position: relative;
 }
 
+/* Đảm bảo nội dung FAQ nổi bật trên nền ảnh */
+.faq-header, .faq-layout, .faq-cta {
+    position: relative;
+    z-index: 2;
+}
+
+/* Thiết kế đáp ứng cho màn hình nhỏ */
 @media (max-width: 768px) {
     #faq {
         padding: 4rem 1rem;
