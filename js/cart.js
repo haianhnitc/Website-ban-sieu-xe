@@ -146,6 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (cart.length === 0) {
             if (emptyCartMessage) emptyCartMessage.style.display = 'block';
             if (cartSummary) cartSummary.style.display = 'block';
+            resetTotals();
         } else {
             if (emptyCartMessage) emptyCartMessage.style.display = 'none';
             if (cartSummary) cartSummary.style.display = 'block';
