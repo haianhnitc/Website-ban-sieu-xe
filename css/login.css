@@ -113,6 +113,10 @@
     transform: translateY(0);
 }
 
+.notification.error {
+    background: rgba(255, 85, 85, 0.95) !important;
+}
+
 /* Khung đăng nhập/đăng ký */
 .login-box {
     width: 100%;
