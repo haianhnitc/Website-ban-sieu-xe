@@ -1,25 +1,32 @@
+// cart.js
 document.addEventListener('DOMContentLoaded', function() {
     // Khởi tạo giỏ hàng từ localStorage
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     
-<<<<<<< HEAD
     // Khởi tạo lịch sử đặt hàng từ localStorage
     let orderHistory = JSON.parse(localStorage.getItem('orderHistory')) || [];
 
-=======
->>>>>>> e22a993 (checkout)
     // Cập nhật hiển thị giỏ hàng
     updateCart();
+    // Kiểm tra trạng thái đăng nhập
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const notLoggedInDiv = document.getElementById('not-logged-in');
+    const cartContentDiv = document.querySelector('.cart-content');
     
-    // Cập nhật số lượng sản phẩm hiển thị trên badge
+    if (isLoggedIn) {
+        notLoggedInDiv.style.display = 'none';
+        cartContentDiv.style.display = 'grid'; // Giữ bố cục lưới gốc
+        updateCart();
+    } else {
+        notLoggedInDiv.style.display = 'block';
+        cartContentDiv.style.display = 'none';
+    }
+    
+    // Cập nhật số lượng sản phẩm trên badge
     updateCartBadge();
-<<<<<<< HEAD
-
         
     // Hiển thị lịch sử đặt hàng
     displayOrderHistory();
-=======
->>>>>>> e22a993 (checkout)
     
     // Xử lý sự kiện cho nút thanh toán
     const checkoutBtn = document.getElementById('checkout-btn');
@@ -83,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Xử lý thanh toán
     function processCheckout() {
-<<<<<<< HEAD
         if (cart.length === 0) return;
         
         // Tạo đơn hàng mới
@@ -104,22 +110,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // cập nhật hiển thị lịch sử đơn hàng
         displayOrderHistory();
-
-=======
-        // Ở đây có thể thêm logic gửi đơn hàng đến server
->>>>>>> e22a993 (checkout)
         // Sau khi hoàn tất thanh toán, xóa giỏ hàng
         clearCart();
         resetTotals();
     }
 
-<<<<<<< HEAD
     function generateOrderId() {
         return 'ORD-' + Math.random().toString(36).substr(2, 9).toUpperCase();
     }
 
-=======
->>>>>>> e22a993 (checkout)
     // hàm để reset các giá trị tổng tiền
     function resetTotals() {
         const cartTotal = document.getElementById('cart-total');
@@ -157,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 cartItem.className = 'cart-item';
                 cartItem.innerHTML = `
                     <div class="cart-item-image">
-                        <img src="${item.image}" alt="${item.name}">
+                        <img src="${item.image || 'images/placeholder.png'}" alt="${item.name}">
                     </div>
                     <div class="cart-item-details">
                         <h3>${item.name}</h3>
@@ -195,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Thêm sự kiện cho các nút trong mỗi item
     function addItemEventListeners() {
         // Sự kiện cho nút giảm số lượng
-        document.querySelectorAll('.quantity-btn.minus').forEach(button => {
+        document.querySelectorAll('.quantity-btn minus').forEach(button => {
             button.addEventListener('click', function() {
                 const index = parseInt(this.getAttribute('data-index'));
                 decreaseQuantity(index);
@@ -302,7 +301,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
-<<<<<<< HEAD
 
     function displayOrderHistory() {
         const historyItems = document.getElementById('history-items');
@@ -433,11 +431,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
-
-    
-    
-=======
->>>>>>> e22a993 (checkout)
     
     // Hiển thị thông báo toast
     function showToast(message) {

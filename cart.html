@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -43,6 +42,13 @@
             <div class="cart-header fade-in">
                 <h1>Giỏ hàng của bạn</h1>
                 <p class="subtitle">Các siêu xe bạn đã chọn</p>
+            </div>
+            
+            <div id="not-logged-in" class="not-logged-in fade-in" style="display: none; text-align: center; padding: 3rem;">
+                <img src="images/empty_cart.png" alt="Not Logged In" class="empty-cart-icon">
+                <h2>Bạn chưa đăng nhập</h2>
+                <p>Vui lòng đăng nhập hoặc đăng ký để xem giỏ hàng của bạn.</p>
+                <a href="login.html" class="btn primary">Đăng nhập/Đăng ký</a>
             </div>
             
             <div class="cart-content fade-in">
@@ -125,5 +131,5 @@
 
     <script src="js/shared.js"></script>
     <script src="js/cart.js"></script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93420d603e3b17ff',t:'MTc0NTI5MjcyOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

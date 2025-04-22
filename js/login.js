@@ -1,3 +1,4 @@
+// login.js
 function flipToSignup() {
     document.querySelector('.flip-box-inner').classList.add('flipped');
 }
@@ -6,17 +7,15 @@ function flipToLogin() {
     document.querySelector('.flip-box-inner').classList.remove('flipped');
 }
 
-// Thêm sự kiện để kiểm tra giá trị của các ô nhập liệu
+// Kiểm tra giá trị ô nhập liệu
 document.addEventListener('DOMContentLoaded', function () {
     const inputs = document.querySelectorAll('.input-box input');
     
     inputs.forEach(input => {
-        // Kiểm tra giá trị ban đầu
         if (input.value.trim() !== '') {
             input.classList.add('filled');
         }
         
-        // Kiểm tra khi nhập liệu
         input.addEventListener('input', function () {
             if (this.value.trim() !== '') {
                 this.classList.add('filled');
@@ -27,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Thêm vào cuối file
+// Hiển thị thông báo
 function showNotification(message) {
     const notification = document.getElementById('notification');
     notification.textContent = message;
@@ -38,23 +37,37 @@ function showNotification(message) {
         notification.classList.remove('show');
         setTimeout(() => {
             notification.style.display = 'none';
-        }, 500); // Đợi hiệu ứng mờ dần hoàn tất
-    }, 3000); // Hiển thị trong 3 giây
+        }, 500);
+    }, 3000);
 }
 
 function showLoginSuccess(event) {
-    event.preventDefault(); // Ngăn form submit thực sự
+    event.preventDefault();
+    const email = document.getElementById('login-email').value;
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('userEmail', email);
     showNotification('Đăng nhập thành công');
+    setTimeout(() => {
+        updateNavBar(); // Cập nhật thanh điều hướng
+        window.location.href = 'user.html'; // Chuyển hướng đến trang tài khoản
+    }, 1000);
 }
 
 function showSignupSuccess(event) {
-    event.preventDefault(); // Ngăn form submit thực sự
+    event.preventDefault();
     const password = document.getElementById('signup-password').value;
     const confirmPassword = document.getElementById('signup-confirm-password').value;
+    const email = document.getElementById('signup-email').value;
     
     if (password !== confirmPassword) {
         showNotification('Mật khẩu không khớp');
     } else {
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('userEmail', email);
         showNotification('Đăng ký thành công');
+        setTimeout(() => {
+            updateNavBar(); // Cập nhật thanh điều hướng
+            window.location.href = 'user.html'; // Chuyển hướng đến trang tài khoản
+        }, 3000);
     }
 }
