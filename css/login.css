@@ -11,8 +11,10 @@
 .container {
     position: relative;
     width: 100%;
-    max-width: 550px;
-    height: 550px;
+    max-width: calc(550px - 0.15 * (100vw - 1200px));
+    height: calc(550px - 0.15 * (100vw - 1200px));
+    min-width: 400px;
+    min-height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,11 +26,11 @@
 .container span {
     position: absolute;
     left: 0;
-    width: 55px;
-    height: 10px;
+    width: calc(55px - 0.01 * (100vw - 1200px));
+    height: calc(10px - 0.002 * (100vw - 1200px));
     background: #2c4766;
     border-radius: 80px;
-    transform-origin: 275px;
+    transform-origin: calc(275px - 0.075 * (100vw - 1200px));
     transform: rotate(calc(var(--i) * (360deg / 50)));
     animation: blink 3s linear infinite;
     animation-delay: calc(var(--i) * (3s / 50));
@@ -47,8 +49,10 @@
 .flip-box {
     position: absolute;
     width: 80%;
-    max-width: 300px;
-    min-height: 400px;
+    max-width: calc(300px - 0.1 * (100vw - 1200px));
+    min-height: calc(400px - 0.1 * (100vw - 1200px));
+    min-width: 250px;
+    min-height: 350px;
     z-index: 1;
     perspective: 1000px;
     display: flex;
@@ -83,17 +87,19 @@
 .flip-box-back {
     transform: rotateY(180deg);
 }
+
 .notification {
     position: absolute;
     top: calc(50% - 250px - 40px);
     width: 100%;
-    max-width: 300px;
-    padding: 12px;
+    max-width: calc(300px - 0.1 * (100vw - 1200px));
+    min-width: 250px;
+    padding: calc(12px - 0.005 * (100vw - 1200px));
     background: rgba(255, 215, 0, 0.95);
     color: #0a0a0a;
     text-align: center;
     border-radius: 12px;
-    font-size: 1em;
+    font-size: calc(1em - 0.0005 * (100vw - 1200px));
     font-weight: 600;
     opacity: 0;
     transform: translateY(-10px);
@@ -107,10 +113,14 @@
     transform: translateY(0);
 }
 
+.notification.error {
+    background: rgba(255, 85, 85, 0.95) !important;
+}
+
 /* Khung đăng nhập/đăng ký */
 .login-box {
     width: 100%;
-    padding: 20px;
+    padding: calc(20px - 0.005 * (100vw - 1200px));
     border-radius: 20px;
     background: transparent;
     display: flex;
@@ -128,7 +138,7 @@ form {
 
 /* Tiêu đề */
 h2 {
-    font-size: 1.8em;
+    font-size: calc(1.8em - 0.001 * (100vw - 1200px));
     color: white;
     text-align: center;
     margin-bottom: 10px;
@@ -144,12 +154,12 @@ h2 {
 /* Trường nhập liệu */
 input {
     width: 100%;
-    height: 45px;
+    height: calc(45px - 0.01 * (100vw - 1200px));
     background: transparent;
     border: 2px solid #2c4766;
     outline: none;
     border-radius: 40px;
-    font-size: 1em;
+    font-size: calc(1em - 0.0005 * (100vw - 1200px));
     color: #fff;
     padding: 0 15px;
     transition: 0.5s ease;
@@ -163,7 +173,7 @@ input:focus {
 input:focus ~ label,
 input.filled ~ label {
     top: -10px;
-    font-size: 0.8em;
+    font-size: calc(0.8em - 0.0005 * (100vw - 1200px));
     background: #1f293a;
     padding: 0 6px;
     color: white;
@@ -175,7 +185,7 @@ label {
     top: 50%;
     left: 15px;
     transform: translateY(-50%);
-    font-size: 1em;
+    font-size: calc(1em - 0.0005 * (100vw - 1200px));
     pointer-events: none;
     transition: 0.5s ease;
     color: #fff;
@@ -188,7 +198,7 @@ label {
 }
 
 .forgot-pass a {
-    font-size: 0.85em;
+    font-size: calc(0.85em - 0.0005 * (100vw - 1200px));
     color: #fff;
     text-decoration: none;
 }
@@ -196,13 +206,13 @@ label {
 /* Nút đăng nhập/đăng ký */
 .btn {
     width: 100%;
-    height: 45px;
+    height: calc(45px - 0.01 * (100vw - 1200px));
     background: white;
     border: none;
     outline: none;
     border-radius: 40px;
     cursor: pointer;
-    font-size: 1em;
+    font-size: calc(1em - 0.0005 * (100vw - 1200px));
     color: #1f293a;
     font-weight: 600;
 }
@@ -214,7 +224,7 @@ label {
 }
 
 .signup-link a {
-    font-size: 1em;
+    font-size: calc(1em - 0.0005 * (100vw - 1200px));
     color: white;
     text-decoration: none;
     font-weight: 600;
@@ -238,6 +248,8 @@ label {
     .container {
         max-width: 450px;
         height: 450px;
+        min-width: 350px;
+        min-height: 350px;
     }
 
     .container span {
@@ -249,6 +261,8 @@ label {
     .flip-box {
         max-width: 250px;
         min-height: 350px;
+        min-width: 200px;
+        min-height: 300px;
     }
 
     .notification {
@@ -273,6 +287,83 @@ label {
 
     .btn {
         height: 40px;
+        font-size: 0.9em;
+    }
+
+    input:focus ~ label,
+    input.filled ~ label {
+        font-size: 0.7em;
+    }
+
+    label {
+        font-size: 0.9em;
+    }
+
+    .forgot-pass a {
+        font-size: 0.8em;
+    }
+
+    .signup-link a {
+        font-size: 0.9em;
+    }
+}
+
+/* Giới hạn kích thước tối thiểu cho viewport lớn */
+@media (min-width: 1600px) {
+    .container {
+        max-width: 450px;
+        height: 450px;
+    }
+
+    .container span {
+        width: 45px;
+        height: 8px;
+        transform-origin: 225px;
+    }
+
+    .flip-box {
+        max-width: 250px;
+        min-height: 350px;
+    }
+
+    .notification {
+        max-width: 250px;
+        padding: 10px;
+        font-size: 0.9em;
+    }
+
+    .login-box {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    input {
+        height: 40px;
+        font-size: 0.9em;
+    }
+
+    .btn {
+        height: 40px;
+        font-size: 0.9em;
+    }
+
+    input:focus ~ label,
+    input.filled ~ label {
+        font-size: 0.7em;
+    }
+
+    label {
+        font-size: 0.9em;
+    }
+
+    .forgot-pass a {
+        font-size: 0.8em;
+    }
+
+    .signup-link a {
         font-size: 0.9em;
     }
 }

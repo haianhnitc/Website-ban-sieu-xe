@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite HyperCars - Tài khoản</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/user.css">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="customCursor"></div>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">
+            <svg viewBox="0 0 100 100" width="40" height="40">
+                <path d="M50 5L10 25v50l40 20 40-20V25L50 5zm0 10l30 15v40L50 85 20 70V30l30-15z" fill="#FFD700"/>
+                <path d="M50 25L20 40v20l30 15 30-15V40L50 25zm0 10l20 10v10L50 65 30 55V45l20-10z" fill="#FFD700"/>
+                <path d="M50 45L30 55v10l20 10 20-10V55L50 45z" fill="#FFD700"/>
+            </svg>
+            ELITE HYPERCARS
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="home.html">Trang chủ</a>
+            <a href="about.html">Giới thiệu</a>
+            <a href="cars.html">Bộ sưu tập xe</a>
+            <a href="news.html">Tin tức</a>
+            <a href="contact.html">Liên hệ</a>
+            <a href="faq.html">FAQ</a>
+            <a href="user.html">Tài khoản</a>
+            <a href="cart.html">Giỏ hàng <span id="cart-badge" class="cart-badge">0</span></a>
+            <a href="careers.html">Tuyển dụng</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </nav>
+
+    <!-- Video Background -->
+    <video autoplay muted loop class="user-background-video">
+        <source src="videos/car-light-stock.mp4" type="video/mp4">
+    </video>
+
+    <!-- User Content -->
+    <section id="user">
+        <div class="container">
+            <div class="user-header fade-in">
+                <h1>Tài khoản của bạn</h1>
+                <p class="subtitle">Quản lý thông tin và đơn hàng của bạn</p>
+            </div>
+            <div class="user-content fade-in">
+                <div class="user-info">
+                    <h2>Thông tin cá nhân</h2>
+                    <p><strong>Email:</strong> <span id="user-email">Đang tải...</span></p>
+                    <button class="btn primary" onclick="logout()">Đăng xuất</button>
+                </div>
+                <div class="user-actions">
+                    <h2>Hành động</h2>
+                    <a href="cart.html" class="btn primary">Xem giỏ hàng</a>
+                    <a href="contact.html" class="btn outline">Liên hệ hỗ trợ</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Elite HyperCars. Mọi quyền được bảo lưu.</p>
+    </footer>
+
+    <script src="js/shared.js"></script>
+    <script src="js/user.js"></script>
+</body>
+</html>

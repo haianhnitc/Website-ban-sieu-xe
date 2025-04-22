@@ -238,7 +238,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Khung gầm monocoque carbon fiber",
                 "Hệ thống ống xả Weissach đặt ở phía trên"
             ],
-
             images: {
                 main: "images/cars-collection/anh_9.jpg",
                 thumbnails: [
@@ -533,61 +532,71 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-         // Thiết lập sự kiện cho nút Thêm vào giỏ hàng
-         const addToCartButton = document.getElementById('add-to-cart-button');
-         if (addToCartButton) {
-             addToCartButton.addEventListener('click', function() {
-                 addToCart(car, carId);
-             });
-         }
+        // Thiết lập sự kiện cho nút Thêm vào giỏ hàng
+        const addToCartButton = document.getElementById('add-to-cart-button');
+        if (addToCartButton) {
+            addToCartButton.addEventListener('click', function() {
+                const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+                if (isLoggedIn) {
+                    addToCart(car, carId);
+                } else {
+                    window.location.href = 'login.html';
+                }
+            });
+        }
 
-         // Thiết lập sự kiện cho nút Đặt hàng ngay
+        // Thiết lập sự kiện cho nút Đặt hàng ngay
         const checkoutButton = document.getElementById('checkout-button');
         if (checkoutButton) {
             checkoutButton.addEventListener('click', function() {
-                showCheckoutModal();
+                const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+                if (isLoggedIn) {
+                    showCheckoutModal();
+                } else {
+                    window.location.href = 'login.html';
+                }
             });
         }
     }
 
     // Hàm thêm xe vào giỏ hàng
-function addToCart(car, carId) {
-    // Lấy giỏ hàng từ localStorage hoặc tạo mới nếu chưa có
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    
-    // Chuyển đổi giá từ chuỗi sang số (loại bỏ "$" và dấu phẩy)
-    const priceValue = parseFloat(car.price.replace(/[$,]/g, ''));
-    
-    // Kiểm tra xem xe đã có trong giỏ hàng chưa
-    const existingItem = cart.find(item => item.id === carId);
-    
-    if (existingItem) {
-        // Nếu đã có, tăng số lượng
-        existingItem.quantity += 1;
-    } else {
-        // Nếu chưa có, thêm mới
-        cart.push({
-            id: carId,
-            name: car.name,
-            price: priceValue, // Lưu dưới dạng số
-            priceDisplay: car.price, // Lưu định dạng hiển thị
-            image: car.images.main,
-            quantity: 1
-        });
+    function addToCart(car, carId) {
+        // Lấy giỏ hàng từ localStorage hoặc tạo mới nếu chưa có
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Chuyển đổi giá từ chuỗi sang số (loại bỏ "$" và dấu phẩy)
+        const priceValue = parseFloat(car.price.replace(/[$,]/g, ''));
+        
+        // Kiểm tra xem xe đã có trong giỏ hàng chưa
+        const existingItem = cart.find(item => item.id === carId);
+        
+        if (existingItem) {
+            // Nếu đã có, tăng số lượng
+            existingItem.quantity += 1;
+        } else {
+            // Nếu chưa có, thêm mới
+            cart.push({
+                id: carId,
+                name: car.name,
+                price: priceValue, // Lưu dưới dạng số
+                priceDisplay: car.price, // Lưu định dạng hiển thị
+                image: car.images.main,
+                quantity: 1
+            });
+        }
+        
+        // Lưu giỏ hàng vào localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+        
+        // Cập nhật số lượng hiển thị trên badge
+        updateCartBadge();
+        
+        // Hiển thị thông báo thành công
+        showToast('Đã thêm vào giỏ hàng!');
     }
-    
-    // Lưu giỏ hàng vào localStorage
-    localStorage.setItem('cart', JSON.stringify(cart));
-    
-    // Cập nhật số lượng hiển thị trên badge
-    updateCartBadge();
-    
-    // Hiển thị thông báo thành công
-    showToast('Đã thêm vào giỏ hàng!');
-}
 
-     // Cập nhật số lượng sản phẩm hiển thị trên badge
-     function updateCartBadge() {
+    // Cập nhật số lượng sản phẩm hiển thị trên badge
+    function updateCartBadge() {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
         const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
         
@@ -604,8 +613,8 @@ function addToCart(car, carId) {
         }
     }
 
-     // Hiển thị thông báo toast
-     function showToast(message) {
+    // Hiển thị thông báo toast
+    function showToast(message) {
         const toast = document.getElementById('toast');
         const toastMessage = document.querySelector('.toast-message');
         
@@ -649,7 +658,6 @@ function addToCart(car, carId) {
         }
     }
     
-    
     // Xử lý sự kiện click vào thumbnail để đổi ảnh chính
     const thumbnails = document.querySelectorAll('.thumbnail');
     thumbnails.forEach(thumbnail => {
@@ -667,7 +675,6 @@ function addToCart(car, carId) {
     // Thiết lập sự kiện cho các nút sau khi hiển thị chi tiết xe
     displayCarDetails(carId);
 
-     // Cập nhật số lượng sản phẩm hiển thị khi trang được tải
-     updateCartBadge();
-     
+    // Cập nhật số lượng sản phẩm hiển thị khi trang được tải
+    updateCartBadge();
 });

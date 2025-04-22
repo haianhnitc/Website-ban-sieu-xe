@@ -1,3 +1,4 @@
+// cart.js
 document.addEventListener('DOMContentLoaded', function() {
     // Khởi tạo giỏ hàng từ localStorage
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -7,10 +8,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Cập nhật hiển thị giỏ hàng
     updateCart();
+    // Kiểm tra trạng thái đăng nhập
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const notLoggedInDiv = document.getElementById('not-logged-in');
+    const cartContentDiv = document.querySelector('.cart-content');
     
-    // Cập nhật số lượng sản phẩm hiển thị trên badge
+    if (isLoggedIn) {
+        notLoggedInDiv.style.display = 'none';
+        cartContentDiv.style.display = 'grid'; // Giữ bố cục lưới gốc
+        updateCart();
+    } else {
+        notLoggedInDiv.style.display = 'block';
+        cartContentDiv.style.display = 'none';
+    }
+    
+    // Cập nhật số lượng sản phẩm trên badge
     updateCartBadge();
-
         
     // Hiển thị lịch sử đặt hàng
     displayOrderHistory();
@@ -97,7 +110,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // cập nhật hiển thị lịch sử đơn hàng
         displayOrderHistory();
-
         // Sau khi hoàn tất thanh toán, xóa giỏ hàng
         clearCart();
         resetTotals();
@@ -144,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 cartItem.className = 'cart-item';
                 cartItem.innerHTML = `
                     <div class="cart-item-image">
-                        <img src="${item.image}" alt="${item.name}">
+                        <img src="${item.image || 'images/placeholder.png'}" alt="${item.name}">
                     </div>
                     <div class="cart-item-details">
                         <h3>${item.name}</h3>
@@ -182,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Thêm sự kiện cho các nút trong mỗi item
     function addItemEventListeners() {
         // Sự kiện cho nút giảm số lượng
-        document.querySelectorAll('.quantity-btn.minus').forEach(button => {
+        document.querySelectorAll('.quantity-btn minus').forEach(button => {
             button.addEventListener('click', function() {
                 const index = parseInt(this.getAttribute('data-index'));
                 decreaseQuantity(index);
@@ -419,9 +431,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
-
-    
-    
     
     // Hiển thị thông báo toast
     function showToast(message) {
