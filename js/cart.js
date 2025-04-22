@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Thêm sự kiện cho các nút trong mỗi item
     function addItemEventListeners() {
         // Sự kiện cho nút giảm số lượng
-        document.querySelectorAll('.quantity-btn minus').forEach(button => {
+        document.querySelectorAll('.quantity-btn.minus').forEach(button => {
             button.addEventListener('click', function() {
                 const index = parseInt(this.getAttribute('data-index'));
                 decreaseQuantity(index);
