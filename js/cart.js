@@ -2,11 +2,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Khởi tạo giỏ hàng từ localStorage
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     
+    // Khởi tạo lịch sử đặt hàng từ localStorage
+    let orderHistory = JSON.parse(localStorage.getItem('orderHistory')) || [];
+
     // Cập nhật hiển thị giỏ hàng
     updateCart();
     
     // Cập nhật số lượng sản phẩm hiển thị trên badge
     updateCartBadge();
+
+        
+    // Hiển thị lịch sử đặt hàng
+    displayOrderHistory();
     
     // Xử lý sự kiện cho nút thanh toán
     const checkoutBtn = document.getElementById('checkout-btn');
@@ -70,10 +77,34 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Xử lý thanh toán
     function processCheckout() {
-        // Ở đây có thể thêm logic gửi đơn hàng đến server
+        if (cart.length === 0) return;
+        
+        // Tạo đơn hàng mới
+        const newOrder = {
+            id: generateOrderId(),
+            date: new Date().toISOString(),
+            status: 'processing',
+            products: [...cart], // Copy sản phẩm từ giỏ hàng
+            total: calculateGrandTotal(),
+            paymentMethod: 'Chuyển khoản ngân hàng'
+        };
+        
+        // Thêm vào lịch sử đặt hàng
+        orderHistory.unshift(newOrder); // Thêm vào đầu mảng
+        
+        // Lưu vào localStorage
+        localStorage.setItem('orderHistory', JSON.stringify(orderHistory));
+
+        // cập nhật hiển thị lịch sử đơn hàng
+        displayOrderHistory();
+
         // Sau khi hoàn tất thanh toán, xóa giỏ hàng
         clearCart();
         resetTotals();
+    }
+
+    function generateOrderId() {
+        return 'ORD-' + Math.random().toString(36).substr(2, 9).toUpperCase();
     }
 
     // hàm để reset các giá trị tổng tiền
@@ -258,6 +289,139 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
+
+    function displayOrderHistory() {
+        const historyItems = document.getElementById('history-items');
+        const emptyHistoryMessage = document.getElementById('empty-history-message');
+        
+        if (!historyItems || !emptyHistoryMessage) return;
+        
+        // Xóa tất cả các item hiện tại
+        historyItems.innerHTML = '';
+        
+        // Hiển thị thông báo nếu không có lịch sử
+        if (orderHistory.length === 0) {
+            emptyHistoryMessage.style.display = 'flex';
+            historyItems.style.display = 'none';
+        } else {
+            emptyHistoryMessage.style.display = 'none';
+            historyItems.style.display = 'block';
+            
+            // Hiển thị các đơn hàng
+            orderHistory.forEach((order, index) => {
+                const historyItem = document.createElement('div');
+                historyItem.className = 'history-item';
+                
+                // Tạo header của đơn hàng
+                const header = document.createElement('div');
+                header.className = 'history-item-header';
+                
+                // Định dạng ngày
+                const orderDate = new Date(order.date);
+                const formattedDate = orderDate.toLocaleDateString('vi-VN', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+                
+                // Tạo danh sách sản phẩm
+                const products = document.createElement('div');
+                products.className = 'history-item-products';
+                
+                order.products.forEach(product => {
+                    const productItem = document.createElement('div');
+                    productItem.className = 'history-product';
+                    
+                    productItem.innerHTML = `
+                        <div class="history-product-image">
+                            <img src="${product.image}" alt="${product.name}">
+                        </div>
+                        <div class="history-product-name">${product.name}</div>
+                        <div class="history-product-quantity">x${product.quantity}</div>
+                        <div class="history-product-price">$${(product.price * product.quantity).toLocaleString()}</div>
+                    `;
+                    
+                    products.appendChild(productItem);
+                });
+                
+                // Tạo phần tổng tiền
+                const total = document.createElement('div');
+                total.className = 'history-item-total';
+                total.innerHTML = `
+                    <span class="history-item-total-label">Tổng thanh toán:</span>
+                    <span class="history-item-total-value">$${order.total.toLocaleString()}</span>
+                `;
+                
+                // Tạo phần hành động
+                const actions = document.createElement('div');
+                actions.className = 'history-item-actions';
+                actions.innerHTML = `
+                    <button class="history-item-button" onclick="window.print()">In hóa đơn</button>
+                    <button class="history-item-button primary" data-index="${index}">Đặt lại</button>
+                `;
+                
+                // Ghép tất cả vào với nhau
+                historyItem.appendChild(header);
+                historyItem.appendChild(products);
+                historyItem.appendChild(total);
+                historyItem.appendChild(actions);
+                
+                // Thêm vào container
+                historyItems.appendChild(historyItem);
+            });
+            
+            // Thêm event listener cho nút Đặt lại
+            document.querySelectorAll('.history-item-button.primary').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    reOrder(index);
+                });
+            });
+        }
+    }
+
+    function reOrder(orderIndex) {
+        const order = orderHistory[orderIndex];
+        if (!order) return;
+        
+        // Xác nhận từ người dùng
+        if (confirm('Bạn có muốn đặt lại đơn hàng này không?')) {
+            // Thêm các sản phẩm vào giỏ hàng
+            order.products.forEach(product => {
+                // Tìm sản phẩm trong giỏ hàng
+                const existingItem = cart.find(item => item.id === product.id);
+                
+                if (existingItem) {
+                    // Nếu đã có, tăng số lượng
+                    existingItem.quantity += product.quantity;
+                } else {
+                    // Nếu chưa có, thêm mới
+                    cart.push({...product});
+                }
+            });
+            
+            // Lưu giỏ hàng
+            saveCart();
+            
+            // Cập nhật hiển thị
+            updateCart();
+            updateCartBadge();
+            
+            // Hiển thị thông báo
+            showToast('Đã thêm các sản phẩm từ đơn hàng cũ vào giỏ hàng.');
+            
+            // Cuộn lên đầu trang
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    
+    
     
     // Hiển thị thông báo toast
     function showToast(message) {
