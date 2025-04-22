@@ -8,59 +8,130 @@
     <link rel="stylesheet" href="css/cars.css">
 </head>
 <body>
-    <!-- Custom Cursor -->
     <div class="custom-cursor" id="customCursor"></div>
 
-    <!-- Navigation Bar -->
     <nav>
         <div class="logo">
-            <svg viewBox="0 0 24 24">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5v-2L12 20 2 15v2zM2 12l10 5 10-5v-2L12 15 2 10v2z"/>
-            </svg>
             Elite HyperCars
         </div>
+
         <div class="nav-links" id="navLinks">
             <a href="home.html">Trang chủ</a>
-
             <a href="about.html">Giới thiệu</a>
             <a href="cars.html">Bộ sưu tập xe</a>
             <a href="news.html">Tin tức</a>
             <a href="contact.html">Liên hệ</a>
             <a href="faq.html">FAQ</a>
             <a href="login.html">Đăng nhập/Đăng ký</a>
-            <a href="cart.html">Giỏ hàng</a>
+            <a href="cart.html">Giỏ hàng <span id="cart-badge" class="cart-badge">0</span></a>
             <a href="careers.html">Tuyển dụng</a>
         </div>
+
         <div class="hamburger" onclick="toggleMenu()">☰</div>
     </nav>
 
     <!-- Cars Content -->
-    <div id="cars" class="car-collection">
-        <h1 class="fade-in">Bộ sưu tập xe</h1>
-        <div class="car-collection">
-            <div class="car-card fade-in">
-                <img src="https://via.placeholder.com/400x200?text=Pagani+Huayra" alt="Pagani Huayra">
-                <h2>Pagani Huayra</h2>
-                <p>$3,400,000</p>
-                <p>Tốc độ tối đa: 238 mph</p>
-                <a href="car-details-1.html" class="btn">Xem chi tiết</a>
+    <section id="cars">
+        <div class="cars-container">
+            <div class="cars-header fade-in">
+                <h1>Bộ sưu tập xe</h1>
+                <p class="subtitle">Khám phá những siêu xe đẳng cấp nhất thế giới</p>
             </div>
-            <div class="car-card fade-in">
-                <img src="https://via.placeholder.com/400x200?text=Ferrari+Pininfarina" alt="Ferrari Pininfarina">
-                <h2>Ferrari Pininfarina</h2>
-                <p>$2,500,000</p>
-                <p>Tốc độ tối đa: 217 mph</p>
-                <a href="car-details-2.html" class="btn">Xem chi tiết</a>
+
+            <div class="cars-gallery fade-in">
+                <!-- Card 1 -->
+                <a href="car-details.html?id=1" class="car-item" data-category="hypercar">
+                    <div class="card">
+                        <div class="wrapper">
+                            <img src="images/cars-collection/anh_1.jpg" class="cover-image" 
+                                data-hover-src="images/cars-collection/back_ground_car.jpg" 
+                                data-original-src="images/cars-collection/anh_1.jpg" />
+                        </div>
+                        <img src="https://ggayane.github.io/css-experiments/cards/force_mage-title.png" class="title" />
+                        <img src="images/cars-collection/anh_1.png" class="character" />
+                        
+                    </div>
+                </a>
+
+                <!-- Card 2 -->
+                <a href="car-details.html?id=2" class="car-item" data-category="hypercar">
+                    <div class="card">
+                        <div class="wrapper">
+                            <img src="images/cars-collection/anh_2.jpg" class="cover-image" 
+                                data-hover-src="images/cars-collection/back_ground_car.jpg" 
+                                data-original-src="images/cars-collection/anh_2.jpg" />
+                        </div>
+                        <img src="https://ggayane.github.io/css-experiments/cards/force_mage-title.png" class="title" />
+                        <img src="images/cars-collection/anh_2.png" class="character" />
+                        
+                    </div>
+                </a>
+
+                <!-- Card 3 -->
+                <a href="car-details.html?id=3" class="car-item" data-category="hypercar">
+                    <div class="card">
+                        <div class="wrapper">
+                            <img src="images/cars-collection/anh_3.jpg" class="cover-image" 
+                                data-hover-src="images/cars-collection/back_ground_car.jpg" 
+                                data-original-src="images/cars-collection/anh_3.jpg" />
+                        </div>
+                        <img src="https://ggayane.github.io/css-experiments/cards/force_mage-title.png" class="title" />
+                        <img src="images/cars-collection/anh_3.png" class="character" />
+                        
+                    </div>
+                </a>
+
+                <!-- Card 4 -->
+                <a href="car-details.html?id=4" class="car-item" data-category="hypercar">
+                    <div class="card">
+                        <div class="wrapper">
+                            <img src="images/cars-collection/anh_4.jpg" class="cover-image" 
+                                data-hover-src="images/cars-collection/back_ground_car.jpg" 
+                                data-original-src="images/cars-collection/anh_4.jpg" />
+                        </div>
+                        <img src="https://ggayane.github.io/css-experiments/cards/force_mage-title.png" class="title" />
+                        <img src="images/cars-collection/anh_4.png" class="character" />
+                        
+                    </div>
+                </a>
+
+                <!-- Card 5 -->
+                <a href="car-details.html?id=5" class="car-item" data-category="hypercar">
+                    <div class="card">
+                        <div class="wrapper">
+                            <img src="images/cars-collection/anh_5.jpg" class="cover-image" 
+                                data-hover-src="images/cars-collection/back_ground_car.jpg" 
+                                data-original-src="images/cars-collection/anh_5.jpg" />
+                        </div>
+                        <img src="https://ggayane.github.io/css-experiments/cards/force_mage-title.png" class="title" />
+                        <img src="images/cars-collection/anh_5.png" class="character" />
+                        
+                    </div>
+                </a>
+
+                <!-- Card 6 -->
+                <a href="car-details.html?id=6" class="car-item" data-category="hypercar">
+                    <div class="card">
+                        <div class="wrapper">
+                            <img src="images/cars-collection/anh_6.jpg" class="cover-image" 
+                                data-hover-src="images/cars-collection/back_ground_car.jpg" 
+                                data-original-src="images/cars-collection/anh_6.jpg" />
+                        </div>
+                        <img src="https://ggayane.github.io/css-experiments/cards/force_mage-title.png" class="title" />
+                        <img src="images/cars-collection/anh_6.png" class="character" />
+                        
+                    </div>
+                </a>
             </div>
-            <div class="car-card fade-in">
-                <img src="https://via.placeholder.com/400x200?text=Aston+Martin+Valkyrie" alt="Aston Martin Valkyrie">
-                <h2>Aston Martin Valkyrie</h2>
-                <p>$3,200,000</p>
-                <p>Tốc độ tối đa: 220 mph</p>
-                <a href="car-details-3.html" class="btn">Xem chi tiết</a>
+
+            <div class="cars-pagination fade-in">
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn next">→</button>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Footer -->
     <footer>

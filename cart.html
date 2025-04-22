@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -14,31 +15,80 @@
     <!-- Navigation Bar -->
     <nav>
         <div class="logo">
-            <svg viewBox="0 0 24 24">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5v-2L12 20 2 15v2zM2 12l10 5 10-5v-2L12 15 2 10v2z"/>
-            </svg>
             Elite HyperCars
         </div>
         <div class="nav-links" id="navLinks">
             <a href="home.html">Trang chủ</a>
-
             <a href="about.html">Giới thiệu</a>
             <a href="cars.html">Bộ sưu tập xe</a>
             <a href="news.html">Tin tức</a>
             <a href="contact.html">Liên hệ</a>
             <a href="faq.html">FAQ</a>
             <a href="login.html">Đăng nhập/Đăng ký</a>
-            <a href="cart.html">Giỏ hàng</a>
+            <a href="cart.html">Giỏ hàng <span id="cart-badge" class="cart-badge">0</span></a>
             <a href="careers.html">Tuyển dụng</a>
         </div>
         <div class="hamburger" onclick="toggleMenu()">☰</div>
     </nav>
 
     <!-- Cart Content -->
-    <div id="cart">
-        <h1 class="fade-in">Giỏ hàng</h1>
-        <div id="cart-items" class="car-collection"></div>
-        <button class="btn fade-in" onclick="alert('Tiến hành thanh toán!')">Thanh toán</button>
+    <section id="cart">
+        <div class="container">
+            <div class="cart-header fade-in">
+                <h1>Giỏ hàng của bạn</h1>
+                <p class="subtitle">Các siêu xe bạn đã chọn</p>
+            </div>
+            
+            <div class="cart-content fade-in">
+                <div id="cart-items" class="cart-items">
+                    <!-- Items will be loaded dynamically -->
+                    <div id="empty-cart-message" class="empty-cart-message">
+                        <img src="images/empty_cart.png" alt="Empty Cart" class="empty-cart-icon">
+                        <h2>Giỏ hàng của bạn đang trống</h2>
+                        <p>Hãy khám phá bộ sưu tập xe của chúng tôi và chọn chiếc xe mơ ước của bạn.</p>
+                        <a href="cars.html" class="btn primary">Xem bộ sưu tập xe</a>
+                    </div>
+                </div>
+                
+                <div id="cart-summary" class="cart-summary">
+                    <h3>Tóm tắt đơn hàng</h3>
+                    <div class="summary-row">
+                        <span>Tổng cộng</span>
+                        <span id="cart-total">$0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Thuế (10%)</span>
+                        <span id="cart-tax">$0</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Tổng thanh toán</span>
+                        <span id="cart-grand-total">$0</span>
+                    </div>
+                    <button id="checkout-btn" class="btn primary checkout-btn">Thanh toán</button>
+                    <button id="clear-cart-btn" class="btn outline clear-btn">Xóa giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Xử lý thanh toán</h2>
+            <p>Cảm ơn bạn đã lựa chọn Elite HyperCars!</p>
+            <p>Tổng thanh toán: <strong id="modal-total">$0</strong></p>
+            <p>Nhân viên của chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất để hoàn tất thủ tục mua xe.</p>
+            <button id="confirm-checkout" class="btn primary">Xác nhận thanh toán</button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <div class="toast-icon">✓</div>
+            <div class="toast-message">Thao tác thành công!</div>
+        </div>
     </div>
 
     <!-- Footer -->
