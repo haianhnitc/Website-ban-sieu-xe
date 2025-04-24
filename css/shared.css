@@ -19,36 +19,11 @@ body {
     flex-direction: column;
 }
 
-/* Con trỏ tùy chỉnh */
-.custom-cursor {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    background: rgba(255, 215, 0, 0.5);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.1s ease;
-}
-
 .custom-cursor.hovered {
     transform: scale(1.5);
     background: rgba(255, 215, 0, 0.8);
 }
 
-/* Thanh điều hướng */
-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-}
 
 /* Logo */
 .logo {
@@ -91,14 +66,6 @@ nav {
     transition: width 0.3s ease;
 }
 
-.nav-links a:hover {
-    color: #ffd700;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
 /* Menu hamburger */
 .hamburger {
     display: none;
@@ -118,6 +85,17 @@ nav {
     opacity: 1;
     transform: translateY(0);
 }
+
+a {
+    text-decoration: none;
+    color: #FFD700;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #FFC000;
+}
+
 
 /* Tiêu đề cấp 1 */
 h1 {
@@ -212,114 +190,6 @@ p {
     border-radius: 15px;
 }
 
-/* Biểu mẫu liên hệ */
-.contact-form {
-    max-width: 500px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.contact-form input,
-.contact-form textarea {
-    padding: 0.8rem;
-    border: none;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    color: #f5f5f5;
-}
-
-.contact-form textarea {
-    resize: none;
-    height: 150px;
-}
-
-/* Bố cục FAQ */
-.faq-layout {
-    display: flex;
-    max-width: 1200px;
-    margin: 0 auto;
-    gap: 2rem;
-    padding: 0 2rem;
-}
-
-/* Danh sách FAQ */
-.faq-list {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-/* Mục FAQ */
-.faq-item {
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 255, 255, 0.05));
-    padding: 1.5rem;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.faq-item:hover {
-    transform: translateX(10px);
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 255, 255, 0.1));
-}
-
-/* Icon cho FAQ */
-.faq-icon {
-    margin-right: 0.8rem;
-    font-size: 1.5rem;
-    transition: transform 0.3s ease;
-}
-
-.faq-item:hover .faq-icon {
-    transform: scale(1.2);
-}
-
-/* Chi tiết FAQ */
-.faq-details {
-    flex: 2;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 2rem;
-    border-radius: 15px;
-    backdrop-filter: blur(5px);
-    min-height: 300px;
-}
-
-.faq-details h2 {
-    font-size: 1.8rem;
-    color: #ffd700;
-    margin-bottom: 1rem;
-}
-
-.faq-details p {
-    color: #e0e0e0;
-}
-
-/* Call-to-action cho FAQ */
-.faq-cta {
-    text-align: center;
-    margin-top: 3rem;
-}
-
-/* Style cho video background */
-.faq-background {
-    position: relative;
-    z-index: 1;
-}
-
-.faq-background-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-    opacity: 0.65;
-    filter: blur(3px);
-    z-index: -1;
-}
 
 /* Chân trang */
 footer {
@@ -329,115 +199,8 @@ footer {
     color: #f5f5f5;
     margin-top: auto;
 }
-
-/* Thiết kế đáp ứng */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background: rgba(0, 0, 0, 0.9);
-        padding: 1rem;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .nav-links a {
-        font-size: 1.2rem;
-        padding: 0.5rem 0;
-    }
-
-    .hamburger {
-        display: block;
-    }
-
-    h1 {
-        font-size: 2.5rem;
-    }
-
-    .subtitle {
-        font-size: 1rem;
-    }
-
-    .faq-layout {
-        flex-direction: column;
-        padding: 0 1rem;
-    }
-
-    .faq-item {
-        padding: 1rem;
-    }
-
-    .faq-icon {
-        font-size: 1.2rem;
-    }
-
-    .faq-details {
-        padding: 1.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 2rem;
-    }
-
-    .subtitle {
-        font-size: 0.9rem;
-    }
-
-    .btn {
-        padding: 0.5rem 1rem;
-    }
-}
 /* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
-
-/* Reset CSS */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Base Styles */
-body {
-    font-family: 'Montserrat', sans-serif;
-    line-height: 1.6;
-    color: #e0e0e0;
-    background-color: #121212;
-    overflow-x: hidden;
-}
-
-a {
-    text-decoration: none;
-    color: #FFD700;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color: #FFC000;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 600;
-    margin-bottom: 15px;
-    color: #FFD700;
-}
-
-p {
-    margin-bottom: 15px;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-}
 
 /* Button Styles */
 .btn {
@@ -740,6 +503,7 @@ footer {
     }
 }
 
+/* Thiết kế đáp ứng */
 @media (max-width: 768px) {
     nav {
         padding: 15px 5%;
@@ -760,7 +524,54 @@ footer {
         width: 40px;
         height: 40px;
     }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        padding: 1rem;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;
+        padding: 0.5rem 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
 }
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        padding: 0.5rem 1rem;
+    }
+}
+
 
 /* Animation Classes */
 .fade-in {
@@ -847,54 +658,4 @@ footer {
     background: rgba(0, 0, 0, 0.7);
 }
 
-/* Page Header */
-.page-header {
-    position: relative;
-    height: 50vh;
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-top: 80px;
-}
 
-.page-header-content {
-    position: relative;
-    z-index: 1;
-    max-width: 800px;
-    padding: 0 20px;
-}
-
-.page-header-content h1 {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-    color: #FFD700;
-}
-
-.page-header-content p {
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto;
-    color: #e0e0e0;
-}
-
-/* Breadcrumb */
-.breadcrumb {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.breadcrumb a {
-    color: #e0e0e0;
-}
-
-.breadcrumb span {
-    margin: 0 10px;
-    color: #888;
-}
-
-.breadcrumb .current {
-    color: #FFD700;
-}

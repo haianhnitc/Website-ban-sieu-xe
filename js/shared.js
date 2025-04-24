@@ -29,6 +29,10 @@ function updateNavBar() {
         if (isLoggedIn) {
             authLink.href = 'user.html';
             authLink.textContent = 'Tài khoản';
+            // Kiểm tra xem đang ở trang user.html không
+            if (window.location.pathname.includes('user.html')) {
+                authLink.classList.add('active');
+            }
         } else {
             authLink.href = 'login.html';
             authLink.textContent = 'Đăng nhập/Đăng ký';
