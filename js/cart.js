@@ -87,6 +87,129 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
+
+    // helper: tính tổng tiền (trả số)
+    function calculateGrandTotal() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        return cart.reduce((sum, it) => sum + (Number(it.price || 0) * (it.quantity || 1)), 0);
+    }
+
+    // xử lý khi xác nhận: lưu lịch sử đơn và xóa giỏ
+    function processCheckout(appliedDiscount = 0, selectedPayment = '') {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        if (!cart.length) return;
+
+        const subtotal = calculateGrandTotal();
+        const totalAfterDiscount = Math.round(subtotal * (1 - (appliedDiscount || 0) / 100));
+
+        const order = {
+            id: 'ORD' + Date.now(),
+            date: new Date().toISOString(),
+            items: cart,
+            subtotal,
+            discountPercent: appliedDiscount,
+            total: totalAfterDiscount,
+            paymentMethod: selectedPayment
+        };
+
+        const history = JSON.parse(localStorage.getItem('orderHistory')) || [];
+        history.unshift(order);
+        localStorage.setItem('orderHistory', JSON.stringify(history));
+
+        localStorage.removeItem('cart');
+        if (typeof updateCartBadge === 'function') updateCartBadge();
+    }
+
+    // modal show (thêm mã giảm giá + chọn thanh toán)
+    function showCheckoutModal() {
+        const modal = document.getElementById('checkout-modal');
+        if (!modal) return;
+
+        const closeBtn = modal.querySelector('.close-modal');
+        const modalTotalEl = modal.querySelector('#modal-total');
+        const discountInput = modal.querySelector('#discount-code');
+        const applyBtn = modal.querySelector('#apply-discount');
+        const discountMsg = modal.querySelector('#discount-msg');
+        const paymentRadios = modal.querySelectorAll('input[name="payment-method"]');
+        const confirmBtn = modal.querySelector('#confirm-checkout');
+
+        let appliedDiscount = 0;
+        let selectedPayment = '';
+
+        // hiển thị tổng ban đầu
+        const subtotal = calculateGrandTotal();
+        modalTotalEl.textContent = `$${subtotal.toLocaleString()}`;
+
+        // reset state
+        discountInput.value = '';
+        discountMsg.textContent = '';
+        confirmBtn.disabled = true;
+        confirmBtn.setAttribute('aria-disabled', 'true');
+        paymentRadios.forEach(r => r.checked = false);
+
+        modal.style.display = 'block';
+
+        closeBtn.onclick = () => modal.style.display = 'none';
+        window.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
+
+        // =========================================================== mã giảm giá giả lập ========================================================
+        const discounts = { 'ELITE10': 10, 'VIP50': 50, 'WELCOME5': 5 };
+
+        applyBtn.onclick = () => {
+            const code = (discountInput.value || '').trim().toUpperCase();
+            if (!code) {
+                discountMsg.textContent = 'Vui lòng nhập mã giảm giá.';
+                discountMsg.classList.remove('success');
+                return;
+            }
+            if (discounts[code]) {
+                appliedDiscount = discounts[code];
+                discountMsg.textContent = `Mã hợp lệ — Giảm ${appliedDiscount}%`;
+                discountMsg.classList.add('success');
+                // cập nhật tổng hiển thị
+                const newTotal = Math.round(subtotal * (1 - appliedDiscount / 100));
+                modalTotalEl.textContent = `$${newTotal.toLocaleString()}`;
+            } else {
+                appliedDiscount = 0;
+                discountMsg.textContent = 'Mã không hợp lệ.';
+                discountMsg.classList.remove('success');
+                modalTotalEl.textContent = `$${subtotal.toLocaleString()}`;
+            }
+        };
+
+        paymentRadios.forEach(r => {
+            r.onchange = function () {
+                if (this.checked) {
+                    selectedPayment = this.value;
+                    confirmBtn.disabled = false;
+                    confirmBtn.removeAttribute('aria-disabled');
+                }
+            };
+        });
+
+        confirmBtn.onclick = () => {
+            if (!selectedPayment) {
+                alert('Vui lòng chọn phương thức thanh toán.');
+                return;
+            }
+            processCheckout(appliedDiscount, selectedPayment);
+            modal.style.display = 'none';
+            if (typeof showToast === 'function') {
+                const discountText = appliedDiscount ? ` (giảm ${appliedDiscount}%)` : '';
+                showToast(`Đơn hàng đã được gửi thành công! Phương thức: ${selectedPayment}${discountText}`);
+            }
+        };
+    }
+
+    // gắn sự kiện nút checkout (nếu có)
+    const checkoutButton = document.getElementById('checkout-button') || document.querySelector('.checkout-btn');
+    if (checkoutButton) {
+        checkoutButton.addEventListener('click', function () {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            if (isLoggedIn) showCheckoutModal();
+            else window.location.href = 'login.html';
+        });
+    }
     
     // Xử lý thanh toán
     function processCheckout() {
