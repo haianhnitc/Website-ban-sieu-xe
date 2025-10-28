@@ -672,6 +672,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    const shareBtn = document.getElementById('share-button');
+    const sharePopup = document.getElementById('share-popup');
+
+    if (shareBtn && sharePopup) {
+        shareBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            const isOpen = sharePopup.classList.contains('show');
+            if (isOpen) {
+                sharePopup.classList.remove('show');
+                shareBtn.setAttribute('aria-expanded', 'false');
+            } else {
+                sharePopup.classList.add('show');
+                shareBtn.setAttribute('aria-expanded', 'true');
+            }
+        });
+
+        // đóng khi click ngoài
+        document.addEventListener('click', function (e) {
+            if (!sharePopup.contains(e.target) && !shareBtn.contains(e.target)) {
+                sharePopup.classList.remove('show');
+                shareBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // đóng với Escape
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                sharePopup.classList.remove('show');
+                shareBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
     // Thiết lập sự kiện cho các nút sau khi hiển thị chi tiết xe
     displayCarDetails(carId);
 

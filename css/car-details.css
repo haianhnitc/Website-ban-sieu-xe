@@ -171,6 +171,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    position: relative;
 }
 
 .btn {
@@ -211,6 +212,83 @@
 
 .btn.secondary:hover, .btn.outline:hover {
     background: rgba(255, 255, 255, 0.15);
+}
+
+.btn.share {
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+}
+
+.share-popup {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 10px);
+    background: #0f0f13;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    min-width: 200px;
+    display: none;
+    z-index: 1200;
+    transform-origin: bottom right;
+    transition: transform 0.18s ease, opacity 0.18s ease;
+    opacity: 0;
+}
+
+.share-popup.show {
+    display: block;
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* little arrow */
+.share-popup::after {
+    content: "";
+    position: absolute;
+    right: 14px;
+    top: 100%;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #0f0f13;
+}
+
+/* grid of icons */
+.share-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    align-items: center;
+}
+
+.share-option {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, transform 0.12s;
+    color: #fff;
+    font-size: 0;
+}
+
+.share-option:hover {
+    background: rgba(255,255,255,0.04);
+    transform: translateY(-3px);
+}
+
+/* small label under icons for accessibility (optional) */
+.share-option .label {
+    display: none;
 }
 
 /* Related Cars Section */
@@ -358,5 +436,14 @@
     
     .main-image {
         height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .share-popup {
+        right: 0;
+        left: 0;
+        margin: 0 auto;
+        min-width: 160px;
     }
 }
