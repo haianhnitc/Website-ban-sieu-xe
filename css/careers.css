@@ -1,0 +1,346 @@
+#careers {
+    padding: 2rem;
+    min-height: 100vh;
+    position: relative;
+}
+/* Biểu mẫu liên hệ */
+.contact-form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 0.8rem;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #f5f5f5;
+}
+
+.contact-form textarea {
+    resize: none;
+    height: 150px;
+}
+
+
+#careers::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/images/showroom-cars.jpg') center center/cover fixed;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+/* Banner Parallax */
+.career-banner {
+    position: relative;
+    height: 400px;
+    background: url('') center center/cover fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 15px;
+    margin-bottom: 3rem;
+}
+
+.banner-text {
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.banner-text h1 {
+    font-size: 3rem;
+    color: #ffd700;
+}
+
+.banner-text p {
+    font-size: 1.2rem;
+    color: #f5f5f5;
+}
+
+/* Phần lợi ích */
+.benefits {
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.benefit-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.benefit-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.benefit-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+/* Hình ảnh công việc */
+.job-image {
+    max-width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+/* Hiệu ứng lật thẻ */
+.car-card {
+    perspective: 1000px;
+    height: 400px;
+}
+
+.car-card .card-front,
+.car-card .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transition: transform 0.6s ease;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem; /* Giảm padding để có thêm không gian */
+    border-radius: 15px;
+    text-align: center;
+}
+
+.car-card .card-front {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 0; /* Cho phép thu nhỏ */
+}
+
+.car-card .card-back {
+    transform: rotateY(180deg);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.car-card.flipped .card-front {
+    transform: rotateY(-180deg);
+}
+
+.car-card.flipped .card-back {
+    transform: rotateY(0);
+}
+
+/* Hình ảnh công việc */
+.job-image {
+    max-width: 100%;
+    max-height: 50%; /* Giới hạn tối đa 50% chiều cao thẻ */
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    flex-shrink: 1; /* Cho phép hình ảnh thu nhỏ */
+}
+
+/* Tiêu đề và mô tả */
+.car-card .card-front h2 {
+    font-size: clamp(1.2rem, 4vw, 1.5rem); /* Kích thước linh hoạt */
+    margin-bottom: 0.5rem;
+    flex-shrink: 0;
+}
+
+.car-card .card-front p {
+    font-size: clamp(0.8rem, 3vw, 1rem);
+    margin-bottom: 0.5rem;
+    flex-shrink: 1;
+    line-height: 1.4;
+}
+
+/* Nút Chi tiết và Ứng tuyển */
+.card-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-grow: 1; /* Ưu tiên không gian cho nút */
+    align-items: flex-end;
+}
+
+.card-buttons .btn {
+    padding: 0.5rem 1rem; /* Giảm kích thước nút để vừa khung */
+    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+}
+
+.btn-detail {
+    background: #555;
+}
+
+.btn-detail:hover {
+    background: #777;
+}
+
+.btn-back {
+    background: #ffd700;
+    color: #0a0a0a;
+}
+
+.btn-back:hover {
+    background: #ffeb3b;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    transform: scale(0.7);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal-content.visible {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #ffd700;
+}
+
+/* Biểu mẫu */
+.contact-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 0.8rem;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #f5f5f5;
+    width: 100%;
+}
+
+.contact-form textarea {
+    grid-column: span 2;
+    resize: none;
+    height: 100px;
+}
+
+.contact-form input[type="file"] {
+    grid-column: span 2;
+}
+
+.contact-form button {
+    grid-column: span 2;
+    justify-self: center;
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    color: #f5f5f5;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1001;
+}
+
+.toast.success {
+    background: #28a745;
+}
+
+.toast.error {
+    background: #dc3545;
+}
+
+.toast.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .career-banner {
+        height: 300px;
+    }
+
+    .banner-text h1 {
+        font-size: 2rem;
+    }
+
+    .job-image {
+        height: 150px;
+    }
+
+    .contact-form {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form textarea,
+    .contact-form input[type="file"],
+    .contact-form button {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .career-banner {
+        height: 200px;
+    }
+
+    .banner-text h1 {
+        font-size: 1.5rem;
+    }
+
+    .job-image {
+        height: 120px;
+    }
+}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite HyperCars - Tuyển dụng</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/careers.css">
+</head>
+<body>
+    <!-- Con trỏ tùy chỉnh -->
+    <div class="custom-cursor" id="customCursor"></div>
+
+    <!-- Thanh điều hướng -->
+    <nav>
+        <div class="logo">
+            <svg viewBox="0 0 100 100" width="40" height="40">
+                <path d="M50 5L10 25v50l40 20 40-20V25L50 5zm0 10l30 15v40L50 85 20 70V30l30-15z" fill="#FFD700"/>
+                <path d="M50 25L20 40v20l30 15 30-15V40L50 25zm0 10l20 10v10L50 65 30 55V45l20-10z" fill="#FFD700"/>
+                <path d="M50 45L30 55v10l20 10 20-10V55L50 45z" fill="#FFD700"/>
+            </svg>
+            ELITE HYPERCARS
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="home.html">Trang chủ</a>
+            <a href="about.html">Giới thiệu</a>
+            <a href="cars.html">Bộ sưu tập xe</a>
+            <a href="news.html">Tin tức</a>
+            <a href="contact.html">Liên hệ</a>
+            <a href="faq.html">FAQ</a>
+            <a href="login.html">Đăng nhập/Đăng ký</a>
+            <a href="cart.html">Giỏ hàng <span id="cart-badge" class="cart-badge">0</span></a>
+            <a href="careers.html" class="active">Tuyển dụng</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </nav>
+
+    <!-- Image Background -->
+    <img src="images/showroom-cars.jpg" class="career-background">
+
+    <!-- Nội dung Tuyển dụng -->
+    <div id="careers">
+        <!-- Banner Parallax -->
+        <div class="career-banner fade-in">
+            <div class="banner-text">
+                <h1>Tham gia Elite HyperCars</h1>
+                <p>Kiến tạo tương lai của siêu xe cùng đội ngũ tài năng!</p>
+            </div>
+        </div>
+
+        <!-- Lợi ích làm việc -->
+        <div class="benefits fade-in">
+            <h2>Tại sao chọn Elite HyperCars?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <span class="benefit-icon">🚗</span>
+                    <h3>Môi trường năng động</h3>
+                    <p>Làm việc với các siêu xe tiên tiến và đội ngũ đam mê.</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">💰</span>
+                    <h3>Phúc lợi hấp dẫn</h3>
+                    <p>Lương thưởng cạnh tranh và cơ hội phát triển.</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">🌍</span>
+                    <h3>Tầm nhìn toàn cầu</h3>
+                    <p>Góp phần tạo nên thương hiệu siêu xe hàng đầu thế giới.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Danh sách công việc -->
+        <div class="car-collection">
+            <div class="car-card fade-in">
+                <div class="card-front">
+                    <img src="images/sales-team.jpg" alt="Nhân viên kinh doanh" class="job-image">
+                    <h2>Nhân viên kinh doanh</h2>
+                    <p>Giới thiệu các siêu xe hàng đầu đến khách hàng.</p>
+                    <div class="card-buttons">
+                        <button class="btn" onclick="showApplyForm('Nhân viên kinh doanh')">Ứng tuyển</button>
+                        <button class="btn btn-detail" onclick="flipCard(this)">Chi tiết</button>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3>Chi tiết công việc</h3>
+                    <p><strong>Trách nhiệm:</strong> Tư vấn khách hàng, xây dựng mối quan hệ, đạt chỉ tiêu doanh số.</p>
+                    <p><strong>Yêu cầu:</strong> Kinh nghiệm 3+ năm, kỹ năng giao tiếp xuất sắc.</p>
+                    <button class="btn btn-back" onclick="flipCard(this)">Quay lại</button>
+                </div>
+            </div>
+            <div class="car-card fade-in">
+                <div class="card-front">
+                    <img src="images/technician_tools.jpg" alt="Kỹ thuật viên ô tô" class="job-image">
+                    <h2>Kỹ thuật viên ô tô</h2>
+                    <p>Làm việc với công nghệ siêu xe tiên tiến nhất.</p>
+                    <div class="card-buttons">
+                        <button class="btn" onclick="showApplyForm('Kỹ thuật viên ô tô')">Ứng tuyển</button>
+                        <button class="btn btn-detail" onclick="flipCard(this)">Chi tiết</button>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3>Chi tiết công việc</h3>
+                    <p><strong>Trách nhiệm:</strong> Bảo trì, sửa chữa, nâng cấp siêu xe.</p>
+                    <p><strong>Yêu cầu:</strong> Kinh nghiệm 5+ năm, am hiểu công nghệ ô tô.</p>
+                    <button class="btn btn-back" onclick="flipCard(this)">Quay lại</button>
+                </div>
+            </div>
+            <div class="car-card fade-in">
+                <div class="card-front">
+                    <img src="images/car-design.png" alt="Nhà thiết kế ô tô" class="job-image">
+                    <h2>Nhà thiết kế ô tô</h2>
+                    <p>Kiến tạo những mẫu siêu xe dẫn đầu xu hướng.</p>
+                    <div class="card-buttons">
+                        <button class="btn" onclick="showApplyForm('Nhà thiết kế ô tô')">Ứng tuyển</button>
+                        <button class="btn btn-detail" onclick="flipCard(this)">Chi tiết</button>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <h3>Chi tiết công việc</h3>
+                    <p><strong>Trách nhiệm:</strong> Thiết kế ngoại thất, nội thất siêu xe, phối hợp với đội kỹ thuật.</p>
+                    <p><strong>Yêu cầu:</strong> Kinh nghiệm 4+ năm, thành thạo phần mềm thiết kế 3D.</p>
+                    <button class="btn btn-back" onclick="flipCard(this)">Quay lại</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Biểu mẫu ứng tuyển -->
+        <div id="apply-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeApplyForm()">×</span>
+                <h2>Ứng tuyển vị trí <span id="job-title"></span></h2>
+                <form id="apply-form" class="contact-form">
+                    <input type="text" placeholder="Họ và tên" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="tel" placeholder="Số điện thoại" required>
+                    <textarea placeholder="Giới thiệu ngắn về bản thân" required></textarea>
+                    <input type="file" accept=".pdf,.doc,.docx" required>
+                    <button type="submit" class="btn">Gửi hồ sơ</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Toast Notification -->
+        <div id="toast" class="toast"></div>
+    </div>
+
+    <!-- Chân trang -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <svg viewBox="0 0 100 100" width="30" height="30">
+                    <path d="M50 5L10 25v50l40 20 40-20V25L50 5zm0 10l30 15v40L50 85 20 70V30l30-15z" fill="#FFD700"/>
+                    <path d="M50 25L20 40v20l30 15 30-15V40L50 25zm0 10l20 10v10L50 65 30 55V45l20-10z" fill="#FFD700"/>
+                    <path d="M50 45L30 55v10l20 10 20-10V55L50 45z" fill="#FFD700"/>
+                </svg>
+                <span>ELITE HYPERCARS</span>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Liên kết nhanh</h3>
+                    <a href="about.html">Giới thiệu</a>
+                    <a href="cars.html">Bộ sưu tập xe</a>
+                    <a href="news.html">Tin tức</a>
+                    <a href="contact.html">Liên hệ</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Liên hệ</h3>
+                    <p>Email: contact@elitehypercars.com</p>
+                    <p>Điện thoại: (123) 456-7890</p>
+                    <p>Địa chỉ: 123 Luxury Avenue, Elite City</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Theo dõi chúng tôi</h3>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Elite HyperCars. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/shared.js"></script>
+    <script src="js/careers.js"></script>
+</body>
+</html>

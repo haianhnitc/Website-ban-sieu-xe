@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite HyperCars - Giới thiệu</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/about.css">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="customCursor"></div>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">
+            <svg viewBox="0 0 100 100" width="40" height="40">
+                <path d="M50 5L10 25v50l40 20 40-20V25L50 5zm0 10l30 15v40L50 85 20 70V30l30-15z" fill="#FFD700"/>
+                <path d="M50 25L20 40v20l30 15 30-15V40L50 25zm0 10l20 10v10L50 65 30 55V45l20-10z" fill="#FFD700"/>
+                <path d="M50 45L30 55v10l20 10 20-10V55L50 45z" fill="#FFD700"/>
+            </svg>
+            ELITE HYPERCARS
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="home.html">Trang chủ</a>
+            <a href="about.html" class="active">Giới thiệu</a>
+            <a href="cars.html">Bộ sưu tập xe</a>
+            <a href="news.html">Tin tức</a>
+            <a href="contact.html">Liên hệ</a>
+            <a href="faq.html">FAQ</a>
+            <a href="login.html">Đăng nhập/Đăng ký</a>
+            <a href="cart.html">Giỏ hàng <span id="cart-badge" class="cart-badge">0</span></a>
+            <a href="careers.html">Tuyển dụng</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </nav>
+
+    <!-- About Hero Section -->
+    <section id="about-hero" class="fade-in">
+        <div class="about-hero-content">
+            <h1>Giới thiệu</h1>
+            <p>Elite HyperCars là showroom hàng đầu chuyên cung cấp các siêu xe cao cấp và dịch vụ độc quyền.</p>
+        </div>
+    </section>
+
+    <!-- Company Overview Section -->
+    <section id="company-overview" class="fade-in">
+        <div class="section-container">
+            <div class="overview-image">
+                <img src="images/showroom-cars.jpg" alt="Elite HyperCars Showroom">
+            </div>
+            <div class="overview-content">
+                <h2>Về chúng tôi</h2>
+                <p>Elite HyperCars là showroom hàng đầu chuyên cung cấp các siêu xe cao cấp và dịch vụ độc quyền tại Việt Nam. Với đội ngũ chuyên gia giàu kinh nghiệm và đam mê, chúng tôi cam kết mang đến những trải nghiệm tuyệt vời nhất cho khách hàng.</p>
+                <p>Chúng tôi không chỉ là nơi mua bán siêu xe mà còn là điểm đến cho những người đam mê tốc độ và công nghệ. Tại Elite HyperCars, chúng tôi cung cấp dịch vụ toàn diện từ tư vấn mua xe, bảo dưỡng, nâng cấp đến bảo hiểm và hỗ trợ tài chính.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section id="history" class="fade-in">
+        <div class="section-container">
+            <h2>Lịch sử phát triển</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>2010</h3>
+                        <p>Elite HyperCars được thành lập với showroom đầu tiên tại Hà Nội, chuyên về các dòng xe Lamborghini và Ferrari.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>2015</h3>
+                        <p>Mở rộng showroom tại TP. Hồ Chí Minh và bổ sung thêm các thương hiệu Bugatti, Koenigsegg và Pagani.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>2020</h3>
+                        <p>Trở thành đại lý chính thức của Rimac và các thương hiệu siêu xe điện hàng đầu thế giới.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>2025</h3>
+                        <p>Hiện nay, Elite HyperCars là đối tác tin cậy của hơn 15 thương hiệu siêu xe hàng đầu thế giới với 3 showroom lớn tại Việt Nam.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section id="mission-vision" class="fade-in">
+        <div class="section-container">
+            <div class="mission-vision-content">
+                <div class="mission">
+                    <h2>Sứ mệnh</h2>
+                    <p>Sứ mệnh của Elite HyperCars là mang đến trải nghiệm lái xe đỉnh cao với những sản phẩm và dịch vụ hoàn hảo. Chúng tôi không chỉ bán xe mà còn mang đến một phong cách sống đẳng cấp và độc đáo.</p>
+                </div>
+                <div class="vision">
+                    <h2>Tầm nhìn</h2>
+                    <p>Trở thành nhà phân phối siêu xe hàng đầu Đông Nam Á, đồng thời là cầu nối giữa các nhà sản xuất siêu xe hàng đầu thế giới với thị trường Việt Nam và khu vực.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values Section -->
+    <section id="core-values" class="fade-in">
+        <div class="section-container">
+            <h2>Giá trị cốt lõi</h2>
+            <div class="values-container">
+                <div class="value-card fade-in">
+                    <div class="value-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Chất lượng</h3>
+                    <p>Chúng tôi cam kết cung cấp những sản phẩm và dịch vụ chất lượng cao nhất.</p>
+                </div>
+                <div class="value-card fade-in">
+                    <div class="value-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                    </div>
+                    <h3>Đổi mới</h3>
+                    <p>Luôn cập nhật những xu hướng mới nhất trong ngành công nghiệp siêu xe.</p>
+                </div>
+                <div class="value-card fade-in">
+                    <div class="value-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </div>
+                    <h3>Tận tâm</h3>
+                    <p>Đặt lợi ích và trải nghiệm của khách hàng lên hàng đầu.</p>
+                </div>
+                <div class="value-card fade-in">
+                    <div class="value-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                            <line x1="6" y1="1" x2="6" y2="4"></line>
+                            <line x1="10" y1="1" x2="10" y2="4"></line>
+                            <line x1="14" y1="1" x2="14" y2="4"></line>
+                        </svg>
+                    </div>
+                    <h3>Bền vững</h3>
+                    <p>Cam kết phát triển bền vững và bảo vệ môi trường thông qua việc giới thiệu các dòng xe điện và hybrid.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="fade-in">
+        <div class="section-container">
+            <h2>Đội ngũ của chúng tôi</h2>
+            <div class="team-container">
+                <div class="team-member fade-in">
+                    <div class="member-image">
+                        <img src="images/nguyen-van-a.jpg" alt="CEO">
+                    </div>
+                    <div class="member-info">
+                        <h3>Nguyễn Văn A</h3>
+                        <p class="member-position">CEO & Founder</p>
+                        <p>Với hơn 20 năm kinh nghiệm trong ngành công nghiệp ô tô cao cấp.</p>
+                    </div>
+                </div>
+                <div class="team-member fade-in">
+                    <div class="member-image">
+                        <img src="images/tran-thi-b.jfif" alt="CTO">
+                    </div>
+                    <div class="member-info">
+                        <h3>Trần Thị B</h3>
+                        <p class="member-position">CTO</p>
+                        <p>Chuyên gia về công nghệ ô tô với bằng Tiến sĩ từ Đại học Stanford.</p>
+                    </div>
+                </div>
+                <div class="team-member fade-in">
+                    <div class="member-image">
+                        <img src="images/le-van-c.jpg" alt="Sales Director">
+                    </div>
+                    <div class="member-info">
+                        <h3>Lê Văn C</h3>
+                        <p class="member-position">Sales Director</p>
+                        <p>Hơn 15 năm kinh nghiệm trong lĩnh vực bán hàng siêu xe cao cấp.</p>
+                    </div>
+                </div>
+                <div class="team-member fade-in">
+                    <div class="member-image">
+                        <img src="images/pham-thi-d.jpg" alt="Service Manager">
+                    </div>
+                    <div class="member-info">
+                        <h3>Phạm Thị D</h3>
+                        <p class="member-position">Service Manager</p>
+                        <p>Chuyên gia kỹ thuật với chứng chỉ từ các hãng xe hàng đầu như Ferrari và Lamborghini.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section id="partners" class="fade-in">
+        <div class="section-container">
+            <h2>Đối tác của chúng tôi</h2>
+            <div class="partners-container">
+                <div class="partner fade-in">
+                    <img src="images/ferrari-ges-logo.svg" alt="Ferrari">
+                </div>
+                <div class="partner fade-in">
+                    <img src="images/Lamborghini-Logo.wine.svg" alt="Lamborghini">
+                </div>
+                <div class="partner fade-in">
+                    <img src="images/bugatti-logo.svg" alt="Bugatti">
+                </div>
+                <div class="partner fade-in">
+                    <img src="images/koenigsegg-logo.svg" alt="Koenigsegg">
+                </div>
+                <div class="partner fade-in">
+                    <img src="images/rimac-logo.svg" alt="Rimac">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <svg viewBox="0 0 100 100" width="30" height="30">
+                    <path d="M50 5L10 25v50l40 20 40-20V25L50 5zm0 10l30 15v40L50 85 20 70V30l30-15z" fill="#FFD700"/>
+                    <path d="M50 25L20 40v20l30 15 30-15V40L50 25zm0 10l20 10v10L50 65 30 55V45l20-10z" fill="#FFD700"/>
+                    <path d="M50 45L30 55v10l20 10 20-10V55L50 45z" fill="#FFD700"/>
+                </svg>
+                <span>ELITE HYPERCARS</span>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Liên kết nhanh</h3>
+                    <a href="about.html">Giới thiệu</a>
+                    <a href="cars.html">Bộ sưu tập xe</a>
+                    <a href="news.html">Tin tức</a>
+                    <a href="contact.html">Liên hệ</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Liên hệ</h3>
+                    <p>Email: contact@elitehypercars.com</p>
+                    <p>Điện thoại: (123) 456-7890</p>
+                    <p>Địa chỉ: 123 Luxury Avenue, Elite City</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Theo dõi chúng tôi</h3>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Elite HyperCars. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="js/shared.js"></script>
+    <script src="js/about.js"></script>
+</body>
+</html>
