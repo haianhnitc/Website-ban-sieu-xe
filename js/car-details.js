@@ -632,30 +632,90 @@ document.addEventListener('DOMContentLoaded', function() {
     // Hiển thị modal thanh toán
     function showCheckoutModal() {
         const modal = document.getElementById('checkout-modal');
-        const closeBtn = document.querySelector('.close-modal');
-        const confirmBtn = document.querySelector('#checkout-modal .btn.primary');
-        
-        if (modal) {
-            modal.style.display = 'block';
-            
-            // Xử lý sự kiện đóng modal
-            closeBtn.onclick = function() {
+        if (!modal) return;
+
+        const closeBtn = modal.querySelector('.close-modal');
+        const confirmBtn = modal.querySelector('.btn.primary');
+        const applyBtn = modal.querySelector('#apply-discount');
+        const discountInput = modal.querySelector('#discount-code');
+        const discountMsg = modal.querySelector('#discount-msg');
+        const paymentRadios = modal.querySelectorAll('input[name="payment-method"]');
+
+        let appliedDiscount = 0;
+        let selectedPayment = null;
+
+        // reset modal state
+        discountInput.value = '';
+        discountMsg.textContent = '';
+        confirmBtn.disabled = true;
+        appliedDiscount = 0;
+        selectedPayment = null;
+        paymentRadios.forEach(r => r.checked = false);
+
+        modal.style.display = 'block';
+
+        // đóng modal
+        closeBtn.onclick = function () {
+            modal.style.display = 'none';
+        };
+
+        // Đóng khi click ra ngoài
+        window.onclick = function (event) {
+            if (event.target == modal) {
                 modal.style.display = 'none';
             }
-            
-            // Xử lý sự kiện nút xác nhận
-            confirmBtn.onclick = function() {
-                modal.style.display = 'none';
-                showToast('Đơn hàng đã được gửi thành công!');
+        };
+
+        // Áp dụng mã giảm giá (giả lập)
+        applyBtn.onclick = function () {
+            const code = (discountInput.value || '').trim().toUpperCase();
+            if (!code) {
+                discountMsg.textContent = 'Vui lòng nhập mã giảm giá.';
+                discountMsg.classList.remove('success');
+                return;
             }
-            
-            // Đóng modal khi click bên ngoài
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = 'none';
+
+            // Các mã mẫu
+            const discounts = {
+                'ELITE10': 10,
+                'VIP50': 50,
+                'WELCOME5': 5
+            };
+
+            if (discounts[code]) {
+                appliedDiscount = discounts[code];
+                discountMsg.textContent = `Mã hợp lệ — Giảm ${appliedDiscount}%`;
+                discountMsg.classList.add('success');
+            } else {
+                appliedDiscount = 0;
+                discountMsg.textContent = 'Mã không hợp lệ.';
+                discountMsg.classList.remove('success');
+            }
+        };
+
+        // Chọn phương thức thanh toán
+        paymentRadios.forEach(radio => {
+            radio.onchange = function () {
+                if (this.checked) {
+                    selectedPayment = this.value;
+                    confirmBtn.disabled = false;
                 }
+            };
+        });
+
+        // Xác nhận thanh toán
+        confirmBtn.onclick = function () {
+            if (!selectedPayment) {
+                // an extra guard
+                alert('Vui lòng chọn phương thức thanh toán.');
+                return;
             }
-        }
+
+            modal.style.display = 'none';
+
+            const discountText = appliedDiscount ? ` (Áp dụng giảm ${appliedDiscount}%)` : '';
+            showToast(`Đơn hàng đã được gửi thành công! Phương thức: ${selectedPayment}${discountText}`);
+        };
     }
     
     // Xử lý sự kiện click vào thumbnail để đổi ảnh chính

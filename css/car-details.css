@@ -414,6 +414,62 @@
 }
 
 
+.checkout-discount {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 12px;
+}
+#discount-code {
+    flex: 1;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: #0f0f13;
+    color: #fff;
+}
+#apply-discount {
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: linear-gradient(135deg,#e6a44e,#ca7b16);
+    color: #111;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+}
+#discount-msg {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    color: #ffbaba;
+}
+#discount-msg.success {
+    color: #bff0b3;
+}
+
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+.payment-method {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.02);
+}
+.payment-method input[type="radio"] {
+    transform: scale(1.05);
+}
+
+/* nhỏ cho responsive */
+@media (max-width:480px) {
+    .checkout-discount { flex-direction: column; align-items: stretch; }
+    #apply-discount { width: 100%; }
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .car-details-grid {

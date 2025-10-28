@@ -186,11 +186,29 @@
         <!-- Checkout Modal -->
         <div id="checkout-modal" class="modal">
             <div class="modal-content">
-                <span class="close-modal">&times;</span>
+                <span class="close-modal" title="Đóng">&times;</span>
                 <h2>Xử lý thanh toán</h2>
                 <p>Cảm ơn bạn đã lựa chọn Elite HyperCars!</p>
-                <p>Nhân viên của chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất để hoàn tất thủ tục mua xe.</p>
-                <button class="btn primary">Xác nhận</button>
+                <p>Nhân viên của chúng tôi sẽ liên hệ với bạn để hoàn tất thủ tục. Trước khi xác nhận, bạn có thể sử dụng mã giảm giá (nếu có) và chọn phương thức thanh toán.</p>
+
+                <!-- Discount -->
+                <div class="checkout-discount">
+                    <input id="discount-code" type="text" placeholder="Nhập mã giảm giá (ví dụ: ELITE10)" />
+                    <button id="apply-discount" class="btn">Áp dụng</button>
+                </div>
+                <div id="discount-msg" aria-live="polite"></div>
+
+                <!-- Payment methods -->
+                <div class="payment-methods" role="radiogroup" aria-label="Phương thức thanh toán">
+                    <label class="payment-method"><input type="radio" name="payment-method" value="Thẻ tín dụng"> Thẻ tín dụng / Ghi nợ</label>
+                    <label class="payment-method"><input type="radio" name="payment-method" value="PayPal"> PayPal</label>
+                    <label class="payment-method"><input type="radio" name="payment-method" value="Chuyển khoản"> Chuyển khoản ngân hàng</label>
+                    <label class="payment-method"><input type="radio" name="payment-method" value="Thanh toán khi nhận"> Thanh toán khi nhận (COD)</label>
+                </div>
+
+                <div style="text-align:right;">
+                    <button class="btn primary" aria-disabled="true">Xác nhận</button>
+                </div>
             </div>
         </div>
     </section>
