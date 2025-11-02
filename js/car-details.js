@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Dữ liệu chi tiết của các xe
     const carsData = {
         1: {
+            MaSP: "CAR001",
             name: "Lamborghini Aventador SVJ",
             price: "$517,770",
             maxSpeed: "350 km/h",
@@ -22,6 +23,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Khung gầm monocoque carbon fiber",
                 "Hệ thống thông tin giải trí kết nối Apple CarPlay"
             ],
+            links: [
+                "https://www.lamborghini.com/en-en/models/aventador/aventador-svj",
+                "https://www.caranddriver.com/lamborghini/aventador-svj"
+            ],
             images: {
                 main: "images/cars-collection/anh_1.jpg",
                 thumbnails: [
@@ -33,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         2: {
+            MaSP: "CAR002",
             name: "Ferrari SF90 Stradale",
             price: "$625,000",
             maxSpeed: "340 km/h",
@@ -49,6 +55,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Phanh carbon-ceramic",
                 "Gương hậu kỹ thuật số"
             ],
+            links: [
+                "https://www.ferrari.com/en-EN/auto/sf90-stradale",
+                "https://www.topgear.com/car-reviews/ferrari/sf90-stradale"
+            ],
             images: {
                 main: "images/cars-collection/anh_2.jpg",
                 thumbnails: [
@@ -60,13 +70,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         3: {
+            MaSP: "CAR003",
             name: "Bugatti Chiron Super Sport",
             price: "$3,825,000",
             maxSpeed: "440 km/h",
             power: "1,578 HP",
             acceleration: "2.4s",
             colors: "Đen, Xanh, Bạc, Trắng, Cam",
-            description: "Bugatti Chiron Super Sport là một kiệt tác kỹ thuật với động cơ W16 8.0L quad-turbo sản sinh công suất khủng khiếp 1,578 mã lực. Chiếc siêu xe này được thiết kế để trở thành một trong những mẫu xe sản xuất nhanh nhất thế giới với tốc độ tối đa lên đến 440 km/h. Thân xe kéo dài hơn để tối ưu hóa khí động học, giúp xe có thể đạt được những tốc độ chưa từng có cho một chiếc xe thương mại.",
+            description: "Bugatti Chiron Super Sport là một kiệt tác kỹ thuật với động cơ W16 8.0L quad-turbo sản sinh công suất khủng khiếp 1,578 mã lực. Chiếc siêu xe này được thiết kế để trở thành một trong những mẫu xe sản xuất nhanh nhất thế giới với tốc độ tối đa lên đến 440 km/h.",
             features: [
                 "Động cơ W16 8.0L quad-turbo công suất 1,578 HP",
                 "Thân xe kéo dài cho khí động học tối ưu",
@@ -75,6 +86,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Hệ thống treo thích ứng với công nghệ Bugatti",
                 "Hộp số ly hợp kép 7 cấp",
                 "Hệ thống phanh carbon-ceramic kích thước lớn"
+            ],
+            links: [
+                "https://www.bugatti.com/chiron/chiron-super-sport/",
+                "https://www.motor1.com/bugatti/chiron-super-sport/"
             ],
             images: {
                 main: "images/cars-collection/anh_3.jpg",
@@ -87,6 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         4: {
+            MaSP: "CAR004",
             name: "Rolls-Royce Ghost",
             price: "$311,900",
             maxSpeed: "250 km/h",
@@ -103,6 +119,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Trần xe Starlight với 1.344 đèn LED mô phỏng bầu trời sao",
                 "Nội thất bọc da thủ công và gỗ quý cao cấp"
             ],
+            links: [
+                "https://www.rolls-roycemotorcars.com/en_US/showroom/ghost.html",
+                "https://www.caranddriver.com/rolls-royce/ghost"
+            ],
             images: {
                 main: "images/cars-collection/anh_4.jpg",
                 thumbnails: [
@@ -114,6 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         5: {
+            MaSP: "CAR005",
             name: "Pagani Huayra BC",
             price: "$3,650,000",
             maxSpeed: "380 km/h",
@@ -130,6 +151,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Lốp Pirelli P Zero Corsa được phát triển riêng",
                 "Hệ thống xả titanium nhẹ với lớp phủ ceramic"
             ],
+            links: [
+                "https://www.pagani.com/huayra-bc/",
+                "https://www.topgear.com/car-reviews/pagani/huayra-bc"
+            ],
             images: {
                 main: "images/cars-collection/anh_5.jpg",
                 thumbnails: [
@@ -141,13 +166,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         6: {
+            MaSP: "CAR006",
             name: "Koenigsegg Jesko",
             price: "$2,800,000",
             maxSpeed: "480+ km/h",
             power: "1,600 HP",
             acceleration: "2.5s",
             colors: "Trắng, Đỏ, Xanh, Đen, Bạc",
-            description: "Koenigsegg Jesko, đặt theo tên của cha của Christian von Koenigsegg, là siêu xe thế hệ tiếp theo được thiết kế để phá vỡ kỷ lục tốc độ. Với động cơ V8 twin-turbo 5.0L có khả năng sản sinh lên đến 1,600 mã lực (khi sử dụng nhiên liệu E85), Jesko có tiềm năng đạt tốc độ trên 480 km/h. Hộp số Light Speed Transmission (LST) 9 cấp cách mạng của xe cho phép chuyển số tức thời với bất kỳ cấp số nào, không có độ trễ.",
+            description: "Koenigsegg Jesko, đặt theo tên của cha của Christian von Koenigsegg, là siêu xe thế hệ tiếp theo được thiết kế để phá vỡ kỷ lục tốc độ. Với động cơ V8 twin-turbo 5.0L có khả năng sản sinh lên đến 1,600 mã lực (khi sử dụng nhiên liệu E85), Jesko có tiềm năng đạt tốc độ trên 480 km/h. Hộp số Light Speed Transmission (LST) 9 cấp cách mạng của xe cho phép chuyển số tức thời với bất kỳ cấp số nào, không có độ trễ. :contentReference[oaicite:0]{index=0}",
             features: [
                 "Động cơ V8 twin-turbo 5.0L công suất 1,600 HP (với E85)",
                 "Hộp số Light Speed Transmission (LST) 9 cấp cách mạng",
@@ -156,6 +182,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Khung gầm carbon monocoque siêu cứng",
                 "Phanh carbon-ceramic Michelin",
                 "Cửa dihedral synchro-helix không cần trục"
+            ],
+            links: [
+                "https://www.koenigsegg.com/model/jesko-attack",
+                "https://www.caranddriver.com/koenigsegg/jesko"
             ],
             images: {
                 main: "images/cars-collection/anh_6.jpg",
@@ -168,13 +198,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         7: {
+            MaSP: "CAR007",
             name: "Aston Martin Valkyrie",
             price: "$3,200,000",
             maxSpeed: "354 km/h",
             power: "1,140 HP",
             acceleration: "2.5s",
             colors: "Đen, Xanh, Bạc, Xám, Đỏ",
-            description: "Aston Martin Valkyrie là sản phẩm hợp tác giữa Aston Martin và đội đua F1 Red Bull Racing. Được thiết kế bởi Adrian Newey - kỹ sư thiết kế F1 huyền thoại, Valkyrie là chiếc siêu xe hypercar mang DNA đua xe F1 thuần túy. Với động cơ Cosworth V12 6.5L hút khí tự nhiên kết hợp hệ thống hybrid, Valkyrie sản sinh 1,140 mã lực trong khi chỉ nặng khoảng 1,030 kg, mang lại tỷ lệ công suất/trọng lượng 1:1.",
+            description: "Aston Martin Valkyrie là sản phẩm hợp tác giữa Aston Martin và đội đua F1 Red Bull Racing. Được thiết kế bởi Adrian Newey – kỹ sư thiết kế F1 huyền thoại, Valkyrie là chiếc siêu xe hypercar mang DNA đua xe F1 thuần túy. Với động cơ Cosworth V12 6.5L hút khí tự nhiên kết hợp hệ thống hybrid, Valkyrie sản sinh 1,140 mã lực trong khi chỉ nặng khoảng 1,030 kg, mang lại tỷ lệ công suất/trọng lượng 1:1.",
             features: [
                 "Động cơ Cosworth V12 6.5L hybrid công suất 1,140 HP",
                 "Trọng lượng siêu nhẹ 1,030 kg",
@@ -183,6 +214,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Ghế ngồi được tích hợp trực tiếp vào khung gầm",
                 "Vô lăng tháo rời tích hợp màn hình hiển thị",
                 "Hệ thống treo push-rod được lấy cảm hứng từ F1"
+            ],
+            links: [
+                "https://www.astonmartin.com/en-us/models/valkyrie",
+                "https://www.topgear.com/car-reviews/aston-martin/valkyrie"
             ],
             images: {
                 main: "images/cars-collection/anh_7.jpg",
@@ -195,13 +230,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         8: {
+            MaSP: "CAR008",
             name: "Rimac Nevera",
             price: "$2,400,000",
             maxSpeed: "412 km/h",
             power: "1,914 HP",
             acceleration: "1.85s",
             colors: "Xanh, Trắng, Xám, Đen, Bạc",
-            description: "Rimac Nevera là siêu xe điện đã phá vỡ mọi kỷ lục về hiệu suất. Với bốn động cơ điện độc lập cung cấp tổng công suất 1,914 mã lực, Nevera có thể đạt 0-100 km/h trong chỉ 1,85 giây - nhanh nhất trong số các xe thương mại. Pin dung lượng 120kWh cung cấp phạm vi hoạt động lên đến 550km. Với thân vỏ và khung gầm carbon fiber, Nevera không chỉ là một siêu xe hiệu suất mà còn là một bước đột phá về mặt kỹ thuật trong lĩnh vực xe điện.",
+            description: "Rimac Nevera là siêu xe điện đã phá vỡ mọi kỷ lục về hiệu suất. Với bốn động cơ điện độc lập cung cấp tổng công suất 1,914 mã lực, Nevera có thể đạt 0-100 km/h trong chỉ 1,85 giây – nhanh nhất trong số các xe thương mại. Pin dung lượng 120kWh cung cấp phạm vi hoạt động lên đến 550km. Với thân vỏ và khung gầm carbon fiber, Nevera không chỉ là một siêu xe hiệu suất mà còn là một bước đột phá về mặt kỹ thuật trong lĩnh vực xe điện.",
             features: [
                 "Bốn động cơ điện độc lập với tổng công suất 1,914 HP",
                 "Pin 120kWh cho phạm vi hoạt động 550km",
@@ -210,6 +246,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Khung gầm monocoque carbon fiber siêu nhẹ",
                 "Hệ thống phanh điện tử với khả năng tái tạo năng lượng",
                 "150 cảm biến theo dõi và điều chỉnh hiệu suất xe"
+            ],
+            links: [
+                "https://www.rimac-automobili.com/nevera/",
+                "https://www.topgear.com/car-reviews/rimac/nevera"
             ],
             images: {
                 main: "images/cars-collection/anh_8.jpg",
@@ -222,6 +262,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         9: {
+            MaSP: "CAR009",
             name: "Porsche 918 Spyder",
             price: "$845,000",
             maxSpeed: "345 km/h",
@@ -238,6 +279,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Khung gầm monocoque carbon fiber",
                 "Hệ thống ống xả Weissach đặt ở phía trên"
             ],
+            links: [
+                "https://www.porsche.com/usa/models/918/918-spyder/",
+                "https://www.caranddriver.com/porsche/918-spyder"
+            ],
             images: {
                 main: "images/cars-collection/anh_9.jpg",
                 thumbnails: [
@@ -249,13 +294,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         10: {
+            MaSP: "CAR010",
             name: "Gordon Murray Automotive T.50",
             price: "$3,100,000",
             maxSpeed: "375 km/h",
             power: "654 HP",
             acceleration: "2.8s",
             colors: "Bạc, Đen, Xanh, Đỏ, Trắng",
-            description: "Gordon Murray Automotive T.50 được thiết kế bởi Gordon Murray - cha đẻ của McLaren F1 huyền thoại. T.50 được xem là siêu xe lấy người lái làm trung tâm thuần túy nhất từng được sản xuất, với động cơ V12 4.0L hút khí tự nhiên do Cosworth phát triển có khả năng quay đến 12,100 rpm và trọng lượng chỉ 986kg. Đặc trưng nổi bật của T.50 là quạt hút khí 400mm ở đuôi xe, lấy cảm hứng từ xe đua Brabham BT46B 'Fan Car', giúp tăng đáng kể lực ép xuống đường.",
+            description: "Gordon Murray Automotive T.50 được thiết kế bởi Gordon Murray – cha đẻ của McLaren F1 huyền thoại. T.50 được xem là siêu xe lấy người lái làm trung tâm thuần túy nhất từng được sản xuất, với động cơ V12 4.0L hút khí tự nhiên do Cosworth phát triển có khả năng quay đến 12,100 rpm và trọng lượng chỉ 986kg. Đặc trưng nổi bật của T.50 là quạt hút khí 400mm ở đuôi xe, lấy cảm hứng từ xe đua Brabham BT46B 'Fan Car', giúp tăng đáng kể lực ép xuống đường.",
             features: [
                 "Động cơ V12 4.0L Cosworth hút khí tự nhiên (654 HP)",
                 "Quạt hút khí đường kính 400mm ở đuôi xe",
@@ -264,6 +310,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Hộp số sàn 6 cấp nhẹ, chính xác",
                 "Khung gầm carbon fiber siêu nhẹ",
                 "Hệ thống treo làm từ vật liệu siêu nhẹ"
+            ],
+            links: [
+                "https://gordonmurrayautomotive.com/coches/t50/",
+                "https://www.topgear.com/car-reviews/gordon-murray-automotive/t50"
             ],
             images: {
                 main: "images/cars-collection/anh_10.jpg",
@@ -276,6 +326,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         11: {
+            MaSP: "CAR011",
             name: "Hennessey Venom F5",
             price: "$1,800,000",
             maxSpeed: "500+ km/h",
@@ -292,6 +343,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Hệ thống treo đua xe được tinh chỉnh cho đường phố",
                 "Hệ thống phanh Brembo carbon-ceramic"
             ],
+            links: [
+                "https://www.hennesseyperformance.com/venomf5/",
+                "https://www.topgear.com/car-reviews/hennessey/venom-f5"
+            ],
             images: {
                 main: "images/cars-collection/anh_11.jpg",
                 thumbnails: [
@@ -303,6 +358,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         12: {
+            MaSP: "CAR012",
             name: "Pininfarina Battista",
             price: "$2,200,000",
             maxSpeed: "350 km/h",
@@ -319,6 +375,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Hệ thống phanh carbon-ceramic với đĩa phanh kích thước 390mm",
                 "Công nghệ âm thanh AI âm thanh tạo cảm giác như xe động cơ đốt trong"
             ],
+            links: [
+                "https://www.automobili-pininfarina.com/battista/",
+                "https://www.topgear.com/car-reviews/pininfarina/battista"
+            ],
             images: {
                 main: "images/cars-collection/anh_12.jpg",
                 thumbnails: [
@@ -330,6 +390,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         13: {
+            MaSP: "CAR013",
             name: "Mercedes-AMG One",
             price: "$2,700,000",
             maxSpeed: "350 km/h",
@@ -346,6 +407,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Hộp số tự động 8 cấp với chức năng sang số thủ công",
                 "Chế độ EV với phạm vi hoạt động 25km"
             ],
+            links: [
+                "https://www.mercedes-amg.com/en/one.html",
+                "https://www.caranddriver.com/mercedes-amg/one"
+            ],
             images: {
                 main: "images/cars-collection/anh_13.jpg",
                 thumbnails: [
@@ -357,6 +422,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         14: {
+            MaSP: "CAR014",
             name: "SSC Tuatara",
             price: "$1,900,000",
             maxSpeed: "460 km/h",
@@ -373,6 +439,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Hệ thống kiểm soát phát thải động cơ độc quyền",
                 "Hệ thống điều khiển Launch Control cho khả năng tăng tốc tối ưu"
             ],
+            links: [
+                "https://www.sscnorthamerica.com/tuatara/",
+                "https://www.topgear.com/car-reviews/ssc/tuatara"
+            ],
             images: {
                 main: "images/cars-collection/anh_14.jpg",
                 thumbnails: [
@@ -384,6 +454,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         15: {
+            MaSP: "CAR015",
             name: "Lotus Evija",
             price: "$2,100,000",
             maxSpeed: "320 km/h",
@@ -400,6 +471,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Hệ thống treo push-rod chủ động",
                 "Hệ thống torque vectoring điều khiển điện tử"
             ],
+            links: [
+                "https://www.lotuscars.com/evija/",
+                "https://www.topgear.com/car-reviews/lotus/evija"
+            ],
             images: {
                 main: "images/cars-collection/anh_15.jpg",
                 thumbnails: [
@@ -411,6 +486,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         16: {
+            MaSP: "CAR016",
             name: "Maserati MC20",
             price: "$215,000",
             maxSpeed: "325 km/h",
@@ -427,6 +503,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Hệ thống kiểm soát xe điện tử với 5 chế độ lái",
                 "Khả năng chuyển đổi giữa phiên bản coupe và spyder"
             ],
+            links: [
+                "https://www.maserati.com/maserati/international/en/models/mc20",
+                "https://www.caranddriver.com/maserati/mc20"
+            ],
             images: {
                 main: "images/cars-collection/anh_16.jpg",
                 thumbnails: [
@@ -438,13 +518,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         17: {
+            MaSP: "CAR017",
             name: "Czinger 21C",
             price: "$1,700,000",
             maxSpeed: "405 km/h",
             power: "1,250 HP",
             acceleration: "1.9s",
             colors: "Xám, Đen, Bạc, Đỏ, Xanh",
-            description: "Czinger 21C là siêu xe hybrid được sản xuất bằng công nghệ in 3D tiên tiến tại Mỹ. Sử dụng động cơ V8 twin-turbo 2.88L phẳng kết hợp với hai mô-tơ điện, 21C sản sinh 1,250 mã lực và có thể tăng tốc từ 0-100 km/h trong 1.9 giây. Điểm đặc biệt của 21C là bố trí ghế ngồi 1+1 (người lái ở giữa, hành khách phía sau), lấy cảm hứng từ máy bay phản lực. Khung gầm và các thành phần cấu trúc được in 3D và lắp ráp bởi robot AI, tạo ra độ chính xác và trọng lượng tối ưu chưa từng có.",
+            description: "Czinger 21C là siêu xe hybrid được sản xuất bằng công nghệ in 3D tiên tiến tại Mỹ. Sử dụng động cơ V8 twin-turbo 2.88L phẳng kết hợp với hai mô-tơ điện, 21C sản sinh 1,250 mã lực và có thể tăng tốc từ 0-100 km/h trong 1.9 giây. Điểm đặc biệt của 21C là bố trí ghế ngồi 1+1 (người lái ở giữa, hành khách phía sau), lấy cảm hứng từ máy bay phản lực. Khung gầm và các thành phần cấu trúc được in 3D và lắp ráp bởi robot AI, tạo ra độ chính xác và trọng lượng tối ưu chưa từng có. :contentReference[oaicite:1]{index=1}",
             features: [
                 "Động cơ V8 twin-turbo 2.88L hybrid công suất 1,250 HP",
                 "Công nghệ sản xuất in 3D tiên tiến",
@@ -453,6 +534,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Hệ thống treo độc lập điều khiển điện tử",
                 "Hệ thống khí động học chủ động với lực ép 615kg ở 322 km/h",
                 "Hộp số 7 cấp tự động ly hợp tuần tự"
+            ],
+            links: [
+                "https://www.motortrend.com/features/czinger-21c-3-d-hypercar-details-photos/",
+                "https://www.topgear.com/car-news/supercars/heres-production-spec-czinger-21c"
             ],
             images: {
                 main: "images/cars-collection/anh_17.jpg",
@@ -465,6 +550,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         18: {
+            MaSP: "CAR018",
             name: "Ferrari LaFerrari",
             price: "$1,400,000",
             maxSpeed: "350 km/h",
@@ -481,6 +567,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Cửa mở kiểu butterfly độc đáo",
                 "Hệ thống phanh carbon-ceramic Brembo"
             ],
+            links: [
+                "https://www.ferrari.com/en-EN/auto/laferrari",
+                "https://www.caranddriver.com/ferrari/la-ferrari"
+            ],
             images: {
                 main: "images/cars-collection/anh_18.jpg",
                 thumbnails: [
@@ -492,72 +582,189 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     };
+
     
-    // Hiển thị thông tin chi tiết xe
-    function displayCarDetails(carId) {
+    // Hiển thị thông tin chi tiết xe (phiên bản sửa, tương thích với carsData bạn gửi)
+    function displayCarDetails(passedCarId) {
+        // Lấy carId ưu tiên: param > URL query > localStorage (nếu bạn dùng) 
+        let carId = passedCarId;
+        if (!carId) {
+            const urlParams = new URLSearchParams(window.location.search);
+            carId = urlParams.get('id') || localStorage.getItem('selectedCarId');
+        }
+
+        // Kiểm tra carsData có tồn tại
+        if (typeof carsData === 'undefined' || carsData === null) {
+            console.error('❌ carsData chưa được load hoặc không tồn tại.');
+            return;
+        }
+
+        // Nếu carId là chuỗi rỗng hoặc null
+        if (!carId) {
+            console.error('❌ Không xác định được carId. Vui lòng truyền ?id=... trong URL hoặc truyền tham số khi gọi hàm.');
+            return;
+        }
+
+        // Lấy object car — lưu ý keys trong carsData bạn dùng là 1,2,... nên carsData[carId] (carId dạng '1' hay 1 đều OK)
         const car = carsData[carId];
-        
-        // Cập nhật thông tin xe
-        document.getElementById('car-name').textContent = car.name;
-        document.getElementById('car-name-breadcrumb').textContent = car.name;
-        document.getElementById('car-price').textContent = car.price;
-        document.getElementById('car-max-speed').textContent = car.maxSpeed;
-        document.getElementById('car-power').textContent = car.power;
-        document.getElementById('car-acceleration').textContent = car.acceleration;
-        document.getElementById('car-colors').textContent = car.colors;
-        document.getElementById('car-description').textContent = car.description;
-        
-        // Cập nhật danh sách tính năng
+        if (!car) {
+            console.error('❌ Không tìm thấy xe với ID:', carId, '(Kiểm tra keys trong carsData).');
+            return;
+        }
+
+        // Helper: set text nội dung cho id, nếu element không tồn tại thì bỏ qua
+        const setText = (id, text) => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = text !== undefined && text !== null ? text : 'Đang cập nhật...';
+        };
+
+        // --- Cập nhật thông tin cơ bản ---
+        setText('car-name', car.name || 'N/A');
+        setText('car-name-breadcrumb', car.name || 'N/A');
+        setText('car-price', car.price || 'N/A');
+        setText('car-max-speed', car.maxSpeed || 'N/A');
+        setText('car-power', car.power || 'N/A');
+        setText('car-acceleration', car.acceleration || 'N/A');
+        setText('car-colors', car.colors || 'N/A');
+        setText('car-description', car.description || 'Không có mô tả.');
+
+        // --- Mã sản phẩm: sử dụng thuộc tính MaSP (theo data bạn gửi) ---
+        const carCodeSpan = document.getElementById('car-code');
+        if (carCodeSpan) {
+            const ma = car.MaSP || car.code || car.maSP || null; // hỗ trợ nhiều tên trường phòng khi khác
+            carCodeSpan.textContent = ma ? ma : 'N/A';
+        }
+
+        // --- Danh sách tính năng ---
         const featuresList = document.getElementById('car-features');
-        featuresList.innerHTML = '';
-        car.features.forEach(feature => {
-            const li = document.createElement('li');
-            li.textContent = feature;
-            featuresList.appendChild(li);
-        });
-        
-        // Cập nhật hình ảnh
-        if (car.images) {
-            document.getElementById('car-main-image').src = car.images.main;
-            
-            // Cập nhật thumbnails nếu có
-            if (car.images.thumbnails) {
-                for (let i = 0; i < Math.min(car.images.thumbnails.length, 4); i++) {
-                    const thumbnail = document.getElementById(`thumbnail-${i+1}`);
-                    if (thumbnail) {
-                        thumbnail.src = car.images.thumbnails[i];
-                        thumbnail.parentElement.dataset.image = car.images.thumbnails[i];
+        if (featuresList) {
+            featuresList.innerHTML = '';
+            if (Array.isArray(car.features) && car.features.length > 0) {
+                car.features.forEach(f => {
+                    const li = document.createElement('li');
+                    li.textContent = f;
+                    featuresList.appendChild(li);
+                });
+            } else {
+                const li = document.createElement('li');
+                li.textContent = 'Không có thông tin tính năng.';
+                featuresList.appendChild(li);
+            }
+        }
+
+        // --- Hình ảnh chính và thumbnails ---
+        if (car.images && car.images.main) {
+            const mainImg = document.getElementById('car-main-image');
+            if (mainImg) mainImg.src = car.images.main;
+        }
+
+        if (car.images && Array.isArray(car.images.thumbnails)) {
+            for (let i = 0; i < 4; i++) {
+                const imgEl = document.getElementById(`thumbnail-${i + 1}`);
+                const thumbUrl = car.images.thumbnails[i];
+                if (imgEl) {
+                    if (thumbUrl) {
+                        imgEl.src = thumbUrl;
+                        // đặt data-image cho parent .thumbnail (nếu tồn tại)
+                        if (imgEl.parentElement) imgEl.parentElement.dataset.image = thumbUrl;
+                    } else {
+                        // nếu thiếu thumbnail, giữ placeholder hoặc ẩn
+                        imgEl.src = imgEl.src || 'images/placeholder.jpg';
                     }
                 }
             }
         }
 
-        // Thiết lập sự kiện cho nút Thêm vào giỏ hàng
-        const addToCartButton = document.getElementById('add-to-cart-button');
-        if (addToCartButton) {
-            addToCartButton.addEventListener('click', function() {
-                const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-                if (isLoggedIn) {
-                    addToCart(car, carId);
-                } else {
-                    window.location.href = 'login.html';
-                }
-            });
+        // Thiết lập sự kiện cho thumbnails (gán onclick bằng 1 handler, tránh gắn chồng)
+        const thumbnailDivs = document.querySelectorAll('.thumbnail');
+        thumbnailDivs.forEach(div => {
+            // đảm bảo dataset.image có giá trị; nếu không, lấy ảnh con img
+            const imageSrc = div.dataset.image || (div.querySelector('img') && div.querySelector('img').src);
+            div.onclick = function () {
+                // cập nhật class active
+                thumbnailDivs.forEach(d => d.classList.remove('active'));
+                this.classList.add('active');
+
+                // cập nhật ảnh chính
+                const mainImg = document.getElementById('car-main-image');
+                if (mainImg && imageSrc) mainImg.src = imageSrc;
+            };
+        });
+
+        // --- Bài viết liên quan: trong data bạn có property links là mảng chuỗi ---
+        const relatedUl = document.querySelector('.related-articles ul') || document.getElementById('car-links');
+        if (relatedUl) {
+            relatedUl.innerHTML = '';
+            // hỗ trợ 2 dạng: links là mảng chuỗi URL, hoặc mảng object {title, url}
+            const links = car.links || car.relatedArticles || car.linksList || [];
+            if (Array.isArray(links) && links.length > 0) {
+                links.forEach(l => {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+
+                    if (typeof l === 'string') {
+                        a.href = l;
+                        // lấy text hiển thị ngắn gọn: host hoặc chính URL
+                        try {
+                            const u = new URL(l);
+                            a.textContent = u.hostname.replace('www.', '') + u.pathname;
+                        } catch (e) {
+                            a.textContent = l;
+                        }
+                    } else if (typeof l === 'object' && l !== null) {
+                        a.href = l.url || '#';
+                        a.textContent = l.title || l.url || 'Xem bài viết';
+                    } else {
+                        a.href = '#';
+                        a.textContent = 'Xem bài viết';
+                    }
+
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                    li.appendChild(a);
+                    relatedUl.appendChild(li);
+                });
+            } else {
+                relatedUl.innerHTML = '<li>Không có bài viết liên quan.</li>';
+            }
         }
 
-        // Thiết lập sự kiện cho nút Đặt hàng ngay
-        const checkoutButton = document.getElementById('checkout-button');
-        if (checkoutButton) {
-            checkoutButton.addEventListener('click', function() {
+        // --- Nút Thêm vào giỏ hàng ---
+        const addToCartButton = document.getElementById('add-to-cart-button');
+        if (addToCartButton) {
+            addToCartButton.onclick = function () {
                 const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
                 if (isLoggedIn) {
-                    showCheckoutModal();
+                    // addToCart sử dụng car object và carId (theo data của bạn)
+                    if (typeof addToCart === 'function') addToCart(car, carId);
+                    else console.warn('Hàm addToCart chưa được định nghĩa.');
                 } else {
                     window.location.href = 'login.html';
                 }
-            });
+            };
         }
+
+        // --- Nút Đặt hàng ngay ---
+        const checkoutButton = document.getElementById('checkout-button');
+        if (checkoutButton) {
+            checkoutButton.onclick = function () {
+                const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+                if (isLoggedIn) {
+                    if (typeof showCheckoutModal === 'function') showCheckoutModal();
+                    else console.warn('Hàm showCheckoutModal chưa được định nghĩa.');
+                } else {
+                    window.location.href = 'login.html';
+                }
+            };
+        }
+
+        // Cập nhật badge giỏ hàng nếu hàm tồn tại
+        if (typeof updateCartBadge === 'function') updateCartBadge();
+
+        console.log('✅ Hiển thị dữ liệu cho xe:', car.name, '(ID=', carId, ')');
     }
+
+
 
     // Hàm thêm xe vào giỏ hàng
     function addToCart(car, carId) {

@@ -335,6 +335,53 @@
     color: #e6a44e;
 }
 
+/* Product Code */
+.car-code {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.5px;
+}
+
+/* Related Articles Section */
+.related-articles {
+    padding: 4rem 2rem;
+    background-color: #121216;
+    text-align: center;
+    border-top: 1px solid rgba(230, 164, 78, 0.2);
+    border-bottom: 1px solid rgba(230, 164, 78, 0.2);
+}
+
+.related-articles h2 {
+    font-size: 1.8rem;
+    color: #e6a44e;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.related-articles ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.related-articles li {
+    margin: 0.5rem 0;
+}
+
+.related-articles a {
+    color: #f0c878;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.related-articles a:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
 
 /* Responsive Design */
 @media (max-width: 1024px) {
