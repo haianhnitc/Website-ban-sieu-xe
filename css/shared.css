@@ -424,6 +424,31 @@ footer {
     display: none;
 }
 
+/* Contract modal styles */
+.contract-modal { display: none; }
+.contract-modal.show { display: block; }
+.contract-backdrop {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 3000;
+}
+.contract-dialog {
+    position: fixed; left:50%; top:50%; transform: translate(-50%,-50%);
+    width: min(880px, 96%); max-height: 86vh; overflow:auto;
+    background: #fff; color: #111; z-index: 3001; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+.contract-header { display:flex; align-items:center; justify-content:space-between; padding:16px 20px; border-bottom:1px solid #eee; }
+.contract-header h2 { margin:0; font-size:1.08rem; line-height:1.2; color:#072146; font-weight:700; letter-spacing:0.2px; }
+.contract-close { background:transparent; border:0; font-size:1.4rem; cursor:pointer; }
+.contract-body { padding:18px 20px; display:flex; flex-direction:column; gap:12px; }
+.contract-content { max-height:46vh; overflow:auto; padding-right:8px; }
+.contract-actions { display:flex; flex-direction:column; gap:8px; margin-top:8px; }
+.contract-input { display:flex; flex-direction:column; gap:6px; }
+.contract-input input { padding:8px 10px; border:1px solid #ccc; border-radius:4px; }
+.contract-agree { display:flex; align-items:center; gap:8px; }
+.contract-buttons { display:flex; gap:8px; justify-content:flex-end; margin-top:8px; }
+.contract-buttons .btn { padding:8px 12px; border-radius:6px; cursor:pointer; }
+.contract-buttons .btn.primary { background:#FFD700; border:0; }
+
+
 .cursor-hover {
     width: 40px;
     height: 40px;

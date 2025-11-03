@@ -72,11 +72,28 @@ document.addEventListener('DOMContentLoaded', function() {
                 modal.style.display = 'none';
             }
             
-            // Xử lý sự kiện nút xác nhận
+            // Xử lý sự kiện nút xác nhận: trước khi xử lý checkout, yêu cầu ký hợp đồng điện tử
             confirmBtn.onclick = function() {
-                processCheckout();
-                modal.style.display = 'none';
-                showToast('Đơn hàng đã được gửi thành công!');
+                if (typeof window.openContractModal === 'function') {
+                    // open contract modal and after acceptance run processCheckout
+                    window.openContractModal(function() {
+                        try {
+                            processCheckout();
+                        } catch (err) { console.warn('processCheckout failed', err); }
+                        modal.style.display = 'none';
+                        if (typeof showToast === 'function') {
+                            showToast('Cảm ơn. Vui lòng chờ nhân viên liên hệ để hoàn tất.');
+                        } else {
+                            alert('Cảm ơn. Vui lòng chờ nhân viên liên hệ để hoàn tất.');
+                        }
+                    });
+                } else {
+                    // fallback: no contract available
+                    processCheckout();
+                    modal.style.display = 'none';
+                    if (typeof showToast === 'function') showToast('Đơn hàng đã được gửi thành công!');
+                    else alert('Đơn hàng đã được gửi thành công!');
+                }
             }
             
             // Đóng modal khi click bên ngoài
@@ -191,11 +208,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('Vui lòng chọn phương thức thanh toán.');
                 return;
             }
-            processCheckout(appliedDiscount, selectedPayment);
-            modal.style.display = 'none';
-            if (typeof showToast === 'function') {
-                const discountText = appliedDiscount ? ` (giảm ${appliedDiscount}%)` : '';
-                showToast(`Đơn hàng đã được gửi thành công! Phương thức: ${selectedPayment}${discountText}`);
+
+            if (typeof window.openContractModal === 'function') {
+                // Ask user to sign contract first; after acceptance process checkout
+                window.openContractModal(function() {
+                    try {
+                        processCheckout(appliedDiscount, selectedPayment);
+                    } catch (err) { console.warn('processCheckout failed', err); }
+                    modal.style.display = 'none';
+                    if (typeof showToast === 'function') {
+                        const discountText = appliedDiscount ? ` (giảm ${appliedDiscount}%)` : '';
+                        showToast(`Cảm ơn. Vui lòng chờ nhân viên liên hệ để hoàn tất. Phương thức: ${selectedPayment}${discountText}`);
+                    } else {
+                        alert('Cảm ơn. Vui lòng chờ nhân viên liên hệ để hoàn tất.');
+                    }
+                });
+            } else {
+                // fallback
+                processCheckout(appliedDiscount, selectedPayment);
+                modal.style.display = 'none';
+                if (typeof showToast === 'function') {
+                    const discountText = appliedDiscount ? ` (giảm ${appliedDiscount}%)` : '';
+                    showToast(`Đơn hàng đã được gửi thành công! Phương thức: ${selectedPayment}${discountText}`);
+                }
             }
         };
     }

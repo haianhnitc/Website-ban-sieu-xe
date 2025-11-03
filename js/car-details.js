@@ -929,7 +929,7 @@ document.addEventListener('DOMContentLoaded', function() {
             };
         });
 
-        // Xác nhận thanh toán
+        // Xác nhận thanh toán: trước khi hoàn tất, yêu cầu ký hợp đồng điện tử
         confirmBtn.onclick = function () {
             if (!selectedPayment) {
                 // an extra guard
@@ -937,10 +937,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            modal.style.display = 'none';
-
-            const discountText = appliedDiscount ? ` (Áp dụng giảm ${appliedDiscount}%)` : '';
-            showToast(`Đơn hàng đã được gửi thành công! Phương thức: ${selectedPayment}${discountText}`);
+            if (typeof window.openContractModal === 'function') {
+                window.openContractModal(function() {
+                    // after contract accepted
+                    modal.style.display = 'none';
+                    const discountText = appliedDiscount ? ` (Áp dụng giảm ${appliedDiscount}%)` : '';
+                    if (typeof showToast === 'function') {
+                        showToast(`Cảm ơn. Vui lòng chờ nhân viên liên hệ để hoàn tất. Phương thức: ${selectedPayment}${discountText}`);
+                    } else {
+                        alert('Cảm ơn. Vui lòng chờ nhân viên liên hệ để hoàn tất.');
+                    }
+                });
+            } else {
+                modal.style.display = 'none';
+                const discountText = appliedDiscount ? ` (Áp dụng giảm ${appliedDiscount}%)` : '';
+                showToast(`Đơn hàng đã được gửi thành công! Phương thức: ${selectedPayment}${discountText}`);
+            }
         };
     }
     

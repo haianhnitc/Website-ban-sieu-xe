@@ -268,3 +268,192 @@ function populateSocialLinks() {
         socialAnchors[3].title = 'Subscribe to Ferrari on YouTube';
     }
 }
+
+function injectContractModal() {
+    if (document.getElementById('contract-modal')) return;
+
+    // A more formal, customer-facing purchase agreement (Vietnamese) for checkout signing.
+    const modalHtml = `
+    <div id="contract-modal" class="contract-modal" aria-hidden="true">
+        <div class="contract-backdrop"></div>
+        <div class="contract-dialog" role="dialog" aria-modal="true" aria-labelledby="contract-title">
+        <header class="contract-header">
+            <h2 id="contract-title">HỢP ĐỒNG MUA BÁN ĐIỆN TỬ<br>Elite HyperCars</h2>
+            <button class="contract-close" aria-label="Đóng">×</button>
+        </header>
+        <div class="contract-body">
+            <div class="contract-content" id="contract-content">
+            <p><strong>Ngày:</strong> <span id="contract-date">${new Date().toLocaleDateString()}</span></p>
+            <h3>1. Các Bên</h3>
+            <p><strong>Bên A (Bên bán):</strong> Elite HyperCars — Địa chỉ: [Địa chỉ công ty].</p>
+            <p><strong>Bên B (Bên mua):</strong> Khách hàng (thông tin do khách hàng cung cấp khi ký hợp đồng).</p>
+
+            <h3>2. Đối tượng hợp đồng</h3>
+            <p>Bên A đồng ý bán và Bên B đồng ý mua các sản phẩm/xe được thể hiện trong đơn hàng tại thời điểm thanh toán. Chi tiết sản phẩm, số lượng và giá được xác nhận trong giao diện thanh toán trước khi ký hợp đồng.</p>
+
+            <h3>3. Giá, Thanh toán và Giao nhận</h3>
+            <p>Giá bán là giá hiển thị trên web tại thời điểm xác nhận đơn hàng. Thanh toán thực hiện theo phương thức mà hai Bên lựa chọn tại bước thanh toán. Bên A sẽ sắp xếp giao nhận theo thỏa thuận và chỉ giao khi đã xác nhận thanh toán (nếu áp dụng).</p>
+
+            <h3>4. Chuyển giao quyền sở hữu và rủi ro</h3>
+            <p>Quyền sở hữu chuyển giao khi hai Bên hoàn tất các thủ tục thanh toán và ký nhận theo quy định. Rủi ro về mất mát, hư hỏng chuyển cho Bên B kể từ thời điểm giao nhận theo thỏa thuận.</p>
+
+            <h3>5. Bảo hành và Trách nhiệm</h3>
+            <p>Sản phẩm được bảo hành theo chính sách bảo hành của nhà sản xuất. Elite HyperCars chịu trách nhiệm theo quy định pháp luật và điều khoản bảo hành công bố. Mọi khiếu nại liên quan đến chất lượng phải được thông báo trong thời hạn hợp lý.</p>
+
+            <h3>6. Hủy đơn và Hoàn tiền</h3>
+            <p>Quy định hủy đơn và hoàn tiền tuân theo chính sách bán hàng của Elite HyperCars, được thông báo cho Khách hàng khi xác nhận đơn.</p>
+
+            <h3>7. Bảo mật thông tin</h3>
+            <p>Thông tin cá nhân của Khách hàng được xử lý theo Chính sách quyền riêng tư. Elite HyperCars cam kết không tiết lộ thông tin cho bên thứ ba nếu không có sự đồng ý, trừ khi luật định yêu cầu.</p>
+
+            <h3>8. Điều khoản chung</h3>
+            <p>Mọi tranh chấp phát sinh từ hợp đồng này sẽ được giải quyết thông qua thương lượng; nếu không thành, các Bên có thể đưa ra tòa án có thẩm quyền theo pháp luật Việt Nam.</p>
+
+            <p><em>Bằng việc ký điện tử dưới đây, Bên B xác nhận đã đọc, hiểu và đồng ý chịu ràng buộc bởi các điều khoản trong hợp đồng này.</em></p>
+            </div>
+
+            <div class="contract-actions">
+            <label class="contract-input"><span>Họ và tên (ký điện tử)</span>
+                <input type="text" id="contract-name" placeholder="Nguyễn Văn A">
+            </label>
+            <label class="contract-input"><span>Email</span>
+                <input type="email" id="contract-email" placeholder="ban@example.com">
+            </label>
+            <label class="contract-agree"><input type="checkbox" id="contract-agree-checkbox"> Tôi đã đọc, hiểu và đồng ý với các điều khoản của Hợp đồng mua bán này</label>
+
+            <div class="contract-buttons">
+                <button id="contract-download" class="btn">Tải hợp đồng</button>
+                <button id="contract-accept" class="btn primary" disabled>Đồng ý & Ký (Ký điện tử)</button>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>`;
+
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+    const modal = document.getElementById('contract-modal');
+    const closeBtn = modal.querySelector('.contract-close');
+    const agreeCheckbox = modal.querySelector('#contract-agree-checkbox');
+    const acceptBtn = modal.querySelector('#contract-accept');
+    const downloadBtn = modal.querySelector('#contract-download');
+
+    // internal hook that checkout code can set when calling openContractModal
+    modal._onAccept = null;
+
+    function closeModal() {
+        modal.classList.remove('show');
+        modal.setAttribute('aria-hidden', 'true');
+        // clear callback after close to avoid accidental reuse
+        modal._onAccept = null;
+    }
+
+    function openModal(cb) {
+        if (typeof cb === 'function') modal._onAccept = cb;
+        modal.classList.add('show');
+        modal.setAttribute('aria-hidden', 'false');
+        const nameInput = modal.querySelector('#contract-name');
+        if (nameInput) nameInput.focus();
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.querySelector('.contract-backdrop').addEventListener('click', closeModal);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+    agreeCheckbox.addEventListener('change', () => {
+        acceptBtn.disabled = !agreeCheckbox.checked;
+    });
+
+    acceptBtn.addEventListener('click', () => {
+        const name = modal.querySelector('#contract-name').value.trim();
+        const email = modal.querySelector('#contract-email').value.trim();
+        if (!name || !email) {
+            alert('Vui lòng nhập họ tên và email để ký hợp đồng.');
+            return;
+        }
+
+        const record = {
+            id: 'contract_' + Date.now(),
+            name: name,
+            email: email,
+            acceptedAt: new Date().toISOString(),
+            page: window.location.pathname + window.location.search
+        };
+
+        const existing = JSON.parse(localStorage.getItem('acceptedContracts') || '[]');
+        existing.push(record);
+        localStorage.setItem('acceptedContracts', JSON.stringify(existing));
+
+        // Close modal first
+        closeModal();
+
+        // If caller provided a callback (e.g., checkout), call it with the record
+        if (modal._onAccept && typeof modal._onAccept === 'function') {
+            try { modal._onAccept(record); } catch (err) { console.warn('contract onAccept callback error', err); }
+        } else {
+            // default UI: show a small notice (uses global showToast if available)
+            if (typeof showToast === 'function') {
+                showToast('Cảm ơn. Vui lòng chờ nhân viên liên hệ để hoàn tất.');
+            } else {
+                // fallback: alert
+                alert('Cảm ơn. Vui lòng chờ nhân viên liên hệ để hoàn tất.');
+            }
+        }
+    });
+
+    downloadBtn.addEventListener('click', () => {
+        const contentEl = modal.querySelector('#contract-content');
+        const name = modal.querySelector('#contract-name').value.trim() || 'Chưa điền tên';
+        const email = modal.querySelector('#contract-email').value.trim() || 'Chưa điền email';
+        const accepted = modal.querySelector('#contract-agree-checkbox').checked ? 'Đồng ý' : 'Chưa đồng ý';
+
+        const html = `<!doctype html><html><head><meta charset="utf-8"><title>Hợp đồng - ${name}</title></head><body>` +
+            `<h1>Hợp đồng mua bán - Elite HyperCars</h1>` +
+            `<p><strong>Người ký:</strong> ${name} &lt;${email}&gt;</p>` +
+            `<p><strong>Trạng thái:</strong> ${accepted}</p>` +
+            `<p><strong>Ngày:</strong> ${new Date().toLocaleString()}</p>` +
+            `<hr>` + contentEl.innerHTML + `</body></html>`;
+
+        const blob = new Blob([html], {type: 'text/html'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `hop-dong-${name.replace(/\s+/g,'_')}.html`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+    });
+
+    // expose opener which may receive an optional callback
+    window.openContractModal = openModal;
+}
+
+function addFooterContractLink() {
+        try {
+                const footer = document.querySelector('footer');
+                if (!footer) return;
+
+                injectContractModal();
+
+                const link = document.createElement('a');
+                link.href = '#';
+                link.textContent = 'Hợp đồng điện tử';
+                link.addEventListener('click', (e) => { e.preventDefault(); window.openContractModal(); });
+
+                const firstCol = footer.querySelector('.footer-column');
+                if (firstCol) {
+                        firstCol.appendChild(link);
+                } else {
+                        footer.appendChild(link);
+                }
+        } catch (err) {
+                console.warn('addFooterContractLink failed', err);
+        }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Inject the contract modal so it can be opened programmatically from checkout flows.
+    // Do NOT add a footer link — the contract should be shown only when the user initiates checkout.
+    injectContractModal();
+});
