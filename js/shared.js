@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     observeElements();
     updateNavBar(); // Cập nhật thanh điều hướng dựa trên trạng thái đăng nhập
     updateCartBadge(); // Cập nhật số lượng trên badge giỏ hàng
+    populateSocialLinks(); // Populate footer social links
 });
 
 // Cập nhật thanh điều hướng dựa trên trạng thái đăng nhập
@@ -121,4 +122,45 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(changeBackground, 5000); // Chuyển đổi mỗi 5 giây
     }
     observeElements();
+    
+    // Populate social links trong footer
+    populateSocialLinks();
 });
+
+// Hàm để populate social links ở footer (Ferrari mặc định)
+function populateSocialLinks() {
+    const socialLinksContainer = document.querySelector('.social-links');
+    if (!socialLinksContainer) return;
+
+    // Dữ liệu social links của Ferrari (mặc định cho footer)
+    const ferrariSocial = {
+        facebook: 'https://www.facebook.com/ferrari/',
+        instagram: 'https://www.instagram.com/ferrari/',
+        twitter: 'https://twitter.com/FerrariFans',
+        youtube: 'https://www.youtube.com/c/Ferrari'
+    };
+
+    // Cập nhật các link
+    const socialAnchors = socialLinksContainer.querySelectorAll('a');
+    if (socialAnchors.length >= 4) {
+        socialAnchors[0].href = ferrariSocial.facebook;
+        socialAnchors[0].target = '_blank';
+        socialAnchors[0].rel = 'noopener noreferrer';
+        socialAnchors[0].title = 'Follow Ferrari on Facebook';
+        
+        socialAnchors[1].href = ferrariSocial.instagram;
+        socialAnchors[1].target = '_blank';
+        socialAnchors[1].rel = 'noopener noreferrer';
+        socialAnchors[1].title = 'Follow Ferrari on Instagram';
+        
+        socialAnchors[2].href = ferrariSocial.twitter;
+        socialAnchors[2].target = '_blank';
+        socialAnchors[2].rel = 'noopener noreferrer';
+        socialAnchors[2].title = 'Follow Ferrari on Twitter';
+        
+        socialAnchors[3].href = ferrariSocial.youtube;
+        socialAnchors[3].target = '_blank';
+        socialAnchors[3].rel = 'noopener noreferrer';
+        socialAnchors[3].title = 'Subscribe to Ferrari on YouTube';
+    }
+}
