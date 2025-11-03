@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateNavBar(); // Cập nhật thanh điều hướng dựa trên trạng thái đăng nhập
     updateCartBadge(); // Cập nhật số lượng trên badge giỏ hàng
     populateSocialLinks(); // Populate footer social links
+    optimizeMedia(); // Apply media optimizations (lazy-loading, deferred video)
 });
 
 // Cập nhật thanh điều hướng dựa trên trạng thái đăng nhập
@@ -125,7 +126,110 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Populate social links trong footer
     populateSocialLinks();
+    // Apply media optimizations
+    optimizeMedia();
 });
+
+// Tối ưu media: lazy-load cho ảnh và deferred loading cho video
+function optimizeMedia() {
+    try {
+        // Images: set loading attribute where appropriate
+        const imgs = Array.from(document.querySelectorAll('img'));
+        imgs.forEach(img => {
+            // keep critical images eager
+            const criticalIds = ['car-main-image'];
+            const criticalClasses = ['logo', 'footer-logo', 'title'];
+            const isCritical = criticalIds.includes(img.id) || criticalClasses.some(c => img.classList.contains(c));
+            if (!('loading' in HTMLImageElement.prototype)) {
+                // browser doesn't support native lazy loading – fall back to data-src + observer
+                if (!isCritical && img.src) {
+                    img.dataset.src = img.src;
+                    img.src = 'images/placeholder.jpg';
+                }
+            } else {
+                img.loading = isCritical ? 'eager' : 'lazy';
+            }
+        });
+
+        // IntersectionObserver to swap data-src -> src for browsers without native lazy
+        if (!('loading' in HTMLImageElement.prototype)) {
+            const imgObserver = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        if (el.dataset && el.dataset.src) {
+                            el.src = el.dataset.src;
+                            delete el.dataset.src;
+                        }
+                        obs.unobserve(el);
+                    }
+                });
+            }, {rootMargin: '200px'});
+
+            document.querySelectorAll('img').forEach(img => {
+                if (img.dataset && img.dataset.src) imgObserver.observe(img);
+            });
+        }
+
+        // Videos: defer loading and only play when visible
+        const videos = Array.from(document.querySelectorAll('video'));
+        if (videos.length) {
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const v = entry.target;
+                    if (entry.isIntersecting) {
+                        // load and play when visible
+                        if (v.dataset && v.dataset.src) v.src = v.dataset.src;
+                        if (v.paused) {
+                            v.play().catch(() => {});
+                        }
+                    } else {
+                        // pause when out of view
+                        if (!v.paused) v.pause();
+                    }
+                });
+            }, {threshold: 0.25});
+
+            videos.forEach(v => {
+                // prefer to not preload heavy videos
+                v.preload = 'none';
+                v.playsInline = true;
+                // if autoplay present, remove to avoid immediate load
+                if (v.hasAttribute('autoplay')) v.removeAttribute('autoplay');
+                // if source present, move to data-src so it doesn't load immediately
+                if (v.querySelector('source')) {
+                    const srcEl = v.querySelector('source');
+                    if (srcEl.src) {
+                        v.dataset.src = srcEl.src;
+                        srcEl.removeAttribute('src');
+                    }
+                } else if (v.src) {
+                    v.dataset.src = v.src;
+                    v.removeAttribute('src');
+                }
+                videoObserver.observe(v);
+            });
+        }
+
+        // Background images: elements with data-bg attribute get loaded when visible
+        const bgElements = Array.from(document.querySelectorAll('[data-bg]'));
+        if (bgElements.length) {
+            const bgObserver = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        el.style.backgroundImage = `url(${el.dataset.bg})`;
+                        obs.unobserve(el);
+                    }
+                });
+            }, {rootMargin: '200px'});
+            bgElements.forEach(el => bgObserver.observe(el));
+        }
+    } catch (err) {
+        // fail silently – optimization is best-effort
+        console.warn('optimizeMedia error', err);
+    }
+}
 
 // Hàm để populate social links ở footer (Ferrari mặc định)
 function populateSocialLinks() {
