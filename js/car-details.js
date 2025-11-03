@@ -691,41 +691,60 @@ document.addEventListener('DOMContentLoaded', function() {
             };
         });
 
-        // --- Bài viết liên quan: trong data bạn có property links là mảng chuỗi ---
+        // --- Bài viết liên quan: hiển thị các link đến trang chính thức của hãng xe ---
         const relatedUl = document.querySelector('.related-articles ul') || document.getElementById('car-links');
         if (relatedUl) {
             relatedUl.innerHTML = '';
-            // hỗ trợ 2 dạng: links là mảng chuỗi URL, hoặc mảng object {title, url}
             const links = car.links || car.relatedArticles || car.linksList || [];
             if (Array.isArray(links) && links.length > 0) {
-                links.forEach(l => {
+                links.forEach((l, index) => {
                     const li = document.createElement('li');
                     const a = document.createElement('a');
 
                     if (typeof l === 'string') {
                         a.href = l;
-                        // lấy text hiển thị ngắn gọn: host hoặc chính URL
+                        // Extract meaningful name from URL
                         try {
                             const u = new URL(l);
-                            a.textContent = u.hostname.replace('www.', '') + u.pathname;
+                            const domain = u.hostname.replace('www.', '');
+                            const pathParts = u.pathname.split('/').filter(p => p);
+                            
+                            if (domain.includes('lamborghini')) {
+                                a.textContent = `🔗 ${index + 1}. Lamborghini Official - ${pathParts.slice(-1)[0] || 'Model'}`;
+                            } else if (domain.includes('ferrari')) {
+                                a.textContent = `🔗 ${index + 1}. Ferrari Official - ${pathParts.slice(-1)[0] || 'Model'}`;
+                            } else if (domain.includes('porsche')) {
+                                a.textContent = `🔗 ${index + 1}. Porsche Official - ${pathParts.slice(-1)[0] || 'Model'}`;
+                            } else if (domain.includes('bugatti')) {
+                                a.textContent = `🔗 ${index + 1}. Bugatti Official - ${pathParts.slice(-1)[0] || 'Model'}`;
+                            } else if (domain.includes('caranddriver')) {
+                                a.textContent = `📰 ${index + 1}. Car and Driver Review`;
+                            } else if (domain.includes('topgear')) {
+                                a.textContent = `📺 ${index + 1}. Top Gear Review`;
+                            } else if (domain.includes('motor1')) {
+                                a.textContent = `📰 ${index + 1}. Motor1 Article`;
+                            } else {
+                                a.textContent = `🔗 ${index + 1}. ${domain}`;
+                            }
                         } catch (e) {
-                            a.textContent = l;
+                            a.textContent = `🔗 ${index + 1}. Xem bài viết`;
                         }
                     } else if (typeof l === 'object' && l !== null) {
                         a.href = l.url || '#';
-                        a.textContent = l.title || l.url || 'Xem bài viết';
+                        a.textContent = `🔗 ${index + 1}. ${l.title || l.url || 'Xem bài viết'}`;
                     } else {
                         a.href = '#';
-                        a.textContent = 'Xem bài viết';
+                        a.textContent = `🔗 ${index + 1}. Xem bài viết`;
                     }
 
                     a.target = '_blank';
                     a.rel = 'noopener noreferrer';
+                    a.className = 'car-link';
                     li.appendChild(a);
                     relatedUl.appendChild(li);
                 });
             } else {
-                relatedUl.innerHTML = '<li>Không có bài viết liên quan.</li>';
+                relatedUl.innerHTML = '<li><span style="color: #999;">Không có bài viết liên quan.</span></li>';
             }
         }
 
@@ -839,30 +858,90 @@ document.addEventListener('DOMContentLoaded', function() {
     // Hiển thị modal thanh toán
     function showCheckoutModal() {
         const modal = document.getElementById('checkout-modal');
-        const closeBtn = document.querySelector('.close-modal');
-        const confirmBtn = document.querySelector('#checkout-modal .btn.primary');
-        
-        if (modal) {
-            modal.style.display = 'block';
-            
-            // Xử lý sự kiện đóng modal
-            closeBtn.onclick = function() {
+        if (!modal) return;
+
+        const closeBtn = modal.querySelector('.close-modal');
+        const confirmBtn = modal.querySelector('.btn.primary');
+        const applyBtn = modal.querySelector('#apply-discount');
+        const discountInput = modal.querySelector('#discount-code');
+        const discountMsg = modal.querySelector('#discount-msg');
+        const paymentRadios = modal.querySelectorAll('input[name="payment-method"]');
+
+        let appliedDiscount = 0;
+        let selectedPayment = null;
+
+        // reset modal state
+        discountInput.value = '';
+        discountMsg.textContent = '';
+        confirmBtn.disabled = true;
+        appliedDiscount = 0;
+        selectedPayment = null;
+        paymentRadios.forEach(r => r.checked = false);
+
+        modal.style.display = 'block';
+
+        // đóng modal
+        closeBtn.onclick = function () {
+            modal.style.display = 'none';
+        };
+
+        // Đóng khi click ra ngoài
+        window.onclick = function (event) {
+            if (event.target == modal) {
                 modal.style.display = 'none';
             }
-            
-            // Xử lý sự kiện nút xác nhận
-            confirmBtn.onclick = function() {
-                modal.style.display = 'none';
-                showToast('Đơn hàng đã được gửi thành công!');
+        };
+
+        // Áp dụng mã giảm giá (giả lập)
+        applyBtn.onclick = function () {
+            const code = (discountInput.value || '').trim().toUpperCase();
+            if (!code) {
+                discountMsg.textContent = 'Vui lòng nhập mã giảm giá.';
+                discountMsg.classList.remove('success');
+                return;
             }
-            
-            // Đóng modal khi click bên ngoài
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = 'none';
+
+            // Các mã mẫu
+            const discounts = {
+                'ELITE10': 10,
+                'VIP50': 50,
+                'WELCOME5': 5
+            };
+
+            if (discounts[code]) {
+                appliedDiscount = discounts[code];
+                discountMsg.textContent = `Mã hợp lệ — Giảm ${appliedDiscount}%`;
+                discountMsg.classList.add('success');
+            } else {
+                appliedDiscount = 0;
+                discountMsg.textContent = 'Mã không hợp lệ.';
+                discountMsg.classList.remove('success');
+            }
+        };
+
+        // Chọn phương thức thanh toán
+        paymentRadios.forEach(radio => {
+            radio.onchange = function () {
+                if (this.checked) {
+                    selectedPayment = this.value;
+                    confirmBtn.disabled = false;
                 }
+            };
+        });
+
+        // Xác nhận thanh toán
+        confirmBtn.onclick = function () {
+            if (!selectedPayment) {
+                // an extra guard
+                alert('Vui lòng chọn phương thức thanh toán.');
+                return;
             }
-        }
+
+            modal.style.display = 'none';
+
+            const discountText = appliedDiscount ? ` (Áp dụng giảm ${appliedDiscount}%)` : '';
+            showToast(`Đơn hàng đã được gửi thành công! Phương thức: ${selectedPayment}${discountText}`);
+        };
     }
     
     // Xử lý sự kiện click vào thumbnail để đổi ảnh chính
@@ -879,9 +958,93 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    const shareBtn = document.getElementById('share-button');
+    const sharePopup = document.getElementById('share-popup');
+
+    if (shareBtn && sharePopup) {
+        shareBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            const isOpen = sharePopup.classList.contains('show');
+            if (isOpen) {
+                sharePopup.classList.remove('show');
+                shareBtn.setAttribute('aria-expanded', 'false');
+            } else {
+                sharePopup.classList.add('show');
+                shareBtn.setAttribute('aria-expanded', 'true');
+                setupShareOptions(carId, carsData);
+            }
+        });
+
+        // đóng khi click ngoài
+        document.addEventListener('click', function (e) {
+            if (!sharePopup.contains(e.target) && !shareBtn.contains(e.target)) {
+                sharePopup.classList.remove('show');
+                shareBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // đóng với Escape
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                sharePopup.classList.remove('show');
+                shareBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
     // Thiết lập sự kiện cho các nút sau khi hiển thị chi tiết xe
     displayCarDetails(carId);
 
     // Cập nhật số lượng sản phẩm hiển thị khi trang được tải
     updateCartBadge();
 });
+
+// Hàm để thiết lập share options - chia sẻ link car-details hiện tại
+function setupShareOptions(carId, carsData) {
+    const car = carsData[carId];
+    if (!car) return;
+
+    // Link của car-details page hiện tại
+    const currentPageUrl = window.location.href;
+    const carName = car.name;
+    const carPrice = car.price;
+
+    const sharePopup = document.getElementById('share-popup');
+    if (!sharePopup) return;
+
+    const shareOptions = sharePopup.querySelectorAll('.share-option');
+    
+    // Facebook Share
+    if (shareOptions[0]) {
+        shareOptions[0].onclick = () => {
+            const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentPageUrl)}&quote=${encodeURIComponent(`Xem ${carName} - ${carPrice} trên Elite HyperCars`)}`;
+            window.open(facebookShareUrl, '_blank', 'width=600,height=400,noopener,noreferrer');
+        };
+    }
+    
+    // Twitter Share
+    if (shareOptions[1]) {
+        shareOptions[1].onclick = () => {
+            const twitterShareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(currentPageUrl)}&text=${encodeURIComponent(`Xem ${carName} - ${carPrice} trên Elite HyperCars`)}`;
+            window.open(twitterShareUrl, '_blank', 'width=600,height=300,noopener,noreferrer');
+        };
+    }
+    
+    // WhatsApp Share
+    if (shareOptions[2]) {
+        shareOptions[2].onclick = () => {
+            const whatsappShareUrl = `https://wa.me/?text=${encodeURIComponent(`Xem ${carName} - ${carPrice} trên Elite HyperCars: ${currentPageUrl}`)}`;
+            window.open(whatsappShareUrl, '_blank', 'noopener,noreferrer');
+        };
+    }
+    
+    // Copy Link (thay thế LinkedIn)
+    if (shareOptions[3]) {
+        shareOptions[3].onclick = () => {
+            navigator.clipboard.writeText(currentPageUrl).then(() => {
+                alert('Link đã được sao chép vào clipboard!');
+            }).catch(() => {
+                prompt('Sao chép link này:', currentPageUrl);
+            });
+        };
+    }
+}
